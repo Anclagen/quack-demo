@@ -1,9 +1,11 @@
 import Banner from "../components/Banner/Banner";
 import Section from "../components/Sections/Section";
+import bannerImage from "../assets/pexels-edmond-dantès-4344878.jpg";
+
 const Jobs = () => {
   return (
     <>
-      <Banner title="Jobs" slogan="Discover Your Next Opportunity, Let's Shape Your Career Path" imgSrc="//public/assets/pexels-edmond-dantès-4344878.jpg" imgAlt="Descriptive Image Alt Text" />
+      <Banner title="Jobs" slogan="Discover Your Next Opportunity, Let's Shape Your Career Path" imgSrc={bannerImage} imgAlt="Descriptive Image Alt Text" />
       <Section bgColor="black bg-opacity-80">
         <h2>Our Listings</h2>
         <div className="relative h-screen max-w-3xl mx-auto">

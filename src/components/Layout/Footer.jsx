@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
           {/* Logo and Description */}
           <div className="text-center">
-            <img src="//public/assets/quack-small-logo.png" alt="Company Logo" className="mb-2 mx-auto" />
+            <img src="/src/assets/quack-small-logo.png" alt="Company Logo" className="mb-2 mx-auto" />
             <p className="font-semibold text-xl">Quack Specialists</p>
           </div>
 
@@ -54,16 +54,16 @@ const Footer = () => {
           {/* Social Links */}
           <div className="flex justify-start">
             <a href="#" className="mx-2 w-16">
-              <img src="//public/assets/5296499_fb_facebook_facebook logo_icon.png" alt="Facebook" />
+              <img src="/src/assets/5296499_fb_facebook_facebook logo_icon.png" alt="Facebook" />
             </a>
             <a href="#" className="mx-2 w-16">
-              <img src="//public/assets/3225191_app_instagram_logo_media_popular_icon.png" alt="instagram" />
+              <img src="/src/assets/3225191_app_instagram_logo_media_popular_icon.png" alt="instagram" />
             </a>
             <a href="#" className="mx-2 w-16">
-              <img src="//public/assets/317750_linkedin_icon.png" alt="Linkedin" />
+              <img src="/src/assets/317750_linkedin_icon.png" alt="Linkedin" />
             </a>
             <a href="#" className="mx-2 w-16">
-              <img src="//public/assets/294709_circle_twitter_icon.png" alt="Twitter" />
+              <img src="/src/assets/294709_circle_twitter_icon.png" alt="Twitter" />
             </a>
             {/* Add more social icons as needed */}
           </div>

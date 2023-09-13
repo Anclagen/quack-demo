@@ -1,6 +1,7 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import Footer from "../components/Layout/Footer";
+import logoImage from "../assets/full-logo.png";
 
 const Layout = () => {
   const location = useLocation();
@@ -34,7 +35,7 @@ const Layout = () => {
         <div className="container mx-auto flex justify-between items-center">
           {/* Logo */}
           <div>
-            <img src="//public/assets/full-logo.png" alt="Logo" className="h-12" />
+            <img src={logoImage} alt="Logo" className="h-12" />
           </div>
           {/* Logo and Desktop Links here */}
           <ul className="hidden sm:flex space-x-5 pr-2">
