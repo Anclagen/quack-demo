@@ -1,5 +1,6 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
+import Footer from "../components/Layout/Footer";
 
 const Layout = () => {
   const location = useLocation();
@@ -29,7 +30,7 @@ const Layout = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full bg-black bg-opacity-80 p-1">
+      <nav className="fixed top-0 left-0 w-full bg-black bg-opacity-80 p-1 z-50">
         <div className="container mx-auto flex justify-between items-center">
           {/* Logo */}
           <div>
@@ -87,6 +88,8 @@ const Layout = () => {
       </nav>
 
       <Outlet />
+
+      <Footer />
     </>
   );
 };
