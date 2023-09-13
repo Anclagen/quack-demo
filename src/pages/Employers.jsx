@@ -6,7 +6,7 @@ const Employers = () => {
       <Banner
         title="Employers"
         slogan="Partnering Success, Attracting the Right Talent for Your Business"
-        imgSrc="/src/assets/pexels-andrea-piacquadio-840996.jpg"
+        imgSrc="//public/assets/pexels-andrea-piacquadio-840996.jpg"
         imgAlt="Descriptive Image Alt Text"
       />
       <Section bgColor="black bg-opacity-80">

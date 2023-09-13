@@ -34,7 +34,7 @@ const Layout = () => {
         <div className="container mx-auto flex justify-between items-center">
           {/* Logo */}
           <div>
-            <img src="/src/assets/full-logo.png" alt="Logo" className="h-12" />
+            <img src="//public/assets/full-logo.png" alt="Logo" className="h-12" />
           </div>
           {/* Logo and Desktop Links here */}
           <ul className="hidden sm:flex space-x-5 pr-2">
