@@ -8,7 +8,7 @@ const FadeInSection = ({ title, imageSrc, imageAlt, text = [], linkText, linkHre
   });
 
   return (
-    <div ref={ref} className={` transition-opacity duration-1000 transition-transform duration-1500 transform ${inView ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-50"}`}>
+    <div ref={ref} className={`transition-all duration-1500 transform ${inView ? "scale-100 opacity-100" : "opacity-0 scale-50"}`} style={{ transitionDuration: "2500ms" }}>
       <h2 className="text-2xl mb-12 text-center font-bold">{title}</h2>
       <div className="md:flex space-x-6 p-5">
         <div className="md:w-1/2 mb-5">

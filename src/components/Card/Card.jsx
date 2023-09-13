@@ -1,3 +1,5 @@
+import { useInView } from "react-intersection-observer";
+
 export const CardWithTitleTop = ({ title, imgSrc, imgAlt, text }) => {
   return (
     <div className="rounded-lg shadow-md overflow-hidden bg-white text-black">
@@ -21,8 +23,17 @@ export const CardWithImageTop = ({ title, imgSrc, imgAlt, text }) => {
 };
 
 export const CardMinimalIconTop = ({ title, icon, color, text, textColor = "text-black" }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true, // Trigger the fade in animation once
+    rootMargin: "-300px 0px", // Start the animation slightly before the element is in view
+  });
+
   return (
-    <div className={`rounded-lg shadow-md overflow-hidden ${textColor}`}>
+    <div
+      ref={ref}
+      className={`rounded-lg shadow-md overflow-hidden ${textColor} transition-all duration-1500 transform ${inView ? "scale-100 opacity-100" : "opacity-0 scale-50"}`}
+      style={{ transitionDuration: "2500ms" }}
+    >
       <div className="w-100 text-center">
         <span className={`material-symbols-outlined ${color}`}>{icon} </span>
       </div>
