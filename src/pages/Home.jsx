@@ -1,7 +1,7 @@
 import Banner from "../components/Banner/Banner";
 import Section from "../components/Sections/Section";
 import FadeInSection from "../components/Sections/FadeInSection/FadeInSection";
-import { CardWithImageTop, CardWithTitleTop } from "../components/Card/Card";
+import { CardWithImageTop, CardWithTitleTop, CardMinimalIconTop, TestimonialCard } from "../components/Card/Card";
 import CardSection from "../components/Sections/CardSection/CardSection";
 import { Link } from "react-router-dom";
 import bannerImage from "../assets/pexels-olga-lioncat-7245326.jpg";
@@ -9,6 +9,7 @@ import fadeinImage from "../assets/pexels-yan-krukau-8867482.jpg";
 import meatImage from "../assets/pexels-mark-stebnicki-7163991.jpg";
 import engineeringImage from "../assets/pexels-pixabay-159358.jpg";
 import warehouseImage from "../assets/pexels-tiger-lily-4487365.jpg";
+import avatarImage from "../assets/pexels-andrea-piacquadio-3778603.jpg";
 
 const Home = () => {
   return (
@@ -60,19 +61,62 @@ const Home = () => {
           {/* ... more cards */}
         </CardSection>
         <div className="text-center mt-12">
-          <Link to="/jobs" className="bg-purple-900 hover:bg-purple-600 hover:text-white text-white py-2 px-4 rounded mx-5 mt-auto">
+          <Link to="/jobs" className="bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded mx-5 mt-auto">
             View All Jobs
           </Link>
-          <Link to="/employers" className="bg-purple-900 hover:bg-purple-600 hover:text-white text-white py-2 px-4 rounded mx-5 mt-auto">
+          <Link to="/employers" className="bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded mx-5 mt-auto">
             View All Employers
           </Link>
         </div>
       </Section>
       <Section bgColor="black bg-opacity-80">
         <h2 className="text-3xl text-center mb-10">Why Choose Us</h2>
+        <CardSection>
+          <CardMinimalIconTop
+            title="Over 50 Years Combined Experience"
+            icon="groups"
+            color="text-violet-900 text-8xl"
+            textColor="text-white"
+            text="You can rest assured that your in capable hands as we have a team of consultants and support staff to make sure you have a seamless experience from the start. Our job is to make sure you love your job!"
+          />
+          <CardMinimalIconTop
+            title="24/7 Reliable Service"
+            icon="verified_user"
+            color="text-green-900 text-8xl"
+            textColor="text-white"
+            text="We strongly believe that we should offer a service that fits around your needs whether that be as a customer or as a candidate, our customer service representatives are there to answer any of your queries at a time that suits you."
+          />
+          <CardMinimalIconTop
+            title="Tailored Employment Services"
+            icon="business_center"
+            color="text-blue-900 text-8xl"
+            textColor="text-white"
+            text="Quack Specialists offer customized employment services for your sector, including permanent, contract, and temporary recruitment. Our dedicated team also provides SMS solutions through our group of companies, with an experienced team dedicated to just this."
+          />
+        </CardSection>
       </Section>
       <Section bgColor="gray bg-opacity-10">
         <h2 className="text-3xl text-center mb-10">Testimonials</h2>
+        <CardSection>
+          <TestimonialCard
+            userImage={avatarImage}
+            testimonialText="Working with Quack Specialists was an enlightening experience. They took the time to understand our company culture and delivered candidates that were not only skilled but also aligned with our values. Their thorough approach ensured we found the right fit every time."
+            userName="Sarah Mitchell"
+            userPosition="HR Manager, TechSolutions Inc."
+          />
+          <TestimonialCard
+            userImage={avatarImage}
+            testimonialText="I've partnered with many recruitment agencies over the years, but the professionalism and precision of Quack Specialists stand out. They consistently matched us with top-tier talent, saving us countless hours in the hiring process."
+            userName="David Alvarez"
+            userPosition="COO, Innovate Enterprises"
+          />
+          <TestimonialCard
+            userImage={avatarImage}
+            testimonialText="The team at Quack Specialists are truly recruitment experts. Their insights into the job market and understanding of our industry ensured that we got candidates who were ready to hit the ground running. A truly commendable service!"
+            userName="Maya Lindstrom"
+            userPosition="Director of Talent Acquisition, Nexus Group"
+          />
+        </CardSection>
       </Section>
       <Section bgColor="black bg-opacity-80">
         <h2 className="text-3xl text-center mb-10">Are Clients</h2>

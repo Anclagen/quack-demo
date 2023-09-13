@@ -27,7 +27,7 @@ const Banner = ({ title, slogan, imgSrc, imgAlt, links = [] }) => {
           {/* Render links if provided */}
           {links &&
             links.map((link, index) => (
-              <Link key={index} to={link.path} className="bg-purple-900 hover:bg-purple-600 hover:text-white text-white py-2 px-4 rounded mx-3 ">
+              <Link key={index} to={link.path} className="bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded mx-3 ">
                 {link.label}
               </Link>
             ))}
