@@ -1,4 +1,8 @@
 import { Link } from "react-router-dom";
+import twitterIcon from "../../assets/294709_circle_twitter_icon.png";
+import facebookIcon from "../../assets/5296499_fb_facebook_facebook logo_icon.png";
+import instagramIcon from "../../assets/3225191_app_instagram_logo_media_popular_icon.png";
+import linkedinIcon from "../../assets/317750_linkedin_icon.png";
 
 const Footer = () => {
   return (
@@ -54,16 +58,16 @@ const Footer = () => {
           {/* Social Links */}
           <div className="flex justify-start">
             <a href="#" className="mx-2 w-16">
-              <img src="/src/assets/5296499_fb_facebook_facebook logo_icon.png" alt="Facebook" />
+              <img src={facebookIcon} alt="Facebook" />
             </a>
             <a href="#" className="mx-2 w-16">
-              <img src="/src/assets/3225191_app_instagram_logo_media_popular_icon.png" alt="instagram" />
+              <img src={instagramIcon} alt="instagram" />
             </a>
             <a href="#" className="mx-2 w-16">
-              <img src="/src/assets/317750_linkedin_icon.png" alt="Linkedin" />
+              <img src={linkedinIcon} alt="Linkedin" />
             </a>
             <a href="#" className="mx-2 w-16">
-              <img src="/src/assets/294709_circle_twitter_icon.png" alt="Twitter" />
+              <img src={twitterIcon} alt="Twitter" />
             </a>
             {/* Add more social icons as needed */}
           </div>
