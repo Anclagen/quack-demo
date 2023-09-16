@@ -9,6 +9,7 @@ const Contact = () => {
       <Banner title="Contact Us" slogan="Employer Or Job Seeker Were Here To Help" imgSrc={bannerImage} imgAlt="Descriptive Image Alt Text" links={[]} />
       <Section bgColor="bg-zinc-950">
         <h2 className="text-3xl text-center mb-10">Need To Get In Touch</h2>
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1Jt4IhkKUr8cE6T5kf97Rs3f8TqFwoMA&ehbc=2E312F&noprof=1" className="w-full h-80vh "></iframe>
       </Section>
       <Section bgColor="bg-zinc-200">
         <div className="flex flex-col items-center">
