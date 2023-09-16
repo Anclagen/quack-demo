@@ -6,7 +6,7 @@ const Jobs = () => {
   return (
     <>
       <Banner title="Jobs" slogan="Discover Your Next Opportunity, Let's Shape Your Career Path" imgSrc={bannerImage} imgAlt="Descriptive Image Alt Text" />
-      <Section bgColor="black bg-opacity-80">
+      <Section bgColor="bg-black bg-opacity-80">
         <h2>Our Listings</h2>
         <div className="relative h-screen max-w-3xl mx-auto">
           <iframe

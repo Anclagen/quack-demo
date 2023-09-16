@@ -13,7 +13,7 @@ import avatarImage from "../assets/pexels-andrea-piacquadio-3778603.jpg";
 
 const Home = () => {
   return (
-    <>
+    <main>
       <Banner
         title="Quack Specialists Ltd"
         slogan="Your Local Recruitment Specialists"
@@ -24,7 +24,7 @@ const Home = () => {
           { label: "Employers", path: "/employers" },
         ]}
       />
-      <Section bgColor="black bg-opacity-80">
+      <Section bgColor="bg-zinc-950">
         <FadeInSection
           title="Who We Are"
           imageSrc={fadeinImage}
@@ -37,8 +37,8 @@ const Home = () => {
           linkHref="/about"
         />
       </Section>
-      <Section bgColor="gray bg-opacity-10">
-        <h2 className="text-3xl text-center mb-10">Our Areas of Expertise</h2>
+      <Section bgColor="bg-zinc-200">
+        <h2 className="text-3xl text-center mb-10 text-black font-semibold">Our Areas of Expertise</h2>
         <CardSection>
           <CardWithTitleTop
             title="Meat Processing Personnel"
@@ -69,8 +69,8 @@ const Home = () => {
           </Link>
         </div>
       </Section>
-      <Section bgColor="black bg-opacity-80">
-        <h2 className="text-3xl text-center mb-10">Why Choose Us</h2>
+      <Section bgColor="bg-zinc-950">
+        <h2 className="text-3xl text-center mb-10 font-semibold">Why Choose Us</h2>
         <CardSection>
           <CardMinimalIconTop
             title="Over 50 Years Combined Experience"
@@ -95,8 +95,8 @@ const Home = () => {
           />
         </CardSection>
       </Section>
-      <Section bgColor="gray bg-opacity-10">
-        <h2 className="text-3xl text-center mb-10">Testimonials</h2>
+      <Section bgColor="bg-zinc-200">
+        <h2 className="text-3xl text-center mb-10 font-semibold text-black">Testimonials</h2>
         <CardSection>
           <TestimonialCard
             userImage={avatarImage}
@@ -118,10 +118,10 @@ const Home = () => {
           />
         </CardSection>
       </Section>
-      <Section bgColor="black bg-opacity-80">
-        <h2 className="text-3xl text-center mb-10">Are Clients</h2>
+      <Section bgColor="bg-zinc-950">
+        <h2 className="text-3xl text-center mb-10 font-semibold">Are Clients</h2>
       </Section>
-    </>
+    </main>
   );
 };
 

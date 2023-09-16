@@ -14,7 +14,7 @@ const Banner = ({ title, slogan, imgSrc, imgAlt, links = [] }) => {
   // }, []);
 
   return (
-    <div className="relative w-screen h-screen banner overflow-hidden">
+    <div className="relative h-screen banner overflow-hidden">
       {/* Image */}
       <img src={imgSrc} alt={imgAlt} className="absolute top-0 left-0 w-full h-full object-cover" />
 

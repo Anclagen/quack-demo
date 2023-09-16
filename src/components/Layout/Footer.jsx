@@ -3,16 +3,17 @@ import twitterIcon from "../../assets/294709_circle_twitter_icon.png";
 import facebookIcon from "../../assets/5296499_fb_facebook_facebook logo_icon.png";
 import instagramIcon from "../../assets/3225191_app_instagram_logo_media_popular_icon.png";
 import linkedinIcon from "../../assets/317750_linkedin_icon.png";
+import logoImage from "../../assets/quack-small-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white p-10 w-[100vw] ">
+    <footer className="bg-black text-white p-10">
       <div className="container mx-auto max-w-6xl">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
           {/* Logo and Description */}
           <div className="text-center">
-            <img src="/src/assets/quack-small-logo.png" alt="Company Logo" className="mb-2 mx-auto" />
+            <img src={logoImage} alt="Company Logo" className="mb-2 mx-auto" />
             <p className="font-semibold text-xl">Quack Specialists</p>
           </div>
 
