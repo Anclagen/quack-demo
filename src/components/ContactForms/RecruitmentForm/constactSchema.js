@@ -18,6 +18,7 @@ export const contactValidationSchema = Yup.object().shape({
   address_1: Yup.string().required("Address 1 is required"),
   address_2: Yup.string(),
   address_3: Yup.string(),
+  city: Yup.string().required("City is required"),
   postcode: Yup.string().required("Postcode is required"),
 });
 
@@ -33,7 +34,8 @@ export const jobAndMiscValidationSchema = Yup.object().shape({
 });
 
 const cvFileValidation = Yup.mixed()
-  .test("fileSize", "File too large. Max size is 5MB", (value) => {
+  .test("fileSize", `File too large. Max size is 5MB`, (value) => {
+    console.log(value);
     return value && value.size <= 5000000;
   })
   .test("fileType", "Unsupported Format", (value) => {
@@ -59,6 +61,7 @@ const imageAndDocumentFileValidation = Yup.mixed()
   });
 
 export const documentUploadValidationSchema = Yup.object().shape({
+  something: cvFileValidation.required("Required"),
   cv_upload: cvFileValidation.required("Required"),
   id_upload: imageAndDocumentFileValidation.required("Required"),
   proof_of_national_insurance_number: imageAndDocumentFileValidation,

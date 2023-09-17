@@ -11,6 +11,7 @@ export const initialState = {
   address_1: "",
   address_2: "",
   address_3: "",
+  city: "",
   postcode: "",
   salary_type: "salary",
   salary_amount: "",
@@ -20,8 +21,4 @@ export const initialState = {
   have_disability: "",
   national_insurance_number: "",
   share_code: "",
-  cv_file: null,
-  id_file: null,
-  proof_national_insurance_file: null,
-  proof_address_file: null,
 };
