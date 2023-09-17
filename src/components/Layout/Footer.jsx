@@ -7,7 +7,7 @@ import logoImage from "../../assets/quack-small-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white p-10">
+    <footer className="bg-black text-white p-10 mt-auto">
       <div className="container mx-auto max-w-6xl">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">

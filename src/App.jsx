@@ -6,7 +6,6 @@ import Employers from "./pages/Employers.jsx";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
-import "./App.css";
 
 function App() {
   return (
