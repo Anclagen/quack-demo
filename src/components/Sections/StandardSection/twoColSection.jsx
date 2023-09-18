@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const TwoColSection = ({ title, imageSrc, imageAlt, text = [], linkText, linkHref, reverse = false }) => {
   return (
     <div>
-      <h2 className="text-2xl mb-12 text-center font-bold">{title}</h2>
+      <h2 className="text-3xl mb-12 text-center font-semibold">{title}</h2>
       <div className="md:flex space-x-6 p-5 items-center">
         <div className={`md:w-1/2 mb-5 ${reverse ? "md:order-2" : "md:order-1"}`}>
           <img src={imageSrc} alt={imageAlt} className="rounded-3xl mx-auto" />

@@ -1,5 +1,13 @@
+import React from "react";
+
 const CardSection = ({ children }) => {
-  return <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">{children}</div>;
+  return (
+    <div className="flex flex-wrap justify-center">
+      {React.Children.map(children, (child) => (
+        <div className="w-full sm:w-1/2 lg:w-1/3 p-5">{child}</div>
+      ))}
+    </div>
+  );
 };
 
 export default CardSection;

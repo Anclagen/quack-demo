@@ -2,7 +2,7 @@ import { useInView } from "react-intersection-observer";
 
 export const CardWithTitleTop = ({ title, imgSrc, imgAlt, text }) => {
   return (
-    <div className="rounded-lg shadow-md overflow-hidden bg-white text-black">
+    <div className="rounded-lg shadow-md overflow-hidden bg-white text-black shadow-lg shadow-violet-300 ">
       <h3 className="text-2xl m-4 text-center font-bold">{title}</h3>
       <img src={imgSrc} alt={imgAlt} className="mb-4 w-full object-cover" />
       <p className="m-4 text-lg">{text}</p>
@@ -14,6 +14,18 @@ export const CardWithImageTop = ({ title, imgSrc, imgAlt, text }) => {
   return (
     <div className="rounded-lg shadow-md overflow-hidden bg-white text-black">
       <img src={imgSrc} alt={imgAlt} className="w-full object-cover h-48" />
+      <div className="p-4">
+        <h3 className="text-2xl mb-4 font-bold">{title}</h3>
+        <p className="text-lg">{text}</p>
+      </div>
+    </div>
+  );
+};
+
+export const CardWithLargerImageTop = ({ title, imgSrc, imgAlt, text }) => {
+  return (
+    <div className="rounded-lg shadow-md overflow-hidden bg-white text-black">
+      <img src={imgSrc} alt={imgAlt} className="w-full object-cover h-64" />
       <div className="p-4">
         <h3 className="text-2xl mb-4 font-bold">{title}</h3>
         <p className="text-lg">{text}</p>
