@@ -24,7 +24,7 @@ const Home = () => {
           { label: "Employers", path: "/employers" },
         ]}
       />
-      <Section bgColor="bg-zinc-950">
+      <Section bgColor="bg-zinc-950 text-white">
         <FadeInSection
           title="Who We Are"
           imageSrc={fadeinImage}
@@ -69,7 +69,7 @@ const Home = () => {
           </Link>
         </div>
       </Section>
-      <Section bgColor="bg-zinc-950">
+      <Section bgColor="bg-zinc-950 text-white">
         <h2 className="text-3xl text-center mb-10 font-semibold">Why Choose Us</h2>
         <CardSection>
           <CardMinimalIconTop
@@ -118,9 +118,9 @@ const Home = () => {
           />
         </CardSection>
       </Section>
-      <Section bgColor="bg-zinc-950">
+      {/* <Section bgColor="bg-zinc-950">
         <h2 className="text-3xl text-center mb-10 font-semibold">Are Clients</h2>
-      </Section>
+      </Section> */}
     </main>
   );
 };
