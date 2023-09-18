@@ -69,7 +69,7 @@ const Home = () => {
               View All Jobs
             </Link>
             <Link to="/employers" className="bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded mx-5 mt-auto">
-              View All Employers
+              Employers
             </Link>
           </div>
         </Section>

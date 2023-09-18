@@ -31,7 +31,7 @@ const Layout = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full bg-black bg-opacity-80 p-1 z-50">
+      <nav className="fixed top-0 left-0 w-full bg-black bg-opacity-80 p-1 z-50 text-white">
         <div className="container mx-auto flex justify-between items-center">
           {/* Logo */}
           <div>
@@ -54,7 +54,7 @@ const Layout = () => {
             ))}
           </ul>
           {/* Mobile Menu Icon */}
-          <button ref={menuButtonRef} className="sm:hidden" onClick={() => setMenuOpen(!isMenuOpen)}>
+          <button ref={menuButtonRef} className="sm:hidden me-2" onClick={() => setMenuOpen(!isMenuOpen)}>
             <i className="material-icons  pointer-events-none pt-1">menu</i>
             <span className="sr-only">Open menu</span>
           </button>
@@ -64,7 +64,7 @@ const Layout = () => {
         <div ref={menuRef} className={`fixed top-0 right-0 h-full bg-black bg-opacity-90 w-64 transform transition-transform ${isMenuOpen ? "translate-x-0" : "translate-x-full"} sm:hidden`}>
           {/* Close button */}
           <div className="flex justify-end p-2">
-            <button onClick={handleMenuClose}>
+            <button onClick={handleMenuClose} className=" me-2">
               <span className="material-icons  pointer-events-none">close</span>
               <span className="sr-only">Close menu</span>
             </button>
