@@ -4,7 +4,8 @@ import Home from "./pages/Home";
 import Jobs from "./pages/Jobs";
 import Employers from "./pages/Employers.jsx";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
+import Contact from "./pages/Contact/Contact";
+import Register from "./pages/Contact/Register";
 import NoPage from "./pages/NoPage";
 import ScrollToTop from "./components/Hooks/ScrollToTop";
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="jobs" element={<Jobs />} />
           <Route path="employers" element={<Employers />} />
           <Route path="about" element={<About />} />
+          <Route path="register" element={<Register />} />
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NoPage />} />
         </Route>

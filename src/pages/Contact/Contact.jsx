@@ -1,7 +1,7 @@
-import Banner from "../components/Banner/Banner";
-import Section from "../components/Sections/Section";
-import bannerImage from "../assets/pexels-yan-krukau-8867434.jpg";
-import RecruitmentForm from "../components/ContactForms/RecruitmentForm/RecruitmentForm";
+import Banner from "../../components/Banner/Banner";
+import Section from "../../components/Sections/Section";
+import bannerImage from "../../assets/pexels-yan-krukau-8867434.jpg";
+import RecruitmentForm from "../../components/ContactForms/RecruitmentForm/RecruitmentForm";
 
 const Contact = () => {
   return (
