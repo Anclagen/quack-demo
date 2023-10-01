@@ -9,6 +9,7 @@ import Register from "./pages/Contact/Register";
 import NoPage from "./pages/NoPage";
 import ScrollToTop from "./components/Hooks/ScrollToTop";
 import { HelmetProvider } from "react-helmet-async";
+import Sector from "./pages/Sector/Sector";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="register" element={<Register />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="sector/:name" element={<Sector />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
