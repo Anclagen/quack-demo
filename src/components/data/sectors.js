@@ -35,7 +35,7 @@ export const sectors = [
   {
     id: 4,
     name: "Overseas Sponsorships",
-    slug: "overseas-sponsorship",
+    slug: "overseas-sponsorships",
     color: "text-sky-700",
     imageSrc: WarehouseImage,
     summary: "TBD",
