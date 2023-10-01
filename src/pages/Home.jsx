@@ -1,34 +1,67 @@
-import Banner from "../components/Banner/Banner";
+import BannerHome from "../components/Banner/BannerHome";
 import Section from "../components/Sections/Section";
 import FadeInSection from "../components/Sections/FadeInSection/FadeInSection";
-import { CardWithImageTop, CardWithTitleTop, CardMinimalIconTop, TestimonialCard } from "../components/Card/Card";
+import { CardMinimalIconTop, TestimonialCard } from "../components/Card/Card";
 import CardSection from "../components/Sections/CardSection/CardSection";
 import { Link } from "react-router-dom";
 import bannerImage from "../assets/pexels-olga-lioncat-7245326.jpg";
 import fadeinImage from "../assets/pexels-yan-krukau-8867482.jpg";
-import meatImage from "../assets/pexels-mark-stebnicki-7163991.jpg";
-import engineeringImage from "../assets/pexels-pixabay-159358.jpg";
-import warehouseImage from "../assets/pexels-tiger-lily-4487365.jpg";
 import avatarImage from "../assets/pexels-andrea-piacquadio-3778603.jpg";
 import Head from "../components/Head";
 import { keywords } from "../components/data/keywords";
+import { whyChooseUs } from "../components/data/home-data";
+import { sectors } from "../components/data/sectors";
+import FourImageFeature from "../components/Sections/FourImageFeature/FourImageFeature";
 
 const Home = () => {
   return (
     <>
+      <div className="hidden bg-teal-900 bg-gray-900 bg-sky-900 bg-indigo-900 bg-red-900 bg-blue-900 bg-green-900 bg-sky-400 text-teal-900 text-gray-900 text-sky-900 text-indigo-900 text-red-900 text-blue-900 text-green-900 text-sky-400"></div>
       <Head title="Home" description="Welcome to Quack Specialists, your local recruitment specialist." keywords={keywords} />
       <main>
-        <Banner
-          title="Quack Specialists Ltd"
-          slogan="Your Local Recruitment Specialists"
+        {/* <BannerHome
+          title="QS Recruitment"
+          slogan="Specialists part of the Quack Group"
+          imgSrc="https://media.istockphoto.com/id/1394879058/photo/global-business-structure-of-networking-analysis-and-data-exchange-customer-connection-hr.webp?s=2048x2048&w=is&k=20&c=_UscHKBjyS6KoFPPUFGBa7CwqrrGFDPUoLYnzJ0dN34="
+          imgAlt="Descriptive Image Alt Text"
+          links={[
+            { label: "For Job Seekers", path: "/jobs", color: "violet" },
+            { label: "For Employers", path: "/employers", color: "violet" },
+          ]}
+        /> */}
+        <BannerHome
+          title="QS Recruitment"
+          slogan="Specialists part of the Quack Group"
           imgSrc={bannerImage}
           imgAlt="Descriptive Image Alt Text"
           links={[
-            { label: "Jobs", path: "/jobs" },
-            { label: "Employers", path: "/employers" },
+            { label: "For Job Seekers", path: "/jobs", color: "violet" },
+            { label: "For Employers", path: "/employers", color: "violet" },
           ]}
         />
+        <Section bgColor="bg-zinc-200">
+          <FourImageFeature
+            title="Our Sectors"
+            details="QS Recruiters specializes in staffing solutions for Meat & Food Processing, Engineering & Construction, and Warehousing & Logistics sectors. With our rich experience, we expertly match candidates from entry to management levels across various specialized fields. Having originated in the Warehousing & Logistics sector, we've established a stellar reputation, recruiting for prestigious brands and ensuring rewarding partnerships between clients and candidates through our specialized recruitment approach."
+            linkDetails={sectors}
+          />
+        </Section>
         <Section bgColor="bg-zinc-950 text-white">
+          <h2 className="text-3xl text-center mb-10 font-semibold">Why Choose Us?</h2>
+          <CardSection>
+            <CardMinimalIconTop title={whyChooseUs[0].title} icon={whyChooseUs[0].icon.name} color={`text-${whyChooseUs[0].icon.color} text-8xl`} textColor="text-white" text={whyChooseUs[0].text} />
+            <CardMinimalIconTop title={whyChooseUs[1].title} icon={whyChooseUs[1].icon.name} color={`text-${whyChooseUs[1].icon.color} text-8xl`} textColor="text-white" text={whyChooseUs[1].text} />
+            <CardMinimalIconTop title={whyChooseUs[2].title} icon={whyChooseUs[2].icon.name} color={`text-${whyChooseUs[2].icon.color} text-8xl`} textColor="text-white" text={whyChooseUs[2].text} />
+            <CardMinimalIconTop title={whyChooseUs[3].title} icon={whyChooseUs[3].icon.name} color={`text-${whyChooseUs[3].icon.color} text-8xl`} textColor="text-white" text={whyChooseUs[3].text} />
+            <CardMinimalIconTop title={whyChooseUs[4].title} icon={whyChooseUs[4].icon.name} color={`text-${whyChooseUs[4].icon.color} text-8xl`} textColor="text-white" text={whyChooseUs[4].text} />
+          </CardSection>
+          <div className="text-center mt-10">
+            <Link to="/employers" className="bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded mx-5 mt-auto">
+              Our Services
+            </Link>
+          </div>
+        </Section>
+        <Section bgColor="bg-zinc-200 text-black">
           <FadeInSection
             title="Who We Are"
             imageSrc={fadeinImage}
@@ -37,70 +70,12 @@ const Home = () => {
               "Quack Specialists are a dedicated team of expert consultants with specialisms in your sector, as opposed to a typical generic high street generalist recruiter, jack of all trades (master of none!)",
               "We focus on three very specific industries as this has become our niche, these industries are; Meat, Engineering & Construction and Warehouse & Logistics. Our team work collectively in making sure that every step of the process is seamless from on boarding to candidate attrition management.",
             ]}
-            linkText="Learn More"
+            linkText="Learn About Us"
             linkHref="/about"
           />
         </Section>
-        <Section bgColor="bg-zinc-200">
-          <h2 className="text-3xl text-center mb-10 text-black font-semibold">Our Areas of Expertise</h2>
-          <CardSection>
-            <CardWithTitleTop
-              title="Meat Processing Personnel"
-              imgSrc={meatImage}
-              imgAlt="Image 1 Description"
-              text="We specialize in supplying a diverse range of workers for the Meat Processing industry, catering to roles ranging from Junior Boners and Trimmers to Management positions. With our extensive experience, we ensure the right individuals are placed in roles where they can thrive and find fulfillment, creating a positive experience for everyone involved."
-            />
-            <CardWithTitleTop
-              title="Engineering & Construction"
-              imgSrc={engineeringImage}
-              imgAlt="Image 1 Description"
-              text="Our Engineering & Construction team possesses a wealth of experience in the industry, specializing in recruiting highly skilled professionals in niche trades. From Tekla Draughtsmen to Welders and General Labourers, we have a proven track record of identifying and placing top talent within the Engineering & Construction sector.."
-            />
-            <CardWithTitleTop
-              title="Warehouse & Logistics"
-              imgSrc={warehouseImage}
-              imgAlt="Image 1 Description"
-              text="Having originated in the Warehouse & Logistics industry, our Group has established a remarkable reputation as a leading recruitment agency. We have successfully recruited for prestigious blue chip companies, high street cosmetic brands, and luxury chocolate manufacturers. With thousands of satisfied workers and clients, we take pride in our ability to match the right candidates with rewarding opportunities in Warehouse & Logistics."
-            />
-            {/* ... more cards */}
-          </CardSection>
-          <div className="text-center mt-12">
-            <Link to="/jobs" className="bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded mx-5 mt-auto">
-              View All Jobs
-            </Link>
-            <Link to="/employers" className="bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded mx-5 mt-auto">
-              Employers
-            </Link>
-          </div>
-        </Section>
         <Section bgColor="bg-zinc-950 text-white">
-          <h2 className="text-3xl text-center mb-10 font-semibold">Why Choose Us</h2>
-          <CardSection>
-            <CardMinimalIconTop
-              title="Over 50 Years Combined Experience"
-              icon="groups"
-              color="text-violet-900 text-8xl"
-              textColor="text-white"
-              text="You can rest assured that your in capable hands as we have a team of consultants and support staff to make sure you have a seamless experience from the start. Our job is to make sure you love your job!"
-            />
-            <CardMinimalIconTop
-              title="24/7 Reliable Service"
-              icon="verified_user"
-              color="text-green-900 text-8xl"
-              textColor="text-white"
-              text="We strongly believe that we should offer a service that fits around your needs whether that be as a customer or as a candidate, our customer service representatives are there to answer any of your queries at a time that suits you."
-            />
-            <CardMinimalIconTop
-              title="Tailored Employment Services"
-              icon="business_center"
-              color="text-blue-900 text-8xl"
-              textColor="text-white"
-              text="Quack Specialists offer customized employment services for your sector, including permanent, contract, and temporary recruitment. Our dedicated team also provides SMS solutions through our group of companies, with an experienced team dedicated to just this."
-            />
-          </CardSection>
-        </Section>
-        <Section bgColor="bg-zinc-200">
-          <h2 className="text-3xl text-center mb-10 font-semibold text-black">Testimonials</h2>
+          <h2 className="text-3xl text-center mb-10 font-semibold">What Our Clients Say</h2>
           <CardSection>
             <TestimonialCard
               userImage={avatarImage}
@@ -122,9 +97,6 @@ const Home = () => {
             />
           </CardSection>
         </Section>
-        {/* <Section bgColor="bg-zinc-950">
-        <h2 className="text-3xl text-center mb-10 font-semibold">Are Clients</h2>
-      </Section> */}
       </main>
     </>
   );
