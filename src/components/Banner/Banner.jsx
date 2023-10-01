@@ -1,18 +1,6 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Banner = ({ title, slogan, imgSrc, imgAlt, links = [] }) => {
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const bannerImage = document.querySelector(".banner img");
-  //     const scrolled = window.scrollY;
-  // bannerImage.style.top = `-${scrolled * 0.5}px`; // The 0.5 value determines the speed of the parallax. Adjust as needed.
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
-
   return (
     <div className="relative h-screen banner overflow-hidden">
       {/* Image */}
