@@ -71,6 +71,16 @@ body {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
+/* Banner Background */
+.banner-gradient {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+@media only screen and (min-width: 768px) {
+  .banner-gradient {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0) 100%);
+  }
+}
 
 /* Banner Links */
 .draw-outline {
