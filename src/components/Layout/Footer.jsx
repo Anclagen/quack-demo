@@ -9,7 +9,7 @@ import fakeLogoThree from "../../assets/interface/fake-logo-3.jpg";
 const Footer = () => {
   return (
     <footer className="bg-black text-white p-10 mt-auto">
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-screen-2xl">
         <div>
           <div className="flex flex-wrap justify-center gap-6 mb-5">
             <img src={fakeLogoOne} alt="fake logo 1" className="w-20" />
