@@ -4,7 +4,9 @@ const CardSection = ({ children }) => {
   return (
     <div className="flex flex-wrap justify-center">
       {React.Children.map(children, (child) => (
-        <div className="w-full sm:w-1/2 lg:w-1/3 p-5">{child}</div>
+        <div className="w-full sm:w-1/2 lg:w-1/3">
+          <div className="p-5 xl:p-10">{child}</div>
+        </div>
       ))}
     </div>
   );

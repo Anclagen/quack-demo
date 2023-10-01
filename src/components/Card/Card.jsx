@@ -37,16 +37,16 @@ export const CardWithLargerImageTop = ({ title, imgSrc, imgAlt, text }) => {
 export const CardMinimalIconTop = ({ title, icon, color, text, textColor = "text-black" }) => {
   const [ref, inView] = useInView({
     triggerOnce: true, // Trigger the fade in animation once
-    rootMargin: "-300px 0px", // Start the animation slightly before the element is in view
+    rootMargin: "-50px 0px", // Start the animation slightly before the element is in view
   });
 
   return (
     <div
       ref={ref}
-      className={`rounded-lg shadow-md overflow-hidden ${textColor} transition-all duration-1500 transform ${inView ? "scale-100 opacity-100" : "opacity-0 scale-50"}`}
+      className={`rounded-lg shadow-lg overflow-hidden text-center ${textColor} transition-all duration-2000 transform ${inView ? "" : "opacity-0 mt-20"}`}
       style={{ transitionDuration: "2500ms" }}
     >
-      <div className="w-100 text-center">
+      <div className="w-100">
         <span className={`material-symbols-outlined ${color}`}>{icon} </span>
       </div>
       <div className="p-4">
@@ -58,13 +58,17 @@ export const CardMinimalIconTop = ({ title, icon, color, text, textColor = "text
 };
 
 export const TestimonialCard = ({ userImage, testimonialText, userName, userPosition }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true, // Trigger the fade in animation once
+    rootMargin: "-80px 0px", // Start the animation slightly before the element is in view
+  });
   return (
-    <div className="relative bg-gray-400 rounded-lg p-5 shadow-md text-black mt-20">
-      <img src={userImage} alt="User" className="absolute -top-20 left-1/2 transform -translate-x-1/2 w-1/3 rounded-full border-4 border-white" />
-      <div className="mt-16 mb-4">
-        <span className="text-violet-900 text-3xl font-bold">“</span>
+    <div className={`relative bg-zinc-200 rounded-lg p-5 shadow-lg shadow-violet-700 text-black mt-20 transition-all duration-2000 transform ${inView ? "" : "opacity-0 mt-20"}`} ref={ref}>
+      <img src={userImage} alt="User" className="absolute shadow-md -top-20 left-1/2 transform -translate-x-1/2 w-1/3 rounded-full border-4 border-white w-36" />
+      <div className="mt-16 mb-4 text-lg">
+        <span className="text-violet-900  font-extrabold">“</span>
         {testimonialText}
-        <span className="text-violet-900 text-3xl font-bold">”</span>
+        <span className="text-violet-900 font-extrabold">”</span>
       </div>
       <p className="text-violet-900 text-xl font-bold">{userName}</p>
       <p className="text-black text-md">{userPosition}</p>
