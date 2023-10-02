@@ -8,6 +8,7 @@ import contractImage from "../assets/pexels-matthias-zomer-618158.jpg";
 import warehouseImage from "../assets/pexels-tiger-lily-4487365.jpg";
 import constructionImage from "../assets/undraw_under_construction_46pa.png";
 import Head from "../components/Head";
+import ClientForm from "../components/ContactForms/ClientForm/ClientForm";
 
 const Employers = () => {
   return (
@@ -40,7 +41,8 @@ const Employers = () => {
       </Section>
       <Section bgColor="bg-gray bg-opacity-10 text-center">
         <h2 className="text-3xl mb-10">Got A Position To Fill</h2>
-        <div className="p-3 mx-auto max-w-2xl text-lg">
+        <ClientForm />
+        {/* <div className="p-3 mx-auto max-w-2xl text-lg">
           <p className="my-5">This site is currently under construction. Contact form coming soon!</p>
           <p>
             If you need to get in touch send a mail to{" "}
@@ -50,7 +52,7 @@ const Employers = () => {
             .
           </p>
           <img src={constructionImage} alt="under construction" className="" />
-        </div>
+        </div> */}
       </Section>
     </>
   );
