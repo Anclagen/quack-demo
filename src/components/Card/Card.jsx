@@ -60,7 +60,7 @@ export const CardMinimalIconTop = ({ title, icon, color, text, textColor = "text
 export const TestimonialCard = ({ userImage, testimonialText, userName, userPosition }) => {
   const [ref, inView] = useInView({
     triggerOnce: true, // Trigger the fade in animation once
-    rootMargin: "-80px 0px", // Start the animation slightly before the element is in view
+    rootMargin: "-50px 0px", // Start the animation slightly before the element is in view
   });
   return (
     <div className={`relative bg-zinc-200 rounded-lg p-5 shadow-lg shadow-violet-700 text-black mt-20 transition-all duration-2000 transform ${inView ? "" : "opacity-0 mt-20"}`} ref={ref}>
@@ -77,8 +77,12 @@ export const TestimonialCard = ({ userImage, testimonialText, userName, userPosi
 };
 
 export const ProfileCard = ({ userImage, userName, userPosition, userDescription, linkedin, facebook }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true, // Trigger the fade in animation once
+    rootMargin: "-80px 0px", // Start the animation slightly before the element is in view
+  });
   return (
-    <div className="flex flex-col items-center mb-20 md:space-y-0 md:flex-row justify evenly">
+    <div className={`flex flex-col items-center mb-20 md:space-y-0 md:flex-row justify evenly transition-all duration-2000 transform ${inView ? "" : "opacity-0 mt-20"}`} ref={ref}>
       <div className="relative w-full">
         <div className="absolute mb-4 text-center transform translate-x-1/2 -top-20 right-1/2">
           <a href="#" className="relative block">
