@@ -2,7 +2,7 @@ import RecruitmentForm from "../../components/ContactForms/RecruitmentForm/Recru
 import Section from "../../components/Sections/Section";
 import Head from "../../components/Head";
 
-const Register = () => {
+const RegisterCandidate = () => {
   return (
     <>
       <Head title="Register" description="Register With Us" />
@@ -18,4 +18,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterCandidate;
