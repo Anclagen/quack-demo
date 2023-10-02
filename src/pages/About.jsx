@@ -2,10 +2,11 @@ import Banner from "../components/Banner/Banner";
 import Section from "../components/Sections/Section";
 import bannerImage from "../assets/pexels-olga-lioncat-7245326.jpg";
 import TwoColSection from "../components/Sections/StandardSection/twoColSection";
+import FadeInSection from "../components/Sections/FadeInSection/FadeInSection";
 import fadeinImage from "../assets/pexels-yan-krukau-8867482.jpg";
 import uglyMugImage from "../assets/pexels-andrea-piacquadio-3778603.jpg";
 import CardSection from "../components/Sections/CardSection/CardSection";
-import { CardWithLargerImageTop } from "../components/Card/Card";
+import { CardWithLargerImageTop, ProfileCard } from "../components/Card/Card";
 import Head from "../components/Head";
 
 const About = () => {
@@ -14,7 +15,7 @@ const About = () => {
       <Head title="About" description="A Dedicated & Experienced Team Of Experts" />
       <Banner title="About" slogan="A Dedicated & Experienced Team Of Experts" imgSrc={bannerImage} imgAlt="Descriptive Image Alt Text" />
       <Section bgColor="bg-zinc-950 text-white">
-        <TwoColSection
+        <FadeInSection
           title="Who We Are"
           imageSrc={fadeinImage}
           imageAlt="Description"
@@ -29,10 +30,12 @@ const About = () => {
           ]}
           linkText="Get In Touch"
           linkHref="/contact"
+          reverse={false}
+          dark={true}
         />
       </Section>
       <Section bgColor="bg-zinc-200">
-        <TwoColSection
+        <FadeInSection
           title="Meet The Team"
           imageSrc={fadeinImage}
           imageAlt="Description"
@@ -42,25 +45,34 @@ const About = () => {
           ]}
           reverse={true}
         />
-        <h3 className="text-2xl font-semibold text-center">Leadership Team</h3>
+        <h3 className="text-2xl font-semibold text-center mt-16 mb-10">Leadership Team</h3>
+        <p className="mb-32 text-xl font-normal text-center text-gray-500 max-w-screen-lg px-10 mx-auto">
+          We have selected our team not only based on industry knowledge but based on passion for success and wanting to go that extra mile to develop themselves, our clients & candidates.
+        </p>
         <CardSection>
-          <CardWithLargerImageTop
-            title="Jamie Croall, Chief Financial Officer"
-            imgSrc={uglyMugImage}
-            imgAlt="Image 1 Description"
-            text="Jamie plays a pivotal role in the meticulous planning and management of our financial affairs, encompassing everything from ledgers and forecasts to projections. He leads a dedicated team focused on the critical aspects of our financial operations. This includes ensuring timely payments from our customers, settling accounts with our suppliers punctually, and most importantly, guaranteeing that our workers receive accurate and timely compensation."
+          <ProfileCard
+            userImage={uglyMugImage}
+            userName="Jamie Croall"
+            userPosition="Chief Financial Officer"
+            userDescription="Jamie plays a pivotal role in the meticulous planning and management of our financial affairs, encompassing everything from ledgers and forecasts to projections. He leads a dedicated team focused on the critical aspects of our financial operations. This includes ensuring timely payments from our customers, settling accounts with our suppliers punctually, and most importantly, guaranteeing that our workers receive accurate and timely compensation."
+            linkedin={"#"}
+            facebook={"#"}
           />
-          <CardWithLargerImageTop
-            title="Lee Inskip, Chief Operations Officer"
-            imgSrc={uglyMugImage}
-            imgAlt="Image 1 Description"
-            text="Lee trained as a butcher in the '80s and worked in the hospitality trade before moving into recruitment. He has managed sites with up to 1200 workers across multiple locations, specializing in sectors like Industrial, Grounds Maintenance, Engineering, and Construction. Boasting a wealth of sector experience even before the recruitment industry gained its prominence, is deeply involved in the day-to-day operations of the business. With a background in operational roles at top global recruitment agencies, Lee effortlessly liaises with clients. His expertise ensures that our consultants are always aligned with client needs, facilitating successful placements."
+          <ProfileCard
+            userImage={uglyMugImage}
+            userName="Lee Inskip"
+            userPosition="Chief Operations Officer"
+            userDescription="Lee trained as a butcher in the '80s and worked in the hospitality trade before moving into recruitment. He has managed sites with up to 1200 workers across multiple locations, specializing in sectors like Industrial, Grounds Maintenance, Engineering, and Construction. Boasting a wealth of sector experience even before the recruitment industry gained its prominence, is deeply involved in the day-to-day operations of the business. With a background in operational roles at top global recruitment agencies, Lee effortlessly liaises with clients. His expertise ensures that our consultants are always aligned with client needs, facilitating successful placements."
+            linkedin={"#"}
+            facebook={"#"}
           />
-          <CardWithLargerImageTop
-            title="Carl Underwood, Recruitment Consultant"
-            imgSrc={uglyMugImage}
-            imgAlt="Image 1 Description"
-            text="Carl worked in the Finance and Foreign Currency industry for 18 years before transitioning to recruitment. He has been specializing in industrial positions for the past 2 years, leveraging his extensive experience in the finance sector to provide top-notch recruitment services."
+          <ProfileCard
+            userImage={uglyMugImage}
+            userName="Carl Underwood"
+            userPosition="Recruitment Consultant"
+            userDescription="Carl worked in the Finance and Foreign Currency industry for 18 years before transitioning to recruitment. He has been specializing in industrial positions for the past 2 years, leveraging his extensive experience in the finance sector to provide top-notch recruitment services."
+            linkedin={"#"}
+            facebook={"#"}
           />
         </CardSection>
       </Section>
