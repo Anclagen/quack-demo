@@ -12,7 +12,7 @@ const Contact = () => {
       <Banner title="Contact Us" slogan="Employer Or Job Seeker Were Here To Help" imgSrc={bannerImage} imgAlt="Descriptive Image Alt Text" links={[]} />
       <Section bgColor="bg-zinc-950">
         <div className="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
-          <div className="p-6 rounded-lg text-white flex-none md:w-1/3">
+          <div className="px-6 rounded-lg text-white flex-none md:w-1/3">
             <h2 className="text-3xl font-semibold mb-6">Contact Details</h2>
             <div className="mb-4">
               <h3 className="text-2xl font-semibold">E-mail</h3>
@@ -45,7 +45,7 @@ const Contact = () => {
           </div>
 
           <div className="flex-1 md:w-2/3">
-            <h2 className="text-3xl text-white font-semibold mb-10 text-center">Our Locations</h2>
+            <h2 className="text-3xl text-white font-semibold mb-10 text-center">Serviced Locations & Offices</h2>
             <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1Jt4IhkKUr8cE6T5kf97Rs3f8TqFwoMA&ehbc=2E312F&noprof=1" className="w-full" height={"500px"}></iframe>
           </div>
         </div>

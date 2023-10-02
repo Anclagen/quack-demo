@@ -24,10 +24,10 @@ const Employers = () => {
             text="Regardless of where on the 'ladder' your role falls, trainee right though to Senior Management you can rest assured you are in the best possible hands when it comes to finding your next permanent role, you will get that real family feel whatever the stage, whether that be initial interview nerves or check ins once you've got your feet well and truly under the table."
           />
           <CardWithTitleTop
-            title="Contract"
+            title="Contract and SE"
             imgSrc={contractImage}
             imgAlt="Signing a contract."
-            text="Given the nature of Quack Specialists, we tend to find most of our custom comes from Contract work - we know where our strengths lie and its in making sure our long term contractors are still as enthusiastic on day 720 as they are on day 1, as without them we wouldn't have a job!"
+            text="Whilst QS can offer various options of employment PAYE- Contract – SE there are things we need to consider ensuring our workers are as enthusiastic on day 720 as they were on day 1"
           />
           <CardWithTitleTop
             title="Temporary"
