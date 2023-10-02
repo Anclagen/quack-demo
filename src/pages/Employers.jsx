@@ -27,7 +27,7 @@ const Employers = () => {
             title="Contract"
             imgSrc={contractImage}
             imgAlt="Signing a contract."
-            text="Given the nature of Quack Specialists, we tend to find most of our custom comes from Contract work - we know where our strengths lie and its in making sure our long term Contractors are still as enthusiastic on day as they are on day 720, as without them we wouldn't have a job!"
+            text="Given the nature of Quack Specialists, we tend to find most of our custom comes from Contract work - we know where our strengths lie and its in making sure our long term contractors are still as enthusiastic on day 720 as they are on day 1, as without them we wouldn't have a job!"
           />
           <CardWithTitleTop
             title="Temporary"
