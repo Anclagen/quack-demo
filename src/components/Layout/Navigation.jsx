@@ -34,11 +34,11 @@ const Navigation = () => {
         {/* Logo */}
         <div>
           <Link to="/">
-            <img src={logoImage} alt="Logo" className="h-12" />
+            <img src={logoImage} alt="Logo" className="h-16" />
           </Link>
         </div>
         {/* Logo and Desktop Links here */}
-        <ul className="hidden sm:flex space-x-5 pr-2">
+        <ul className="hidden md:flex space-x-5 pr-2">
           {[
             { path: "/", label: "Home" },
             { path: "/jobs", label: "Jobs" },
@@ -46,7 +46,7 @@ const Navigation = () => {
             { path: "/about", label: "About" },
             { path: "/contact", label: "Contact" },
           ].map((route) => (
-            <li key={route.path} className={`${location.pathname === route.path ? "active" : ""} nav-links inline-block`}>
+            <li key={route.path} className={`${location.pathname === route.path ? "active" : ""} nav-links inline-block  text-lg font-semibold`}>
               <Link to={route.path} className={`text-white`} onClick={handleMenuClose}>
                 {route.label}
               </Link>
@@ -54,18 +54,18 @@ const Navigation = () => {
           ))}
         </ul>
         {/* Mobile Menu Icon */}
-        <button ref={menuButtonRef} className="sm:hidden me-2" onClick={() => setMenuOpen(!isMenuOpen)}>
-          <i className="material-icons  pointer-events-none pt-1">menu</i>
+        <button ref={menuButtonRef} className="md:hidden me-2 p-2" onClick={() => setMenuOpen(!isMenuOpen)}>
+          <i className="material-icons pointer-events-none pt-1 text-3xl">menu</i>
           <span className="sr-only">Open menu</span>
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <div ref={menuRef} className={`fixed top-0 right-0 h-full bg-black bg-opacity-90 w-64 transform transition-transform ${isMenuOpen ? "translate-x-0" : "translate-x-full"} sm:hidden`}>
+      <div ref={menuRef} className={`fixed top-0 right-0 h-full bg-black bg-opacity-90 w-64 transform transition-transform ${isMenuOpen ? "translate-x-0" : "translate-x-full"} md:hidden`}>
         {/* Close button */}
         <div className="flex justify-end p-2">
-          <button onClick={handleMenuClose} className=" me-2">
-            <span className="material-icons  pointer-events-none">close</span>
+          <button onClick={handleMenuClose} className="me-2">
+            <span className="material-icons  pointer-events-none text-3xl">close</span>
             <span className="sr-only">Close menu</span>
           </button>
         </div>
@@ -78,7 +78,7 @@ const Navigation = () => {
             { path: "/about", label: "About" },
             { path: "/contact", label: "Contact" },
           ].map((route) => (
-            <li key={route.path} className={`${location.pathname === route.path ? "active" : ""} nav-links`}>
+            <li key={route.path} className={`${location.pathname === route.path ? "active" : ""} nav-links w-fit text-lg font-semibold`}>
               <Link to={route.path} className={`text-white`} onClick={handleMenuClose}>
                 {route.label}
               </Link>
