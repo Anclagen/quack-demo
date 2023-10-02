@@ -10,7 +10,7 @@ import ContactImageOne from "../../../assets/forms/undraw_Opened_re_i38e.png";
 import ContactImageTwo from "../../../assets/forms/undraw_My_location_re_r52x.png";
 import ContactImageThree from "../../../assets/forms/undraw_Hiring_re_yk5n.png";
 import ContactImageFour from "../../../assets/forms/undraw_Add_files_re_v09g.png";
-import ErrorBoundary from "./ErrorBoundary";
+import ErrorBoundary from "../ErrorBoundary";
 
 const RecruitmentForm = () => {
   const [activeSection, setActiveSection] = useState(0);

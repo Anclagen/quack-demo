@@ -1,0 +1,17 @@
+export const initialValues = {
+  "first-name": "",
+  surname: "",
+  email: "",
+  telephone: "",
+  "address-1": "",
+  "address-2": "",
+  "address-3": "",
+  city: "",
+  "post-code": "",
+  "company-name": "",
+  "company-reg-no": "",
+  "work-location": "",
+  sector: "",
+  skills: "",
+  qualifications: "",
+};
