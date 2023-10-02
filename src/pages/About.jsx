@@ -42,7 +42,7 @@ const About = () => {
           ]}
           reverse={true}
         />
-        <h3 className="text-2xl font-semibold text-center">Our Senior Team</h3>
+        <h3 className="text-2xl font-semibold text-center">Leadership Team</h3>
         <CardSection>
           <CardWithLargerImageTop
             title="Jamie Croall, Chief Financial Officer"
@@ -54,13 +54,13 @@ const About = () => {
             title="Lee Inskip, Chief Operations Officer"
             imgSrc={uglyMugImage}
             imgAlt="Image 1 Description"
-            text="Lee, boasting a wealth of sector experience even before the recruitment industry gained its prominence, is deeply involved in the day-to-day operations of the business. With a background in operational roles at top global recruitment agencies, Lee effortlessly liaises with clients. His expertise ensures that our consultants are always aligned with client needs, facilitating successful placements."
+            text="Lee trained as a butcher in the '80s and worked in the hospitality trade before moving into recruitment. He has managed sites with up to 1200 workers across multiple locations, specializing in sectors like Industrial, Grounds Maintenance, Engineering, and Construction. Boasting a wealth of sector experience even before the recruitment industry gained its prominence, is deeply involved in the day-to-day operations of the business. With a background in operational roles at top global recruitment agencies, Lee effortlessly liaises with clients. His expertise ensures that our consultants are always aligned with client needs, facilitating successful placements."
           />
           <CardWithLargerImageTop
-            title="Dion Bishop, Chief Information Officer"
+            title="Carl Underwood, Recruitment Consultant"
             imgSrc={uglyMugImage}
             imgAlt="Image 1 Description"
-            text="Dion ensures the seamless operation of our internal systems, providing the backbone that our Consultants, Account Managers, Support Staff, and Finance Team rely on. With an array of different software solutions at his fingertips, Dion's expertise guarantees each team member can execute their roles with maximum efficiency."
+            text="Carl worked in the Finance and Foreign Currency industry for 18 years before transitioning to recruitment. He has been specializing in industrial positions for the past 2 years, leveraging his extensive experience in the finance sector to provide top-notch recruitment services."
           />
         </CardSection>
       </Section>
