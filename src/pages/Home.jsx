@@ -47,7 +47,7 @@ const Home = () => {
           />
         </Section>
         <Section bgColor="bg-zinc-950 text-white">
-          <h2 className="text-3xl text-center mb-10 font-semibold">Why Choose Us?</h2>
+          <h2 className="text-3xl text-center mb-10 font-semibold">Why Choose QS Recruitment?</h2>
           <CardSection>
             <CardMinimalIconTop title={whyChooseUs[0].title} icon={whyChooseUs[0].icon.name} color={`text-${whyChooseUs[0].icon.color} text-8xl`} textColor="text-white" text={whyChooseUs[0].text} />
             <CardMinimalIconTop title={whyChooseUs[1].title} icon={whyChooseUs[1].icon.name} color={`text-${whyChooseUs[1].icon.color} text-8xl`} textColor="text-white" text={whyChooseUs[1].text} />
