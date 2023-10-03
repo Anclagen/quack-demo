@@ -2,24 +2,25 @@ import { Link } from "react-router-dom";
 import facebookIcon from "../../assets/interface/Facebook_Logo_Primary.png";
 import linkedinIcon from "../../assets/interface/LI-In-Bug.png";
 import logoImage from "../../assets/interface/qs-logo-transparent.png";
-import fakeLogoOne from "../../assets/interface/fake-logo-1.jpg";
-import fakeLogoTwo from "../../assets/interface/fake-logo-2.jpg";
-import fakeLogoThree from "../../assets/interface/fake-logo-3.jpg";
+import icoLogo from "../../assets/footer/ICO_Logo_WhiteOnBlue.jpg";
+import diabilityCommittedLogo from "../../assets/footer/disability-confident-committed.jpg";
+import ALPLogo from "../../assets/footer/ALP.jpg";
+import SedexLogo from "../../assets/footer/Sedex-Logo.png";
+import FSBLogo from "../../assets/footer/fsb-member-logo.jpg";
 
 const Footer = () => {
   return (
     <footer className="bg-black text-white p-10 mt-auto">
       <div className="container mx-auto max-w-screen-2xl">
         <div>
-          <div className="flex flex-wrap justify-center gap-6 mb-5">
-            <img src={fakeLogoOne} alt="fake logo 1" className="w-20" />
-            <img src={fakeLogoTwo} alt="fake logo 2" className="w-20" />
-            <img src={fakeLogoThree} alt="fake logo 3" className="w-20" />
-            <img src={fakeLogoOne} alt="fake logo 1" className="w-20" />
-            <img src={fakeLogoTwo} alt="fake logo 2" className="w-20" />
-            <img src={fakeLogoThree} alt="fake logo 3" className="w-20" />
+          <div className="flex flex-wrap justify-center gap-10 mb-5">
+            <img src={icoLogo} alt="Information Commissioner's Office || https://ico.org.uk/" className="h-24" />
+            <img src={diabilityCommittedLogo} alt="Disability Committed Logo" className="h-24" />
+            <img src={ALPLogo} alt="ALP member logo || https://www.labourproviders.org.uk/" className="h-24" />
+            <img src={SedexLogo} alt="Sedex logo || https://www.sedex.com/" className="h-24" />
+            <img src={FSBLogo} alt="FSB member logo || https://www.fsb.org.uk/" className="h-24" />
           </div>
-          <p className="text-center mb-6">(Logos: ICO / Disability Confident Committed / Stronger Together / GLAA / ALP / Sedex / FSB / Crown Commercial Supplier)</p>
+          {/* <p className="text-center mb-6">(Logos: Stronger Together / Crown Commercial Supplier)</p> */}
         </div>
         {/* Top Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10 border-t border-violet-300 pt-6">

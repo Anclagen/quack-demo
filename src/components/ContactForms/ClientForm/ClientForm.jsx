@@ -16,7 +16,7 @@ const ClientForm = () => {
         formData.append(key, values[key]);
       }
 
-      const response = await fetch("https://quack-hosting.ajbarrett.tech/wp-json/contact-form-7/v1/contact-forms/14/feedback", {
+      const response = await fetch("https://content.quackspecialists.co.uk/wp-json/contact-form-7/v1/contact-forms/7/feedback", {
         method: "POST",
         body: formData,
       });
