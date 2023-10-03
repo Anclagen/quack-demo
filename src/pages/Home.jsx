@@ -6,15 +6,15 @@ import CardSection from "../components/Sections/CardSection/CardSection";
 import { Link } from "react-router-dom";
 import bannerImage from "../assets/pexels-olga-lioncat-7245326.jpg";
 import fadeinImage from "../assets/pexels-yan-krukau-8867482.jpg";
-import avatarImage from "../assets/pexels-andrea-piacquadio-3778603.jpg";
 import hardHatImage from "../assets/hardhat.png";
-import toolsImage from "../assets/tools.png";
 import Head from "../components/Head";
 import { keywords } from "../components/data/keywords";
 import { whyChooseUs } from "../components/data/home-data";
 import { sectors } from "../components/data/sectors";
 import FourImageFeature from "../components/Sections/FourImageFeature/FourImageFeature";
 import CTASection from "../components/Sections/CTASection/CTASection";
+import avatarImage from "../assets/pexels-andrea-piacquadio-3778603.jpg";
+import toolsImage from "../assets/tools.png";
 
 const Home = () => {
   return (

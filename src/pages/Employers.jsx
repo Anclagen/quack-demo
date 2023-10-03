@@ -1,4 +1,4 @@
-import Banner from "../components/Banner/Banner";
+import BannerHome from "../components/Banner/BannerHome";
 import Section from "../components/Sections/Section";
 import bannerImage from "../assets/pexels-andrea-piacquadio-840996.jpg";
 import { CardWithTitleTop } from "../components/Card/Card";
@@ -14,7 +14,7 @@ const Employers = () => {
   return (
     <>
       <Head title="Employers" description="Partnering Success, Attracting the Right Talent for Your Business" />
-      <Banner title="Employers" slogan="Partnering Success, Attracting the Right Talent for Your Business" imgSrc={bannerImage} imgAlt="Descriptive Image Alt Text" />
+      <BannerHome title="Employers" slogan="Partnering Success, Attracting the Right Talent for Your Business" imgSrc={bannerImage} imgAlt="Descriptive Image Alt Text" />
       <Section bgColor="bg-zinc-950">
         <h2 className="text-3xl text-center mb-10 text-white font-semibold">Our Services</h2>
         <CardSection>

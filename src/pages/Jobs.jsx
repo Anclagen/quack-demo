@@ -1,4 +1,4 @@
-import Banner from "../components/Banner/Banner";
+import BannerHome from "../components/Banner/BannerHome";
 import Section from "../components/Sections/Section";
 import bannerImage from "../assets/pexels-edmond-dantès-4344878.jpg";
 import Head from "../components/Head";
@@ -7,7 +7,7 @@ const Jobs = () => {
   return (
     <>
       <Head title="Jobs" description="Discover Your Next Opportunity, Let's Shape Your Career Path" />
-      <Banner title="Jobs" slogan="Discover Your Next Opportunity, Let's Shape Your Career Path" imgSrc={bannerImage} imgAlt="Descriptive Image Alt Text" />
+      <BannerHome title="Jobs" slogan="Discover Your Next Opportunity, Let's Shape Your Career Path" imgSrc={bannerImage} imgAlt="Image of woman at job interview." links={[]} />
       <Section bgColor="bg-zinc-200">
         <h2 className="text-3xl text-center mb-10 font-semibold">Our Listings</h2>
 

@@ -1,4 +1,4 @@
-import Banner from "../components/Banner/Banner";
+import BannerHome from "../components/Banner/BannerHome";
 import Section from "../components/Sections/Section";
 import bannerImage from "../assets/pexels-olga-lioncat-7245326.jpg";
 import TwoColSection from "../components/Sections/StandardSection/twoColSection";
@@ -13,7 +13,7 @@ const About = () => {
   return (
     <>
       <Head title="About" description="A Dedicated & Experienced Team Of Experts" />
-      <Banner title="About" slogan="A Dedicated & Experienced Team Of Experts" imgSrc={bannerImage} imgAlt="Descriptive Image Alt Text" />
+      <BannerHome title="About" slogan="A Dedicated & Experienced Team Of Experts" imgSrc={bannerImage} imgAlt="Descriptive Image Alt Text" />
       <Section bgColor="bg-zinc-950 text-white">
         <FadeInSection
           title="Who We Are"

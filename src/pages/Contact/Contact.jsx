@@ -1,5 +1,5 @@
 import Head from "../../components/Head";
-import Banner from "../../components/Banner/Banner";
+import BannerHome from "../../components/Banner/BannerHome";
 import Section from "../../components/Sections/Section";
 import bannerImage from "../../assets/pexels-yan-krukau-8867434.jpg";
 import constructionImage from "../../assets/undraw_under_construction_46pa.png";
@@ -9,7 +9,7 @@ const Contact = () => {
   return (
     <main>
       <Head title="Contact" description="Contact Quack Specialists" />
-      <Banner title="Contact Us" slogan="Employer Or Job Seeker Were Here To Help" imgSrc={bannerImage} imgAlt="Descriptive Image Alt Text" links={[]} />
+      <BannerHome title="Contact Us" slogan="Employer Or Job Seeker Were Here To Help" imgSrc={bannerImage} imgAlt="Descriptive Image Alt Text" links={[]} />
       <Section bgColor="bg-zinc-950">
         <div className="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
           <div className="px-6 rounded-lg text-white flex-none md:w-1/3">
