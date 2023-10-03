@@ -11,11 +11,13 @@ import meatImage from "../assets/pexels-mark-stebnicki-7163991.jpg";
 import engineeringImage from "../assets/pexels-pixabay-159358.jpg";
 import warehouseImage from "../assets/pexels-tiger-lily-4487365.jpg";
 import avatarImage from "../assets/pexels-andrea-piacquadio-3778603.jpg";
+import hardHatImage from "../assets/hardhat.png";
 import Head from "../components/Head";
 import { keywords } from "../components/data/keywords";
 import { ourSectors, whyChooseUs } from "../components/data/home-data";
 import { sectors } from "../components/data/sectors";
 import FourImageFeature from "../components/Sections/FourImageFeature/FourImageFeature";
+import CTASection from "../components/Sections/CTASection/CTASection";
 
 const HomeAlt = () => {
   return (
@@ -36,20 +38,6 @@ const HomeAlt = () => {
             { label: "Overseas Sponsorships", path: "/sector/overseas-sponsorships", color: "sky" },
           ]}
         />
-        {/* <Banner
-          title="Quack Specialists Ltd"
-          slogan="Your Local Recruitment Specialists"
-          imgSrc={bannerImage}
-          imgAlt="Descriptive Image Alt Text"
-          links={[
-            { label: "Jobs", path: "/jobs" },
-            { label: "Employers", path: "/employers" },
-          ]}
-        >
-          <Link to="/" className="draw-outline draw-outline--tandem text-white font-semibold p-2 bg-violet-300/70 rounded-xl">
-            Meat & Food Processing
-          </Link>
-        </Banner> */}{" "}
         <Section bgColor="bg-zinc-200 text-black">
           <FadeInSection
             title="Who We Are"
@@ -61,6 +49,16 @@ const HomeAlt = () => {
             ]}
             linkText="Learn More"
             linkHref="/about"
+          />
+        </Section>
+        <Section bgColor="bg-zinc-200">
+          <CTASection
+            titleBlack="Got a position to fill ?"
+            titlePurple="Get the skilled staff you need."
+            text="QS Recruitment ensures you get the talent you require. We manage all aspects, granting you peace of mind that your roles are expertly filled."
+            linkText="Enquire Today"
+            linkHref="/register-employer"
+            image={hardHatImage}
           />
         </Section>
         <Section bgColor="bg-zinc-950 text-white">
