@@ -17,7 +17,7 @@ const Sector = () => {
   return (
     <>
       <BannerHalf title={sector.name} slogan="" imgSrc={sector.imageSrc} imgAlt="Descriptive Image Alt Text" links={[]} />
-      <div className="max-w-screen-md mx-auto">
+      <div className="max-w-screen-md mx-auto my-20">
         {sector.paragraphs &&
           sector.paragraphs.map((paragraph, index) => (
             <p key={index} className="my-5">
