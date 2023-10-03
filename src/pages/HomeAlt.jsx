@@ -12,6 +12,7 @@ import engineeringImage from "../assets/pexels-pixabay-159358.jpg";
 import warehouseImage from "../assets/pexels-tiger-lily-4487365.jpg";
 import avatarImage from "../assets/pexels-andrea-piacquadio-3778603.jpg";
 import hardHatImage from "../assets/hardhat.png";
+import toolsImage from "../assets/tools.png";
 import Head from "../components/Head";
 import { keywords } from "../components/data/keywords";
 import { ourSectors, whyChooseUs } from "../components/data/home-data";
@@ -38,6 +39,28 @@ const HomeAlt = () => {
             { label: "Overseas Sponsorships", path: "/sector/overseas-sponsorships", color: "sky" },
           ]}
         />
+
+        <Section bgColor="bg-zinc-200">
+          <CTASection
+            titleBlack="Got a position to fill ?"
+            titlePurple="Get the skilled staff you need."
+            text="QS Recruitment ensures you get the talent you require. We manage all aspects, granting you peace of mind that your roles are expertly filled."
+            linkText="Enquire Today"
+            linkHref="/register-employer"
+            image={hardHatImage}
+          />
+        </Section>
+        <Section bgColor="bg-zinc-200">
+          <CTASection
+            titleBlack="Searching for the perfect job?"
+            titlePurple="Discover roles that resonate with your expertise."
+            text="Let us guide you towards a career that aligns with your skills and passions."
+            linkText="Register Today"
+            linkHref="/register-candidate"
+            image={toolsImage}
+            reverse={true}
+          />
+        </Section>
         <Section bgColor="bg-zinc-200 text-black">
           <FadeInSection
             title="Who We Are"
@@ -49,16 +72,6 @@ const HomeAlt = () => {
             ]}
             linkText="Learn More"
             linkHref="/about"
-          />
-        </Section>
-        <Section bgColor="bg-zinc-200">
-          <CTASection
-            titleBlack="Got a position to fill ?"
-            titlePurple="Get the skilled staff you need."
-            text="QS Recruitment ensures you get the talent you require. We manage all aspects, granting you peace of mind that your roles are expertly filled."
-            linkText="Enquire Today"
-            linkHref="/register-employer"
-            image={hardHatImage}
           />
         </Section>
         <Section bgColor="bg-zinc-950 text-white">
