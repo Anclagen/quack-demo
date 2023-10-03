@@ -1,12 +1,35 @@
 import { useState, useEffect } from "react";
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import ErrorBoundary from "../ErrorBoundary";
-import { validationSchema } from "./schema";
+import { validationSchema, validationSection1, validationSection2 } from "./schema";
 import { initialValues } from "./initialValues";
+import ContactDetails from "./sections/ContactDetails";
+import CompanyDetails from "./sections/CompanyDetails";
+import JobDetails from "./sections/JobDetails";
+import ContactImageOne from "../../../assets/forms/undraw_Opened_re_i38e.png";
+import ContactImageTwo from "../../../assets/forms/undraw_My_location_re_r52x.png";
+import ContactImageThree from "../../../assets/forms/undraw_Hiring_re_yk5n.png";
+import ContactImageFour from "../../../assets/forms/undraw_Add_files_re_v09g.png";
 
 const ClientForm = () => {
   const [formSubmittedSuccessfully, setFormSubmittedSuccessfully] = useState(false);
   const [formErrors, setFormErrors] = useState(null);
+  const [activeSection, setActiveSection] = useState(0);
+  const validationSchemas = [validationSection1, validationSection2, validationSchema];
+  const sectionFields = {
+    0: ["first-name", "surname", "email", "telephone"],
+    1: ["company-name", "company-reg-no", "address_1", "address_2", "address_3", "city", "post-code"],
+    2: ["sector", "work-location", "skills", "qualifications"],
+  };
+
+  useEffect(() => {
+    const section = document.querySelector(`.section-${activeSection}`);
+    const input = section.querySelector("input");
+    if (input) {
+      input.focus();
+    }
+    console.log(activeSection);
+  }, [activeSection]);
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
@@ -38,183 +61,72 @@ const ClientForm = () => {
 
   return (
     <ErrorBoundary>
-      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+      <Formik initialValues={initialValues} validationSchema={validationSchemas[activeSection]} onSubmit={handleSubmit}>
         {({ isValid, validateForm, setTouched, values }) => (
-          <Form className="p-5 bg-zinc-300 text-black w-full max-w-lg rounded-xl shadow-xl transition-all duration-300 shadow-violet-300 mx-auto transition-all duration-1000 transform">
-            <div>
-              <div className="">
-                <div className="">
-                  <div className="section-0">
-                    <h3 className="text-xl text-center mb-8">Contact Details</h3>
-                    <div className="flex flex-col text-start">
-                      <div className="md:flex md:flex-row gap-6 w-full">
-                        <div className="h-20 md:w-1/2">
-                          <div className="w-full justify-start">
-                            <label htmlFor="first-name" className=" block py-1">
-                              First Name*
-                            </label>
-                            <Field type="text" id="first-name" name="first-name" className="w-full p-1 rounded bg-white text-black" />
-                          </div>
-                          <ErrorMessage name="first-name" component="span" className="error-message w-full text-center text-sm" />
-                        </div>
-                        <div className="h-20 md:w-1/2">
-                          <div className="w-full justify-start">
-                            <label htmlFor="surname" className=" block py-1">
-                              Surname*
-                            </label>
-                            <Field type="text" id="surname" name="surname" className="w-full p-1 rounded bg-white text-black" />
-                          </div>
-                          <ErrorMessage name="surname" component="span" className="error-message w-full text-center text-sm" />
-                        </div>
-                      </div>
-                      <div className="h-20">
-                        <div className="w-full">
-                          <label htmlFor="email" className=" block py-1">
-                            Email*
-                          </label>
-                          <Field type="text" id="email" name="email" className="w-full p-1 rounded bg-white text-black" />
-                        </div>
-                        <ErrorMessage name="email" component="span" className="error-message w-full text-center text-sm" />
-                      </div>
-                      <div className="h-20">
-                        <div className="w-full justify-start">
-                          <label htmlFor="telephone" className=" block py-1">
-                            Telephone*
-                          </label>
-                          <Field type="tel" id="telephone" name="telephone" className="w-full p-1 rounded bg-white text-black" />
-                        </div>
-                        <ErrorMessage name="telephone" component="span" className="error-message w-full text-center text-sm" />
-                      </div>
-                      <div className="h-20">
-                        <div className="w-full justify-start">
-                          <label htmlFor="company-name" className="block py-1">
-                            Company Name*
-                          </label>
-                          <Field type="text" id="company-name" name="company-name" className="w-full p-1 rounded bg-white text-black" />
-                        </div>
-                        <ErrorMessage name="company-name" component="span" className="error-message w-full text-center text-sm" />
-                      </div>
+          <div className="p-5 bg-zinc-300 text-black w-full max-w-lg rounded-xl shadow-xl transition-all duration-300 shadow-violet-300 mx-auto transition-all duration-1000 transform">
+            {formSubmittedSuccessfully ? (
+              <div className="flex flex-col items-center justify-center h-full">
+                <span className="material-icons text-green-500 text-6xl mb-4">check_circle</span>
+                <h4 className="text-xl">Successfully Submitted!</h4>
+                <p className="text-center my-3">Thank you for reaching out. Our team will review your enquiry and get back to you promptly.</p>
+              </div>
+            ) : (
+              <Form>
+                <div>
+                  <div className="section-0" style={{ display: activeSection === 0 ? "block" : "none" }}>
+                    <ContactDetails />
+                  </div>
+                  <div className="section-1" style={{ display: activeSection === 1 ? "block" : "none" }}>
+                    <CompanyDetails />
+                  </div>
+                  <div className="section-2" style={{ display: activeSection === 2 ? "block" : "none" }}>
+                    <JobDetails />
+                  </div>
+                  <div className="flex flex-row my-4 h-12">
+                    <img src={ContactImageOne} alt="Contact Image One" className="w-9 md:w-12" />
+                    <div className={`${activeSection > 0 ? "bg-violet-900" : "bg-white"} grow h-1 my-auto`}></div>
+                    <img src={ContactImageTwo} alt="Contact Image One" className={`${activeSection > 0 ? "" : "opacity-50"} w-9 md:w-12`} />
+                    <div className={`${activeSection > 1 ? "bg-violet-900" : "bg-white"} grow h-1 my-auto`}></div>
+                    <img src={ContactImageThree} alt="Contact Image One" className={`${activeSection > 1 ? "" : "opacity-50"} w-9 md:w-12`} />
+                  </div>
+                  <div className="flex mt-8">
+                    <button
+                      type="button"
+                      onClick={() => setActiveSection((prev) => Math.max(0, prev - 1))}
+                      className={`${(activeSection === 0 && "hidden") || ""} bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded`}
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        const currentSectionFields = sectionFields[activeSection];
+                        const touchedFields = {};
+                        currentSectionFields.forEach((key) => {
+                          touchedFields[key] = true;
+                        });
+                        setTouched(touchedFields);
 
-                      <div className="h-20">
-                        <div className="w-full justify-start">
-                          <label htmlFor="address-1" className=" block py-1">
-                            Address 1*
-                          </label>
-                          <Field type="text" id="address-1" name="address-1" className="w-full p-1 rounded bg-white text-black" />
-                        </div>
-                        <ErrorMessage name="address-1" component="span" className="error-message w-full text-center text-sm" />
-                      </div>
-
-                      <div className="h-20">
-                        <div className="w-full justify-start">
-                          <label htmlFor="address-2" className=" block py-1">
-                            Address 2
-                          </label>
-                          <Field type="text" id="address-2" name="address-2" className="w-full p-1 rounded bg-white text-black" />
-                        </div>
-                        <ErrorMessage name="address-2" component="span" className="error-message w-full text-center text-sm" />
-                      </div>
-
-                      <div className="h-20">
-                        <div className="w-full justify-start">
-                          <label htmlFor="address-3" className=" block py-1">
-                            Address 3
-                          </label>
-                          <Field type="text" id="address-3" name="address-3" className="w-full p-1 rounded bg-white text-black" />
-                        </div>
-                        <ErrorMessage name="address-3" component="span" className="error-message w-full text-center text-sm" />
-                      </div>
-
-                      <div className="md:flex md:flex-row gap-6 w-full">
-                        <div className="h-20 md:w-1/2">
-                          <div className="w-full justify-start">
-                            <label htmlFor="city" className=" block py-1">
-                              City*
-                            </label>
-                            <Field type="tel" id="city" name="city" className="w-full p-1 rounded bg-white text-black" />
-                          </div>
-                          <ErrorMessage name="city" component="span" className="error-message w-full text-center text-sm" />
-                        </div>
-
-                        <div className="h-20 md:w-1/2">
-                          <div className="w-full justify-start">
-                            <label htmlFor="post-code" className=" block py-1">
-                              Postcode*
-                            </label>
-                            <Field type="text" id="post-code" name="post-code" className="w-full p-1 rounded bg-white text-black" />
-                          </div>
-                          <ErrorMessage name="post-code" component="span" className="error-message w-full text-center text-sm" />
-                        </div>
-                      </div>
-                      <div className="md:flex md:flex-row gap-6 w-full">
-                        <div className="h-20 md:w-1/2">
-                          <div className="w-full justify-start">
-                            <label htmlFor="company-reg-no" className=" block py-1">
-                              Company Registration Number
-                            </label>
-                            <Field type="text" id="company-reg-no" name="company-reg-no" className="w-full p-1 rounded bg-white text-black" />
-                          </div>
-                          <ErrorMessage name="company-reg-no" component="span" className="error-message w-full text-center text-sm" />
-                        </div>
-
-                        <div className="h-20 md:w-1/2">
-                          <div className="w-full justify-start">
-                            <label htmlFor="sector" className="block py-1">
-                              Sector*
-                            </label>
-                            <Field as="select" id="sector" name="sector" className="w-full p-1 rounded bg-white text-black">
-                              <option value="" label="Select Sector" />
-                              <option value="Engineering" label="Engineering" />
-                              <option value="Construction" label="Construction" />
-                              <option value="Meat" label="Meat" />
-                              <option value="Industrial" label="Industrial" />
-                              <option value="Other" label="Other" />
-                            </Field>
-                          </div>
-                          <ErrorMessage name="sector" component="span" className="error-message w-full text-center text-sm" />
-                        </div>
-                      </div>
-                      <div className="h-20">
-                        <div className="w-full justify-start">
-                          <label htmlFor="work-location" className=" block py-1">
-                            Locations Of Work
-                          </label>
-                          <Field type="textarea" id="work-location" name="work-location" className="w-full p-1 rounded bg-white text-black" />
-                        </div>
-                        <ErrorMessage name="work-location" component="span" className="error-message w-full text-center text-sm" />
-                      </div>
-
-                      <div className="h-20">
-                        <div className="w-full justify-start">
-                          <label htmlFor="skills" className=" block py-1">
-                            Skills
-                          </label>
-                          <Field type="textarea" id="skills" name="skills" className="w-full p-1 rounded bg-white text-black" />
-                        </div>
-                        <ErrorMessage name="skills" component="span" className="error-message w-full text-center text-sm" />
-                      </div>
-
-                      <div className="h-20">
-                        <div className="w-full justify-start">
-                          <label htmlFor="qualifications" className=" block py-1">
-                            Qualifications
-                          </label>
-                          <Field type="textarea" id="qualifications" name="qualifications" className="w-full p-1 rounded bg-white text-black" />
-                        </div>
-                        <ErrorMessage name="qualifications" component="span" className="error-message w-full text-center text-sm" />
-                      </div>
-                    </div>
-                    <div className="text-center mt-5">
-                      {formErrors && <div className="error error-message">{formErrors}</div>}
-                      <button className={`bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded`} type="submit">
-                        Submit
-                      </button>
-                    </div>
+                        await validateForm();
+                        if (isValid || activeSection === 2) {
+                          setActiveSection((prev) => Math.min(2, prev + 1));
+                        }
+                      }}
+                      className={`${(activeSection === 2 && "hidden") || ""} ms-auto bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded `}
+                    >
+                      Next
+                    </button>
+                  </div>
+                  <div className="text-center mt-5" style={{ display: activeSection === 2 ? "block" : "none" }}>
+                    {formErrors && <div className="error error-message">{formErrors}</div>}
+                    <button className={`bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded`} type="submit">
+                      Submit
+                    </button>
                   </div>
                 </div>
-              </div>
-            </div>
-          </Form>
+              </Form>
+            )}
+          </div>
         )}
       </Formik>
     </ErrorBoundary>
