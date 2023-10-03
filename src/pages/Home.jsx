@@ -7,11 +7,14 @@ import { Link } from "react-router-dom";
 import bannerImage from "../assets/pexels-olga-lioncat-7245326.jpg";
 import fadeinImage from "../assets/pexels-yan-krukau-8867482.jpg";
 import avatarImage from "../assets/pexels-andrea-piacquadio-3778603.jpg";
+import hardHatImage from "../assets/hardhat.png";
+import toolsImage from "../assets/tools.png";
 import Head from "../components/Head";
 import { keywords } from "../components/data/keywords";
 import { whyChooseUs } from "../components/data/home-data";
 import { sectors } from "../components/data/sectors";
 import FourImageFeature from "../components/Sections/FourImageFeature/FourImageFeature";
+import CTASection from "../components/Sections/CTASection/CTASection";
 
 const Home = () => {
   return (
@@ -61,7 +64,17 @@ const Home = () => {
             </Link>
           </div>
         </Section>
-        <Section bgColor="bg-zinc-200 text-black">
+        <Section bgColor="bg-zinc-200">
+          <CTASection
+            titleBlack="Got a position to fill ?"
+            titlePurple="Get the skilled staff you need."
+            text="QS Recruitment ensures you get the talent you require. We manage all aspects, granting you peace of mind that your roles are expertly filled."
+            linkText="Enquire Today"
+            linkHref="/register-employer"
+            image={hardHatImage}
+          />
+        </Section>
+        <Section bgColor="bg-zinc-950 text-white">
           <FadeInSection
             title="Who We Are"
             imageSrc={fadeinImage}
@@ -70,8 +83,20 @@ const Home = () => {
               "Quack Specialists are a dedicated team of expert consultants with specialisms in your sector, as opposed to a typical generic high street generalist recruiter, jack of all trades (master of none!)",
               "We focus on three very specific industries as this has become our niche, these industries are; Meat, Engineering & Construction and Warehouse & Logistics. Our team work collectively in making sure that every step of the process is seamless from on boarding to candidate attrition management.",
             ]}
-            linkText="Learn About Us"
+            linkText="Learn More"
             linkHref="/about"
+            dark={true}
+          />
+        </Section>
+        <Section bgColor="bg-zinc-200">
+          <CTASection
+            titleBlack="Searching for the perfect job?"
+            titlePurple="Discover roles that resonate with your expertise."
+            text="Let us guide you towards a career that aligns with your skills and passions."
+            linkText="Register Today"
+            linkHref="/register-candidate"
+            image={toolsImage}
+            reverse={true}
           />
         </Section>
         <Section bgColor="bg-zinc-950 text-white">
