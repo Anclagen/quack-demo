@@ -19,7 +19,7 @@ const ClientForm = () => {
   const sectionFields = {
     0: ["first-name", "surname", "email", "telephone"],
     1: ["company-name", "company-reg-no", "address_1", "address_2", "address_3", "city", "post-code"],
-    2: ["sector", "work-location", "skills", "qualifications"],
+    2: ["sector", "work-location", "skills", "qualifications", "additional-info"],
   };
 
   useEffect(() => {

@@ -51,6 +51,21 @@ const JobDetails = () => {
         </div>
         <ErrorMessage name="qualifications" component="span" className="error-message w-full text-center text-sm" />
       </div>
+
+      <div className="h-40">
+        <div className="w-full justify-start">
+          <label htmlFor="additional-info" className=" block py-1">
+            Additional Information
+          </label>
+          <Field as="textarea" id="additional-info" name="additional-info" className="w-full p-1 rounded bg-white text-black h-28 resize-none" />
+        </div>
+        <ErrorMessage name="additional-info" component="span" className="error-message w-full text-center text-sm" />
+      </div>
+
+      <p className="text-sm">
+        By submitting this form, you agree that the information provided will be used for the purpose of sourcing candidates and making further enquiries for information. You understand that you have
+        the right to request the withdrawal of this information at any time.
+      </p>
     </>
   );
 };

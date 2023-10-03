@@ -85,9 +85,7 @@ export const ProfileCard = ({ userImage, userName, userPosition, userDescription
     <div className={`flex flex-col items-center mb-20 md:space-y-0 md:flex-row justify evenly transition-all duration-2000 transform ${inView ? "" : "opacity-0 mt-20"}`} ref={ref}>
       <div className="relative w-full">
         <div className="absolute mb-4 text-center transform translate-x-1/2 -top-20 right-1/2">
-          <a href="#" className="relative block">
-            <img alt="profile" src={userImage} className="mx-auto object-cover rounded-lg h-40 w-40 border-2 border-white shadow-xl" />
-          </a>
+          <img alt="profile" src={userImage} className="mx-auto object-cover rounded-lg h-40 w-40 border-2 border-white shadow-xl" />
         </div>
         <div className="px-8 py-4 pt-24 bg-white rounded-lg shadow">
           <div className="text-center">

@@ -8,6 +8,8 @@ import uglyMugImage from "../assets/pexels-andrea-piacquadio-3778603.jpg";
 import CardSection from "../components/Sections/CardSection/CardSection";
 import { CardWithLargerImageTop, ProfileCard } from "../components/Card/Card";
 import Head from "../components/Head";
+import JamieImage from "../assets/jamie-croall.jpg";
+import LeeImage from "../assets/lee-inskip.jpg";
 
 const About = () => {
   return (
@@ -20,8 +22,11 @@ const About = () => {
           imageSrc={fadeinImage}
           imageAlt="Description"
           text={[
-            "Quack Specialists are a dedicated team of expert consultants with specialisms in your sector, as opposed to a typical generic high street generalist recruiter, jack of all trades (master of none!)",
-            "We focus on three very specific industries as this has become our niche, these industries are; Meat, Engineering & Construction and Warehouse & Logistics. Our team work collectively in making sure that every step of the process is seamless from on boarding to candidate attrition management.",
+            "Quack Specialists Recruitment are an independently owned niche agency, operating throughout the Midlands, Home Counties, the North, Scotland, Wales, and the South West.",
+            "We focus on five industries that meet the skillset of our team. These industries are: Engineering, Construction & Trade, Warehousing and Logistics, Meat & Food Processing, Overseas Sponsorships.",
+            "All of the candidates who register with us are treated as individuals, each with their own unique requirements and goals that we help them to fulfill.We provide comprehensive feedback to each candidate for any applications they make, so you are never left in the lurch.",
+            "For our clients our team work collectively to ensure that every step of the process is seamless from on boarding to candidate attrition management.",
+            "Each client has a dedicated Account Manager who looks after the field their clients operate within, and allows a rapport to be developed, as well as a consistent experience!",
             "We are a GLAA License holder and our insurance levels are setup to support our clients needs as follows:",
             "Public Liability - £10m",
             "Employers' Liability - £10m",
@@ -51,29 +56,27 @@ const About = () => {
         </p>
         <CardSection>
           <ProfileCard
-            userImage={uglyMugImage}
-            userName="Jamie Croall"
-            userPosition="Chief Financial Officer"
-            userDescription="Jamie plays a pivotal role in the meticulous planning and management of our financial affairs, encompassing everything from ledgers and forecasts to projections. He leads a dedicated team focused on the critical aspects of our financial operations. This includes ensuring timely payments from our customers, settling accounts with our suppliers punctually, and most importantly, guaranteeing that our workers receive accurate and timely compensation."
-            linkedin={"#"}
-            facebook={"#"}
-          />
-          <ProfileCard
-            userImage={uglyMugImage}
+            userImage={LeeImage}
             userName="Lee Inskip"
             userPosition="Chief Operations Officer"
             userDescription="Lee trained as a butcher in the '80s and worked in the hospitality trade before moving into recruitment. He has managed sites with up to 1200 workers across multiple locations, specializing in sectors like Industrial, Grounds Maintenance, Engineering, and Construction. Boasting a wealth of sector experience even before the recruitment industry gained its prominence, is deeply involved in the day-to-day operations of the business. With a background in operational roles at top global recruitment agencies, Lee effortlessly liaises with clients. His expertise ensures that our consultants are always aligned with client needs, facilitating successful placements."
-            linkedin={"#"}
-            facebook={"#"}
+            linkedin={"https://www.linkedin.com/in/lee-inskip-4b80bb59/"}
           />
           <ProfileCard
+            userImage={JamieImage}
+            userName="Jamie Croall"
+            userPosition="Chief Financial Officer"
+            userDescription="Jamie plays a pivotal role in the meticulous planning and management of our financial affairs, encompassing everything from ledgers and forecasts to projections. He leads a dedicated team focused on the critical aspects of our financial operations. This includes ensuring timely payments from our customers, settling accounts with our suppliers punctually, and most importantly, guaranteeing that our workers receive accurate and timely compensation."
+            linkedin={"https://www.linkedin.com/in/jamie-croall-92459987/"}
+          />
+          {/* <ProfileCard
             userImage={uglyMugImage}
             userName="Carl Underwood"
             userPosition="Recruitment Consultant"
             userDescription="Carl worked in the Finance and Foreign Currency industry for 18 years before transitioning to recruitment. He has been specializing in industrial positions for the past 2 years, leveraging his extensive experience in the finance sector to provide top-notch recruitment services."
             linkedin={"#"}
             facebook={"#"}
-          />
+          /> */}
         </CardSection>
       </Section>
     </>

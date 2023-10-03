@@ -72,7 +72,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="text-lg font-semibold text-center">
             <p>Quack Specialists Ltd. © 2023</p>
-            <p>7 Paynes Park, Hitchin, England, SG5 1EH </p>
+            <p>Eastway Enterprise Centre, 7 Paynes Park, Hitchin, England, SG5 1EH </p>
             <p>
               Company number:{" "}
               <a href="https://find-and-update.company-information.service.gov.uk/company/14920616" className="text-violet-300">
