@@ -59,7 +59,7 @@ export const whyChooseUs = [
     id: 5,
     title: "Overseas Sponsorship",
     icon: { color: "sky-400", name: "public" },
-    text: "TBD",
+    text: "Amidst post-Brexit shifts, we expertly navigate sponsorship pathways to bring in skilled talent from outside the UK/EU. Harness our expertise to diversify and strengthen your workforce seamlessly.",
     link: "/overseas-sponsorship",
   },
 ];
