@@ -16,7 +16,11 @@ const BannerHome = ({ title, slogan, imgSrc, imgAlt, links = [] }) => {
               {/* Render links if provided */}
               {links &&
                 links.map((link, index) => (
-                  <Link key={index} to={link.path} className={`mx-auto bg-${link.color}-900 hover:bg-${link.color}-600 hover:text-white text-white py-2 px-5 font-semibold rounded w-fit flex`}>
+                  <Link
+                    key={index}
+                    to={link.path}
+                    className={`py-4 px-6 focus:ring-violet-500 focus:ring-offset-violet-200 text-white transition ease-in duration-200  text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg mx-auto bg-${link.color}-900 hover:bg-${link.color}-600 hover:text-white text-white py-2 px-5 font-semibold rounded w-fit flex`}
+                  >
                     {link.label}
                     <span className="w-6 h-6 rounded-full ps-3">
                       <span className="material-symbols-outlined">arrow_circle_right</span>

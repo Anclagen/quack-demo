@@ -22,16 +22,6 @@ const Home = () => {
       <div className="hidden bg-teal-900 bg-gray-900 bg-sky-900 bg-indigo-900 bg-red-900 bg-blue-900 bg-green-900 bg-sky-400 text-teal-900 text-gray-900 text-sky-900 text-indigo-900 text-red-900 text-blue-900 text-green-900 text-sky-400"></div>
       <Head title="Home" description="Welcome to Quack Specialists, your local recruitment specialist." keywords={keywords} />
       <main>
-        {/* <BannerHome
-          title="QS Recruitment"
-          slogan="Specialists part of the Quack Group"
-          imgSrc="https://media.istockphoto.com/id/1394879058/photo/global-business-structure-of-networking-analysis-and-data-exchange-customer-connection-hr.webp?s=2048x2048&w=is&k=20&c=_UscHKBjyS6KoFPPUFGBa7CwqrrGFDPUoLYnzJ0dN34="
-          imgAlt="Descriptive Image Alt Text"
-          links={[
-            { label: "For Job Seekers", path: "/jobs", color: "violet" },
-            { label: "For Employers", path: "/employers", color: "violet" },
-          ]}
-        /> */}
         <BannerHome
           title="QS Recruitment"
           slogan="Specialists part of the Quack Group"
@@ -59,7 +49,10 @@ const Home = () => {
             <CardMinimalIconTop title={whyChooseUs[4].title} icon={whyChooseUs[4].icon.name} color={`text-${whyChooseUs[4].icon.color} text-8xl`} textColor="text-white" text={whyChooseUs[4].text} />
           </CardSection>
           <div className="text-center mt-10">
-            <Link to="/employers" className="bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded mx-5 mt-auto">
+            <Link
+              to="/employers"
+              className="py-4 px-6  bg-violet-900 hover:bg-violet-600 focus:ring-violet-500 focus:ring-offset-violet-200 text-white w-full transition ease-in duration-200  text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  mx-5 mt-auto"
+            >
               Our Services
             </Link>
           </div>
@@ -88,7 +81,8 @@ const Home = () => {
             dark={true}
           />
         </Section>
-        <Section bgColor="bg-zinc-200">
+        {/* If I have time to finish the form I will add this  */}
+        {/* <Section bgColor="bg-zinc-200">
           <CTASection
             titleBlack="Searching for the perfect job?"
             titlePurple="Discover roles that resonate with your expertise."
@@ -98,8 +92,9 @@ const Home = () => {
             image={toolsImage}
             reverse={true}
           />
-        </Section>
-        <Section bgColor="bg-zinc-950 text-white">
+        </Section> */}
+        {/* Testimonials to be added  */}
+        {/* <Section bgColor="bg-zinc-950 text-white">
           <h2 className="text-3xl text-center mb-10 font-semibold">What Our Clients Say</h2>
           <CardSection>
             <TestimonialCard
@@ -121,7 +116,7 @@ const Home = () => {
               userPosition="Director of Talent Acquisition, Nexus Group"
             />
           </CardSection>
-        </Section>
+        </Section> */}
       </main>
     </>
   );
