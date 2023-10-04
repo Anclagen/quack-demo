@@ -14,4 +14,5 @@ export const initialValues = {
   sector: "",
   skills: "",
   qualifications: "",
+  "additional-info": "",
 };
