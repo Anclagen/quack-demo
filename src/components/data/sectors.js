@@ -60,7 +60,7 @@ export const sectors = [
   {
     id: 3,
     name: "Warehouse & Logistics",
-    slug: "warehouse-logistics",
+    slug: "warehouse-and-logistics",
     color: "text-teal-700",
     imageSrc: WarehouseImage,
     summary:

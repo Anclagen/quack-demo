@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import BannerHalf from "../../components/Banner/BannerHalf";
 import { sectors } from "../../components/data/sectors";
+import Head from "../../components/Head";
 
 const Sector = () => {
   const { name } = useParams(); // name corresponds to the :name in your route definition
@@ -16,6 +17,7 @@ const Sector = () => {
 
   return (
     <>
+      <Head title={sector.name} description={sector.summary} />
       <BannerHalf title={sector.name} slogan="" imgSrc={sector.imageSrc} imgAlt="Descriptive Image Alt Text" links={[]} />
       <div className="max-w-screen-md mx-auto my-20">
         {sector.paragraphs &&

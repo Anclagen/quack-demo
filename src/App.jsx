@@ -10,7 +10,12 @@ import RegisterEmployer from "./pages/Contact/RegisterEmployer";
 import NoPage from "./pages/NoPage";
 import ScrollToTop from "./components/Hooks/ScrollToTop";
 import { HelmetProvider } from "react-helmet-async";
-import Sector from "./pages/Sector/Sector";
+// import Sector from "./pages/Sectors/Sector";
+import MeatAndFood from "./pages/Sectors/MeatAndFood";
+import ConstructionsAndTrade from "./pages/Sectors/ConstructionsAndTrade";
+import Engineering from "./pages/Sectors/Engineering";
+import WarehouseAndLogistics from "./pages/Sectors/WarehouseAndLogistics";
+import OverseasSponsorships from "./pages/Sectors/OverseasSponsorships";
 
 function App() {
   return (
@@ -26,7 +31,12 @@ function App() {
             <Route path="register-candidate" element={<RegisterCandidate />} />
             <Route path="register-employer" element={<RegisterEmployer />} />
             <Route path="contact" element={<Contact />} />
-            <Route path="sector/:name" element={<Sector />} />
+            <Route path="sector/meat-food-processing" element={<MeatAndFood />} />
+            <Route path="sector/construction-and-trade" element={<ConstructionsAndTrade />} />
+            <Route path="sector/engineering" element={<Engineering />} />
+            <Route path="sector/warehouse-and-logistics" element={<WarehouseAndLogistics />} />
+            <Route path="sector/overseas-sponsorships" element={<OverseasSponsorships />} />
+            {/* <Route path="sector/:name" element={<Sector />} /> */}
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
