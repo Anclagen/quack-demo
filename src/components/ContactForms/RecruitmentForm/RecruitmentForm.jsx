@@ -5,7 +5,7 @@ import ContactInformation from "./FormSections/ContactInformation";
 import PersonalDetails from "./FormSections/PersonalDetails";
 import { initialState } from "./contactData";
 import { Form, Formik } from "formik";
-import { personalValidationSchema, contactValidationSchema, jobAndMiscValidationSchema, documentUploadValidationSchema } from "./constactSchema";
+import { personalValidationSchema, contactValidationSchema, jobAndMiscValidationSchema, allDetailsValidationSchema } from "./constactSchema";
 import ContactImageOne from "../../../assets/forms/undraw_Opened_re_i38e.png";
 import ContactImageTwo from "../../../assets/forms/undraw_My_location_re_r52x.png";
 import ContactImageThree from "../../../assets/forms/undraw_Hiring_re_yk5n.png";
@@ -14,12 +14,13 @@ import ErrorBoundary from "../ErrorBoundary";
 
 const RecruitmentForm = () => {
   const [activeSection, setActiveSection] = useState(0);
-  const validationSchema = [personalValidationSchema, contactValidationSchema, jobAndMiscValidationSchema, documentUploadValidationSchema];
+  const validationSchema = [personalValidationSchema, contactValidationSchema, jobAndMiscValidationSchema, allDetailsValidationSchema];
 
   // Manually managing file uploads as Formik isn't playing nice
-  const [fileUploads, setFileUploads] = useState({ cv_upload: null, id_upload: null, proof_of_national_insurance_number: null, proof_of_address: null });
+  const [fileUploads, setFileUploads] = useState({ "cv-upload": null, "id-upload": null, "proof-of-national-insurance-number": null, "proof-of-address": null, "additional-information": null });
   // Error states
   const [uploadError, setUploadError] = useState(true);
+  const [formErrors, setFormErrors] = useState(null);
 
   useEffect(() => {
     const section = document.querySelector(`.section-${activeSection}`);
@@ -30,12 +31,38 @@ const RecruitmentForm = () => {
     console.log(activeSection);
   }, [activeSection]);
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    // Handle form submission
-    // 'values' contains the form data
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     console.log(values);
-    setSubmitting(false);
-    setActiveSection(4);
+    // Handle form submission
+    try {
+      const formData = new FormData();
+
+      for (const key in values) {
+        formData.append(key, values[key]);
+      }
+      for (const key in fileUploads) {
+        formData.append(key, fileUploads[key]);
+      }
+
+      const response = await fetch("https://content.quackspecialists.co.uk/wp-json/contact-form-7/v1/contact-forms/8/feedback", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+      console.log(data);
+      // if (data.status === "mail_sent") {
+      //   console.log(values);
+      //   setSubmitting(false);
+      //   setActiveSection(4);
+      //   resetForm();
+      // } else {
+      //   setFormErrors(data.message);
+      // }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setFormErrors("There was a problem submitting the form. Please try again later.");
+    }
   };
 
   if (activeSection === 4) {
@@ -48,10 +75,11 @@ const RecruitmentForm = () => {
   }
 
   const sectionFields = {
-    0: ["your_title", "your_first_name", "your_last_name", "your_date_of_birth", "your_nationality", "your_gender"],
-    1: ["email", "mobile_number", "landline_number", "address_1", "address_2", "address_3", "city", "postcode"],
-    2: ["salary_type", "salary_value", "specific_role", "job_title_location", "have_transportation", "have_disability", "national_insurance_number", "share_code"],
+    0: ["title", "first-name", "last-name", "date-of-birth", "nationality", "gender"],
+    1: ["email", "mobile-number", "landline-number", "address-1", "address-2", "address-3", "city", "postcode"],
+    2: ["salary-type", "salary-value", "specific-role", "job-title-location", "have-transportation", "have-disability", "national-insurance-number", "share-code"],
     3: [],
+    4: [],
   };
 
   return (
@@ -77,7 +105,7 @@ const RecruitmentForm = () => {
                   <div className="section-3" style={{ display: activeSection === 3 ? "block" : "none" }}>
                     <h3 className="text-xl text-center mb-8">Document Upload</h3>
                     <DocumentUpload fileUploads={fileUploads} setFileUploads={setFileUploads} setUploadErrors={setUploadError} />
-                    <button type="button" onClick={() => console.log(values)}>
+                    <button type="button" onClick={() => console.log(values, fileUploads)}>
                       check
                     </button>
                   </div>
@@ -120,6 +148,7 @@ const RecruitmentForm = () => {
                   </div>
                   {activeSection === 3 && (
                     <div className="text-center mt-5">
+                      {formErrors && <div className="error error-message">{formErrors}</div>}
                       <button className={`${uploadError ? "opacity-50" : ""} bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded`} disabled={uploadError} type="submit">
                         Submit
                       </button>
@@ -136,37 +165,3 @@ const RecruitmentForm = () => {
 };
 
 export default RecruitmentForm;
-
-// Personal Details
-// Title: Free Text Input
-// First Name: Free Text Input
-// Last Name: Free Text Input
-// Date of Birth: Date Input
-// Ethnicity: Free Text Input / Drop down
-// Gender: Free Text Input
-
-// Contact Information
-// Email: Free Text Input
-// Mobile Number: Free Number Input
-// Landline Number: Free Number Input
-// Address 1: Free Text Input
-// Address 2: Free Text Input
-// Address 3: Free Text Input
-// Postcode: Free Text Input
-
-// Job Preferences
-// Salary / Hourly Rate Sought: Free Text Input (could have drop down for salary/hourly and number input for value)
-// Specific Role: Free Text Input
-// Job Title & Location: Free Text Input
-
-// Miscellaneous Information
-// Have Transportation: Check Box
-// Have Disability: Free Text Input
-// National Insurance Number: Free Text Input
-// Share Code(right to work): Free Text Input
-
-// Document Upload
-// CV upload: Upload Input
-// ID upload: Upload Input
-// Proof of National Insurance Number: Upload Input
-// Proof of address: Upload Input

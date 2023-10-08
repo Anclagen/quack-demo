@@ -5,7 +5,7 @@ import Head from "../../components/Head";
 const RegisterCandidate = () => {
   return (
     <>
-      <Head title="Register" description="Register With Us" />
+      <Head title="Register Your CV" description="Register With Us" />
       <main>
         <Section bgColor="bg-zinc-200">
           <div className="flex flex-col items-center">
