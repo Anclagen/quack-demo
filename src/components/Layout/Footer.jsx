@@ -23,7 +23,7 @@ const Footer = () => {
           {/* <p className="text-center mb-6">(Logos: Stronger Together / Crown Commercial Supplier)</p> */}
         </div>
         {/* Top Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10 border-t border-violet-300 pt-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-10 border-t border-violet-300 pt-6">
           {/* Logo and Description */}
           <div className="text-center col-span-full lg:col-span-1">
             <img src={logoImage} alt="Company Logo" className="mb-2 w-full max-w-lg mx-auto" />
@@ -31,7 +31,7 @@ const Footer = () => {
 
           {/* Useful Links */}
           <div className="px-2">
-            <h3 className="mb-3 text-xl font-bold">Useful Links</h3>
+            <h3 className="mb-3 text-xl font-bold max-w-fit">Useful Links</h3>
             <ul>
               {[
                 { path: "/", label: "Home" },
@@ -42,6 +42,24 @@ const Footer = () => {
               ].map((route) => (
                 <li key={route.path}>
                   <Link to={route.path} className={`${location.pathname === route.path ? "underline" : ""} hover:underline hover:text-white text-white text-lg`}>
+                    {route.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="px-2">
+            <h3 className="mb-3 text-xl font-bold">Sectors</h3>
+            <ul>
+              {[
+                { path: "/meat-food-processing", label: "Meat & Food" },
+                { path: "/engineering", label: "Engineering" },
+                { path: "/construction-and-trade", label: "Construction & Trade" },
+                { path: "/warehouse-logistics", label: "Warehouse & Logistics" },
+                { path: "/overseas-sponsorships", label: "Overseas Sponsorships" },
+              ].map((route) => (
+                <li key={route.path}>
+                  <Link to={`sector${route.path}`} className={`${location.pathname === route.path ? "underline" : ""} hover:underline hover:text-white text-white text-lg`}>
                     {route.label}
                   </Link>
                 </li>
