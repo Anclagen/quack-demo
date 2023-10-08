@@ -1,15 +1,17 @@
 import BannerHome from "../components/Banner/BannerHome";
 import Section from "../components/Sections/Section";
 import bannerImage from "../assets/pexels-olga-lioncat-7245326.jpg";
-import TwoColSection from "../components/Sections/StandardSection/twoColSection";
 import FadeInSection from "../components/Sections/FadeInSection/FadeInSection";
 import fadeinImage from "../assets/pexels-yan-krukau-8867482.jpg";
-import uglyMugImage from "../assets/pexels-andrea-piacquadio-3778603.jpg";
+import fadeinImageTwo from "../assets/pexels-mart-production-7709219.jpg";
+import fadeinImageThree from "../assets/pexels-yan-krukau-8866793.jpg";
+import fadeinImageFour from "../assets/pexels-yan-krukau-8867265.jpg";
 import CardSection from "../components/Sections/CardSection/CardSection";
-import { CardWithLargerImageTop, ProfileCard } from "../components/Card/Card";
+import { ProfileCard } from "../components/Card/Card";
 import Head from "../components/Head";
 import JamieImage from "../assets/jamie-croall.jpg";
 import LeeImage from "../assets/lee-inskip.jpg";
+import FourImageStretch from "../components/Sections/FourImageFeature/FourImageStretch";
 
 const About = () => {
   return (
@@ -17,27 +19,32 @@ const About = () => {
       <Head title="About" description="A Dedicated & Experienced Team Of Experts" />
       <BannerHome title="About" slogan="A Dedicated & Experienced Team Of Experts" imgSrc={bannerImage} imgAlt="Descriptive Image Alt Text" />
       <Section bgColor="bg-zinc-950 text-white">
-        <FadeInSection
-          title="Who We Are"
-          imageSrc={fadeinImage}
-          imageAlt="Description"
-          text={[
-            "Quack Specialists Recruitment are an independently owned niche agency, operating throughout the Midlands, Home Counties, the North, Scotland, Wales, and the South West.",
-            "We focus on five industries that meet the skillset of our team. These industries are: Engineering, Construction & Trade, Warehousing and Logistics, Meat & Food Processing, Overseas Sponsorships.",
-            "All of the candidates who register with us are treated as individuals, each with their own unique requirements and goals that we help them to fulfill.We provide comprehensive feedback to each candidate for any applications they make, so you are never left in the lurch.",
-            "For our clients our team work collectively to ensure that every step of the process is seamless from on boarding to candidate attrition management.",
-            "Each client has a dedicated Account Manager who looks after the field their clients operate within, and allows a rapport to be developed, as well as a consistent experience!",
-            "We are a GLAA License holder and our insurance levels are setup to support our clients needs as follows:",
-            "Public Liability - £10m",
-            "Employers' Liability - £10m",
-            "Professional Indemnity - £10m",
-            "To find out if we can help, get in touch with us today.",
-          ]}
-          linkText="Get In Touch"
-          linkHref="/contact"
-          reverse={false}
-          dark={true}
-        />
+        <FourImageStretch title="Who We Are" reverse={false} dark={true} images={[fadeinImageFour, fadeinImageThree, fadeinImage, fadeinImageTwo]}>
+          <div className="px-6 lg:p-0">
+            <p className="mt-4 text-lg leading-6">
+              Quack Specialists Recruitment are an independently owned niche agency, operating throughout the Midlands, Home Counties, the North, Scotland, Wales, and the South West.
+            </p>
+            <p className="mt-4 text-lg leading-6">
+              We focus on five industries that meet the skillset of our team. These industries are: Engineering, Construction & Trade, Warehousing and Logistics, Meat & Food Processing, Overseas
+              Sponsorships.
+            </p>
+            <p className="mt-4 text-lg leading-6">
+              All of the candidates who register with us are treated as individuals, each with their own unique requirements and goals that we help them to fulfill. We provide comprehensive feedback
+              to each candidate for any applications they make, so you are never left in the lurch.
+            </p>
+            <p className="mt-4 text-lg leading-6">
+              For our clients our team work collectively to ensure that every step of the process is seamless from on boarding to candidate attrition management. Each client has a dedicated Account
+              Manager who looks after the field their clients operate within, and allows a rapport to be developed, as well as a consistent experience!
+            </p>
+            <p className="mt-4 text-lg leading-6">We are a GLAA License holder and our insurance levels are setup to support our clients needs as follows:</p>
+            <ul className="mt-1 ms-4 list-disc">
+              <li className="">Public Liability - £10m</li>
+              <li className="">{"Employers' Liability - £10m"}</li>
+              <li className="">Professional Indemnity - £10m</li>
+            </ul>
+            <p className="mt-4 text-lg leading-6">To find out if we can help, get in touch with us today.</p>
+          </div>
+        </FourImageStretch>
       </Section>
       <Section bgColor="bg-zinc-200">
         <FadeInSection
