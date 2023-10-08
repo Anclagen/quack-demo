@@ -6,7 +6,7 @@ import CardSection from "../components/Sections/CardSection/CardSection";
 import FadeInSection from "../components/Sections/FadeInSection/FadeInSection";
 import permenantImage from "../assets/pexels-edmond-dantès-4344878.jpg";
 import contractImage from "../assets/pexels-karolina-grabowska-5387261.jpg";
-import warehouseImage from "../assets/pexels-tiger-lily-4487365.jpg";
+import warehouseImage from "../assets/pexels-tiger-lily-4480796.jpg";
 import Head from "../components/Head";
 import CTASection from "../components/Sections/CTASection/CTASection";
 import hardHatImage from "../assets/hardhat.png";
