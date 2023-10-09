@@ -4,7 +4,7 @@ const ContactInformation = () => (
     <div className="h-20">
       <div className="w-full">
         <label htmlFor="email" className=" block py-1">
-          Email
+          Email*
         </label>
         <Field type="email" id="email" name="email" className="w-full p-1 rounded bg-white text-black" />
       </div>
@@ -15,7 +15,7 @@ const ContactInformation = () => (
       <div className="h-20 md:w-1/2">
         <div className="w-full justify-start">
           <label htmlFor="mobile-number" className=" block py-1">
-            Mobile Number
+            Mobile Number*
           </label>
           <Field type="tel" id="mobile-number" name="mobile-number" className="w-full p-1 rounded bg-white text-black" />
         </div>
@@ -36,7 +36,7 @@ const ContactInformation = () => (
     <div className="h-20">
       <div className="w-full justify-start">
         <label htmlFor="address-1" className=" block py-1">
-          Address 1
+          Address 1*
         </label>
         <Field type="text" id="address-1" name="address-1" className="w-full p-1 rounded bg-white text-black" />
       </div>
@@ -67,7 +67,7 @@ const ContactInformation = () => (
       <div className="h-20 md:w-1/2">
         <div className="w-full justify-start">
           <label htmlFor="city" className=" block py-1">
-            City
+            City*
           </label>
           <Field type="text" id="city" name="city" className="w-full p-1 rounded bg-white text-black" />
         </div>
@@ -77,7 +77,7 @@ const ContactInformation = () => (
       <div className="h-20 md:w-1/2">
         <div className="w-full justify-start">
           <label htmlFor="postcode" className=" block py-1">
-            Postcode
+            Postcode*
           </label>
           <Field type="text" id="postcode" name="postcode" className="w-full p-1 rounded bg-white text-black" />
         </div>

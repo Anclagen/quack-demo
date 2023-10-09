@@ -7,7 +7,7 @@ const PersonalDetails = () => (
       <div className="h-20 md:w-1/2">
         <div className="w-full">
           <label htmlFor="first-name" className="block py-1">
-            First Name
+            First Name*
           </label>
           <Field type="text" id="first-name" name="first-name" className="w-full p-1 rounded bg-white text-black" />
         </div>
@@ -18,7 +18,7 @@ const PersonalDetails = () => (
       <div className="h-20 md:w-1/2">
         <div className="w-full">
           <label htmlFor="last-name" className="block py-1">
-            Last Name
+            Last Name*
           </label>
           <Field type="text" id="last-name" name="last-name" className="w-full p-1 rounded bg-white text-black" />
         </div>
@@ -31,7 +31,7 @@ const PersonalDetails = () => (
       <div className="h-20 md:w-1/2">
         <div className="w-full">
           <label htmlFor="title" className="block py-1">
-            Title
+            Title*
           </label>
           <Field type="text" id="title" name="title" className="w-32 p-1 rounded bg-white text-black" />
         </div>
@@ -42,7 +42,7 @@ const PersonalDetails = () => (
       <div className="h-20 md:w-1/2">
         <div className="w-full">
           <label htmlFor="date-of-birth" className="block py-1">
-            Date of Birth
+            Date of Birth*
           </label>
           <Field type="date" id="date-of-birth" name="date-of-birth" className="w-content p-1 rounded bg-white text-black" />
         </div>
@@ -55,7 +55,7 @@ const PersonalDetails = () => (
       <div className="h-20 md:w-1/2">
         <div className="w-full">
           <label htmlFor="nationality" className="block py-1">
-            Nationality
+            Nationality*
           </label>
           <Field type="text" id="nationality" name="nationality" className="p-1 rounded bg-white text-black" />
         </div>
@@ -66,7 +66,7 @@ const PersonalDetails = () => (
       <div className="h-20 md:w-1/2">
         <div className="w-full">
           <label htmlFor="gender" className=" block py-1">
-            Gender
+            Gender*
           </label>
           <Field as="select" id="gender" name="gender" className="w-32 p-1 rounded bg-white text-black">
             <option value="" label="Select gender" />

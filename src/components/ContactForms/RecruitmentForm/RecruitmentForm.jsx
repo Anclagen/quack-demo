@@ -154,7 +154,7 @@ const RecruitmentForm = () => {
                   {activeSection === 3 && (
                     <div className="text-center mt-10 flex flex-col gap-6">
                       <label>
-                        <input className="w-5 h-5" type="checkbox" checked={agree} onChange={() => setAgree(!agree)} /> I agree to the terms and conditions
+                        <input className="w-5 h-5" type="checkbox" checked={agree} onChange={() => setAgree(!agree)} /> I agree to the terms and conditions.*
                       </label>
 
                       {formErrors && <div className="error error-message">{formErrors}</div>}

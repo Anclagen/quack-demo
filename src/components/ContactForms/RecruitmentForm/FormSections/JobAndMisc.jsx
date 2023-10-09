@@ -5,7 +5,7 @@ const JobAndMiscInfo = () => (
       <div className="h-20 md:w-1/2">
         <div className="w-full justify-start">
           <label htmlFor="salary-type" className=" block py-1">
-            Salary Type
+            Salary Type*
           </label>
           <Field as="select" id="salary-type" name="salary-type" className="w-full p-1 rounded bg-white text-black">
             <option value="" label="Select option" />
@@ -19,7 +19,7 @@ const JobAndMiscInfo = () => (
       <div className="h-20 md:w-1/2">
         <div className="w-full justify-start">
           <label htmlFor="salary-value" className=" block py-1">
-            Desired Salary/Hourly Rate (£)
+            Desired Salary/Hourly Rate (£)*
           </label>
           <Field type="number" id="salary-value" name="salary-value" className="w-full p-1 rounded bg-white text-black" />
         </div>
@@ -40,7 +40,7 @@ const JobAndMiscInfo = () => (
     <div className="h-20">
       <div className="w-full justify-start">
         <label htmlFor="job-title-location" className=" block py-1">
-          Current Job Title & Location
+          Current Job Title & Location*
         </label>
         <Field type="text" id="job-title-location" name="job-title-location" className="w-full p-1 rounded bg-white text-black" />
       </div>
