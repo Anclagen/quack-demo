@@ -209,3 +209,29 @@ body {
 .transition-height {
   transition: max-height 1s ease-in-out;
 }
+
+@keyframes reduceHeight {
+  from {
+    height: 750px;
+  }
+  to {
+    height: 300px;
+  }
+}
+
+/* Apply the animation to your container */
+.reduceHeightCan {
+  height: 300px; /* Final height */
+  animation: reduceHeight 1s forwards; /* 1s duration as an example, adjust as needed */
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* For Chrome, Safari, and newer versions of Opera */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}

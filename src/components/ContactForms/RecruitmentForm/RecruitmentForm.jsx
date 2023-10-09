@@ -15,12 +15,13 @@ import ErrorBoundary from "../ErrorBoundary";
 const RecruitmentForm = () => {
   const [activeSection, setActiveSection] = useState(0);
   const validationSchema = [personalValidationSchema, contactValidationSchema, jobAndMiscValidationSchema, allDetailsValidationSchema];
-
   // Manually managing file uploads as Formik isn't playing nice
   const [fileUploads, setFileUploads] = useState({ "cv-upload": null, "id-upload": null, "proof-of-national-insurance-number": null, "proof-of-address": null, "additional-information": null });
   // Error states
   const [uploadError, setUploadError] = useState(true);
   const [formErrors, setFormErrors] = useState(null);
+  const [agree, setAgree] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     const section = document.querySelector(`.section-${activeSection}`);
@@ -48,31 +49,24 @@ const RecruitmentForm = () => {
         method: "POST",
         body: formData,
       });
+      console.log(response);
 
       const data = await response.json();
       console.log(data);
-      // if (data.status === "mail_sent") {
-      //   console.log(values);
-      //   setSubmitting(false);
-      //   setActiveSection(4);
-      //   resetForm();
-      // } else {
-      //   setFormErrors(data.message);
-      // }
+      if (data.status === "mail_sent") {
+        console.log(values);
+        setSubmitting(false);
+        setSuccess(true);
+        resetForm();
+        scrollTo(0, 0);
+      } else {
+        setFormErrors(data.message);
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
       setFormErrors("There was a problem submitting the form. Please try again later.");
     }
   };
-
-  if (activeSection === 4) {
-    return (
-      <div className="success-container">
-        <h3>Submission Successful!</h3>
-        <p>Thank you for submitting your details. We will get back to you soon!</p>
-      </div>
-    );
-  }
 
   const sectionFields = {
     0: ["title", "first-name", "last-name", "date-of-birth", "nationality", "gender"],
@@ -82,32 +76,43 @@ const RecruitmentForm = () => {
     4: [],
   };
 
+  if (success) {
+    return (
+      <div
+        className={`"p-5 text-center bg-zinc-300 text-black w-full max-w-lg rounded-xl shadow-xl transition-all duration-300 shadow-violet-300 transition-height duration-2000 transform reduceHeightCan`}
+      >
+        <div className="my-auto max-h-fit p-4">
+          <span className="material-icons text-green-500 text-6xl mt-6 mb-4">check_circle</span>
+          <h2 className="text-xl text-center mb-6">Submission Successful!</h2>
+          <p className="my-8">Thank you for submitting your details. We will get back to you shortly!</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <ErrorBoundary>
       <Formik initialValues={initialState} validationSchema={validationSchema[activeSection]} onSubmit={handleSubmit}>
-        {({ isValid, validateForm, setTouched, values }) => (
+        {({ isValid, validateForm, setTouched }) => (
           <Form className="p-5 bg-zinc-300 text-black w-full max-w-lg rounded-xl shadow-xl transition-all duration-300 shadow-violet-300">
             <div>
               <div className="">
                 <div className="">
                   <div className="section-0" style={{ display: activeSection === 0 ? "block" : "none" }}>
-                    <h3 className="text-xl text-center mb-8">Personal Details</h3>
+                    <h2 className="text-xl text-center mb-8">Personal Details</h2>
                     <PersonalDetails />
                   </div>
                   <div className="section-1" style={{ display: activeSection === 1 ? "block" : "none" }}>
-                    <h3 className="text-xl text-center mb-8">Contact Information</h3>
+                    <h2 className="text-xl text-center mb-8">Contact Information</h2>
                     <ContactInformation />
                   </div>
                   <div className="section-2" style={{ display: activeSection === 2 ? "block" : "none" }}>
-                    <h3 className="text-xl text-center mb-8">Job & Miscellaneous Information</h3>
+                    <h2 className="text-xl text-center mb-8">Job & Miscellaneous Information</h2>
                     <JobAndMiscInfo />
                   </div>
                   <div className="section-3" style={{ display: activeSection === 3 ? "block" : "none" }}>
-                    <h3 className="text-xl text-center mb-8">Document Upload</h3>
-                    <DocumentUpload fileUploads={fileUploads} setFileUploads={setFileUploads} setUploadErrors={setUploadError} />
-                    <button type="button" onClick={() => console.log(values, fileUploads)}>
-                      check
-                    </button>
+                    <h2 className="text-xl text-center mb-8">Document Upload</h2>
+                    <DocumentUpload fileUploads={fileUploads} setFileUploads={setFileUploads} setUploadError={setUploadError} />
                   </div>
                   <div className="flex flex-row my-4 h-12">
                     <img src={ContactImageOne} alt="Contact Image One" className="w-9 md:w-12" />
@@ -147,9 +152,17 @@ const RecruitmentForm = () => {
                     </button>
                   </div>
                   {activeSection === 3 && (
-                    <div className="text-center mt-5">
+                    <div className="text-center mt-10 flex flex-col gap-6">
+                      <label>
+                        <input className="w-5 h-5" type="checkbox" checked={agree} onChange={() => setAgree(!agree)} /> I agree to the terms and conditions
+                      </label>
+
                       {formErrors && <div className="error error-message">{formErrors}</div>}
-                      <button className={`${uploadError ? "opacity-50" : ""} bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded`} disabled={uploadError} type="submit">
+                      <button
+                        className={`${uploadError || !agree ? "opacity-50" : ""} bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded`}
+                        disabled={uploadError || !agree}
+                        type="submit"
+                      >
                         Submit
                       </button>
                     </div>

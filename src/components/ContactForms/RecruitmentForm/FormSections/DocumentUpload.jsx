@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import propsTypes from "prop-types";
+
 const validateFile = (file, types, maxSizeInMB = 4) => {
+  if (!file) return false;
   // Convert simplified file extensions to full MIME types
   const extensionToMime = {
     ".pdf": "application/pdf",
@@ -26,13 +29,27 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
     "id-upload": null,
     "proof-of-national-insurance-number": null,
     "proof-of-address": null,
+    "additional-information": null,
   });
+
+  const [hasValue, setHasValue] = useState({
+    "cv-upload": false,
+    "id-upload": false,
+    "proof-of-national-insurance-number": false,
+    "proof-of-address": false,
+    "additional-information": false,
+  });
+
+  const cvFileTypes = ".pdf, .doc, .docx, .odt, .rtf, .txt";
+  const OtherFileTypes = ".pdf, .doc, .docx, .odt, .rtf, .txt, .jpg, .jpeg, .png";
+
+  useEffect(() => {
+    updateUploadErrorStatus();
+  }, [fileUploads]);
 
   const handleFileChange = (event, types) => {
     const file = event.currentTarget.files[0];
     const inputName = event.currentTarget.name;
-    console.log(file);
-
     let isValid = file && validateFile(file, types);
 
     setFileUploads((prev) => ({
@@ -43,34 +60,11 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
       ...prev,
       [inputName]: isValid ? null : "Invalid file type or file size too large!",
     }));
-
-    // After setting the current file validation status, let's evaluate the overall upload error status
-    updateUploadErrorStatus(inputName, isValid);
-  };
-
-  const updateUploadErrorStatus = (changedInputName, isValid) => {
-    if (changedInputName === "cv-upload" || changedInputName === "id-upload") {
-      if (!isValid) {
-        // If either cv-upload or id-upload is invalid, set uploadError to true
-        setUploadError(true);
-      } else {
-        // Check the validity of the other required input that didn't trigger the change
-        const otherRequiredInput = changedInputName === "cv-upload" ? "id-upload" : "cv-upload";
-        const otherFile = fileUploads[otherRequiredInput];
-
-        // If the other required input is valid or not present, set uploadError to false
-        if (!otherFile || (otherFile && validateFile(otherFile, ".pdf, .doc, .docx, .odt, .rtf, .txt"))) {
-          setUploadError(false);
-        }
-      }
-    } else {
-      // For non-required uploads, we only set the error to false if both cv-upload and id-upload are valid or present
-      const cvFile = fileUploads["cv-upload"];
-      const idFile = fileUploads["id-upload"];
-      if (cvFile && validateFile(cvFile, ".pdf, .doc, .docx, .odt, .rtf, .txt") && idFile && validateFile(idFile, ".pdf, .jpg, .jpeg, .png")) {
-        setUploadError(false);
-      }
-    }
+    // Set hasValue to true if a file is selected
+    setHasValue((prev) => ({
+      ...prev,
+      [inputName]: file ? true : false,
+    }));
   };
 
   const clearFileInput = (inputName) => {
@@ -83,111 +77,119 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
       ...prev,
       [inputName]: null, // Clear any errors related to this file input
     }));
+    setHasValue((prev) => ({
+      ...prev,
+      [inputName]: false,
+    }));
+  };
+
+  const updateUploadErrorStatus = () => {
+    let validFiles = true;
+    setUploadError(true);
+    if (!fileUploads["cv-upload"] || !validateFile(fileUploads["cv-upload"], cvFileTypes)) {
+      validFiles = false;
+    }
+    if (!fileUploads["id-upload"] || !validateFile(fileUploads["id-upload"], OtherFileTypes)) {
+      validFiles = false;
+    }
+    if (fileUploads["proof-of-national-insurance-number"] && !validateFile(fileUploads["proof-of-national-insurance-number"], OtherFileTypes)) {
+      validFiles = false;
+    }
+    if (fileUploads["proof-of-address"] && !validateFile(fileUploads["proof-of-address"], OtherFileTypes)) {
+      validFiles = false;
+    }
+    if (fileUploads["additional-information"] && !validateFile(fileUploads["additional-information"], OtherFileTypes)) {
+      validFiles = false;
+    }
+    if (validFiles) {
+      setUploadError(false);
+    }
   };
 
   //Formik not playing ball so it goes bye bye.
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col gap-1 mb-1">
+      <div className="flex flex-col gap-1 mb-1 h-20">
         <label htmlFor="cv-upload">CV Upload*</label>
-        <input type="file" id="cv-upload" name="cv-upload" accept=".pdf, .doc, .docx, .odt, .rtf, .txt" onChange={(event) => handleFileChange(event, ".pdf, .doc, .docx, .odt, .rtf, .txt")} />
-        <button type="button" onClick={() => clearFileInput("cv-upload")}>
-          Clear
-        </button>
+        <div className="flex">
+          <input className="pr-2" type="file" id="cv-upload" name="cv-upload" accept={cvFileTypes} onChange={(event) => handleFileChange(event, cvFileTypes)} />
+          <button className={`ml-2 max-w-fit ml-auto bg-red-950 px-1 pt-1 rounded text-white ${hasValue["cv-upload"] ? "" : "hidden"}`} type="button" onClick={() => clearFileInput("cv-upload")}>
+            <span className="material-symbols-outlined">delete</span>
+          </button>
+        </div>
         {errors["cv-upload"] && <div className="error-message w-full text-sm">{errors["cv-upload"]}</div>}
       </div>
 
-      <div className="flex flex-col gap-1 mb-1">
+      <div className="flex flex-col gap-1 mb-1 h-20">
         <label htmlFor="id-upload">ID Upload*</label>
-        <input type="file" id="id-upload" name="id-upload" accept=".pdf, .jpg, .jpeg, .png" onChange={(event) => handleFileChange(event, ".pdf, .jpg, .jpeg, .png")} />
+        <div className="flex">
+          <input className="pr-2" type="file" id="id-upload" name="id-upload" accept={OtherFileTypes} onChange={(event) => handleFileChange(event, OtherFileTypes)} />
+          <button className={`ml-2 max-w-fit ml-auto bg-red-950 px-1 pt-1 rounded text-white ${hasValue["id-upload"] ? "" : "hidden"}`} type="button" onClick={() => clearFileInput("id-upload")}>
+            <span className="material-symbols-outlined">delete</span>
+          </button>
+        </div>
         {errors["id-upload"] && <div className="error-message w-full text-sm">{errors["id-upload"]}</div>}
       </div>
 
-      <div className="flex flex-col gap-1 mb-1">
+      <div className="flex flex-col gap-1 mb-1 h-20">
         <label htmlFor="proof-of-national-insurance-number">Proof of National Insurance Number</label>
-        <input
-          type="file"
-          id="proof-of-national-insurance-number"
-          name="proof-of-national-insurance-number"
-          accept=".pdf, .jpg, .jpeg, .png"
-          onChange={(event) => handleFileChange(event, ".pdf, .jpg, .jpeg, .png")}
-        />
+        <div className="flex">
+          <input
+            className="pr-2"
+            type="file"
+            id="proof-of-national-insurance-number"
+            name="proof-of-national-insurance-number"
+            accept={OtherFileTypes}
+            onChange={(event) => handleFileChange(event, OtherFileTypes)}
+          />
+          <button
+            className={`ml-2 max-w-fit ml-auto bg-red-950 px-1 pt-1 rounded text-white ${hasValue["proof-of-national-insurance-number"] ? "" : "hidden"}`}
+            type="button"
+            onClick={() => clearFileInput("proof-of-national-insurance-number")}
+          >
+            <span className="material-symbols-outlined">delete</span>
+          </button>
+        </div>
         {errors["proof-of-national-insurance-number"] && <div className="error-message w-full text-sm">{errors["proof-of-national-insurance-number"]}</div>}
       </div>
 
-      <div className="flex flex-col gap-1 mb-1">
+      <div className="flex flex-col gap-1 mb-1 h-20">
         <label htmlFor="proof-of-address">Proof of Address</label>
-        <input type="file" id="proof-of-address" name="proof-of-address" accept=".pdf, .jpg, .jpeg, .png" onChange={(event) => handleFileChange(event, ".pdf, .jpg, .jpeg, .png")} />
+        <div className="flex">
+          <input className="pr-2" type="file" id="proof-of-address" name="proof-of-address" accept={OtherFileTypes} onChange={(event) => handleFileChange(event, OtherFileTypes)} />
+          <button
+            className={`ml-2 max-w-fit ml-auto bg-red-950 px-1 pt-1 rounded text-white ${hasValue["proof-of-address"] ? "" : "hidden"}`}
+            type="button"
+            onClick={() => clearFileInput("proof-of-address")}
+          >
+            <span className="material-symbols-outlined">delete</span>
+          </button>
+        </div>
         {errors["proof-of-address"] && <div className="error-message w-full text-sm">{errors["proof-of-address"]}</div>}
       </div>
 
-      <div className="flex flex-col gap-1 mb-1">
+      <div className="flex flex-col gap-1 mb-1 h-20">
         <label htmlFor="additional-information">Additional Information</label>
-        <input type="file" id="additional-information" name="additional-information" accept=".pdf, .jpg, .jpeg, .png" onChange={(event) => handleFileChange(event, ".pdf, .jpg, .jpeg, .png")} />
+        <div className="flex">
+          <input className="pr-2" type="file" id="additional-information" name="additional-information" accept={OtherFileTypes} onChange={(event) => handleFileChange(event, OtherFileTypes)} />
+          <button
+            className={`ml-2 max-w-fit ml-auto bg-red-950 px-1 pt-1 rounded text-white ${hasValue["additional-information"] ? "" : "hidden"}`}
+            type="button"
+            onClick={() => clearFileInput("additional-information")}
+          >
+            <span className="material-symbols-outlined">delete</span>
+          </button>
+        </div>
         {errors["additional-information"] && <div className="error-message w-full text-sm">{errors["additional-information"]}</div>}
       </div>
     </div>
   );
 };
 
+DocumentUpload.propTypes = {
+  fileUploads: propsTypes.objectOf(propsTypes.instanceOf(File)),
+  setFileUploads: propsTypes.func.isRequired,
+  setUploadError: propsTypes.func.isRequired,
+};
+
 export default DocumentUpload;
-// const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
-//   const handleFileChange = (event, types) => {
-//     const file = event.currentTarget.files[0];
-//     if (!validateFile(file, types)) {
-//       setErrors((prev) => ({
-//         ...prev,
-//         [event.currentTarget.name]: "Invalid file type or file size too large!",
-//       }));
-//       setFieldValue(event.currentTarget.name, null);
-//     } else {
-//       setFieldValue(event.currentTarget.name, file);
-//     }
-//   };
-
-//   return (
-//     <div className="flex flex-col">
-//       <div className="flex flex-col gap-1 mb-1">
-//         <label htmlFor="cv-upload">CV Upload</label>
-//         <Field type="file" id="cv-upload" name="cv-upload" accept=".pdf, .doc, .docx, .odt, .rtf, .txt" onChange={(event) => handleFileChange(event, ".pdf, .doc, .docx, .odt, .rtf, .txt")} />
-//         <ErrorMessage name="cv-upload" component="div" className="error-message w-full text-sm" />
-
-//       </div>
-//       <label htmlFor="id-upload">ID Upload</label>
-//       <Field
-//         type="file"
-//         id="id-upload"
-//         name="id-upload"
-//         accept=".pdf, .jpg, .jpeg, .png"
-//         onChange={(event) => {
-//           setFieldValue("id-upload", event.currentTarget.files[0]);
-//         }}
-//       />
-//       <ErrorMessage name="id-upload" component="div" className="error-message w-full text-sm" />
-
-//       <label htmlFor="proof-of-national-insurance-number">Proof of National Insurance Number</label>
-//       <Field
-//         type="file"
-//         id="proof-of-national-insurance-number"
-//         name="proof-of-national-insurance-number"
-//         accept=".pdf, .jpg, .jpeg, .png"
-//         onChange={(event) => {
-//           setFieldValue("proof-of-national-insurance-number", event.currentTarget.files[0]);
-//         }}
-//       />
-//       <ErrorMessage name="proof-of-national-insurance-number" component="div" className="error-message w-full  text-sm" />
-
-//       <label htmlFor="proof-of-address">Proof of Address</label>
-//       <Field
-//         type="file"
-//         id="proof-of-address"
-//         name="proof-of-address"
-//         accept=".pdf, .jpg, .jpeg, .png"
-//         onChange={(event) => {
-//           setFieldValue("proof-of-address", event.currentTarget.files[0]);
-//         }}
-//       />
-//       <ErrorMessage name="proof-of-address" component="div" className="error-message w-full text-sm" />
-//     </div>
-//   );
-// };
