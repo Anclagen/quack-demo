@@ -26,7 +26,7 @@ const Jobs = () => {
           </a>
         </p>
         <div className="relative h-screen max-w-3xl mx-auto">
-          <iframe
+          {/* <iframe
             src="https://www.cv-library.co.uk/cgi-bin/yourjobs.cgi?agency=309161"
             style={{
               position: "absolute",
@@ -37,7 +37,7 @@ const Jobs = () => {
               border: "none",
             }}
             title="Full Page Iframe"
-          ></iframe>
+          ></iframe> */}
         </div>
       </Section>
     </>
