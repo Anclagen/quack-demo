@@ -16,6 +16,7 @@ import ConstructionsAndTrade from "./pages/Sectors/ConstructionsAndTrade";
 import Engineering from "./pages/Sectors/Engineering";
 import WarehouseAndLogistics from "./pages/Sectors/WarehouseAndLogistics";
 import OverseasSponsorships from "./pages/Sectors/OverseasSponsorships";
+import CandidateRegistration from "./pages/Contact/CandidateRegistration";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="employers" element={<Employers />} />
             <Route path="about" element={<About />} />
             <Route path="register-candidate" element={<RegisterCandidate />} />
+            <Route path="candidate-registration" element={<CandidateRegistration />} />
             <Route path="register-employer" element={<RegisterEmployer />} />
             <Route path="contact" element={<Contact />} />
             <Route path="sector/meat-food-processing" element={<MeatAndFood />} />
