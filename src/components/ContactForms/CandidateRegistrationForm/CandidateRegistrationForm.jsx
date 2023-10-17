@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { AvailabilityAndKin, ContactInformation, PersonalDetails, BankDetails, ReferenceDetails, AdditionalInformation, DocumentUpload } from "./FormSections";
 import { personalSchema, allAddressSchema, availabilitySchema, bankDetailsSchema, referenceDetailsSchema, additionalInformationSchema, allDetailsSchema } from "./constactSchema";
 import { initialState, uploadInitialState } from "./contactData";
-import { Form, Formik } from "formik";
+import { Form, Formik, Field } from "formik";
 import ErrorBoundary from "../ErrorBoundary";
 import Stepper from "../../Formik/Stepper";
+import { de } from "date-fns/locale";
 
 const CandidateRegistrationForm = () => {
   const [activeSection, setActiveSection] = useState(0);
@@ -27,13 +28,26 @@ const CandidateRegistrationForm = () => {
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     console.log(values);
+    // Check for honeypot
+    if (values.botInput) {
+      console.log("Bot detected");
+      return;
+    }
+    delete values.botInput;
+
     // Handle form submission
     try {
       const formData = new FormData();
+      const details = { ...values };
+      details.shifts = details.shifts.join(", ");
+      details.days = details.days.join(", ");
+      details["no-convictions"] = "Candidate confirms they have no convictions.";
+      details.agrees = "Candidate confirms they have provided truthful information and agrees to the terms and conditions.";
 
-      for (const key in values) {
+      for (const key in details) {
         formData.append(key, values[key]);
       }
+
       for (const key in fileUploads) {
         formData.append(key, fileUploads[key]);
       }
@@ -47,7 +61,7 @@ const CandidateRegistrationForm = () => {
       const data = await response.json();
       console.log(data);
       if (data.status === "mail_sent") {
-        console.log(values);
+        console.log(details);
         setSubmitting(false);
         setSuccess(true);
         resetForm();
@@ -158,6 +172,7 @@ const CandidateRegistrationForm = () => {
                       Next
                     </button>
                   </div>
+
                   {activeSection === 6 && (
                     <div className="text-center mt-10 flex flex-col gap-6">
                       <label>
@@ -165,6 +180,7 @@ const CandidateRegistrationForm = () => {
                       </label>
 
                       {formErrors && <div className="error error-message">{formErrors}</div>}
+                      <Field type="text" name="botInput" style={{ display: "none" }} autoComplete="off" />
                       <button
                         className={`${uploadError || !agree ? "opacity-50" : ""} bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded`}
                         disabled={uploadError || !agree}

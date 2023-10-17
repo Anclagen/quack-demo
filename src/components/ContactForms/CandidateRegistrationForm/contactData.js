@@ -47,6 +47,7 @@ export const initialState = {
   "medication-info": "",
   "reasonable-adjustments": "no",
   "reasonable-adjustments-info": "",
+  botInput: "",
 };
 
 export const uploadInitialState = {
