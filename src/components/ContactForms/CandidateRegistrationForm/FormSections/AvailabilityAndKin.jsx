@@ -11,19 +11,19 @@ const AvailabilityAndKin = () => (
       <div role="group" aria-labelledby="checkbox-group" className="flex gap-2 flex-wrap">
         <div className="w-1/4">
           <label className="me-6 cursor-pointer">
-            <Field type="checkbox" name="shifts" value="Am" className="me-2" />
+            <Field type="checkbox" name="shifts" value=" AM" className="me-2" />
             AM
           </label>
         </div>
         <div className="w-1/4">
           <label className="me-6 cursor-pointer">
-            <Field type="checkbox" name="shifts" value="PM" className="me-2" />
+            <Field type="checkbox" name="shifts" value=" PM" className="me-2" />
             PM
           </label>
         </div>
         <div className="w-1/4">
           <label className="me-6 cursor-pointer">
-            <Field type="checkbox" name="shifts" value="Nights" className="me-2" />
+            <Field type="checkbox" name="shifts" value=" Nights" className="me-2" />
             Nights
           </label>
         </div>
@@ -39,43 +39,43 @@ const AvailabilityAndKin = () => (
       <div role="group" aria-labelledby="checkbox-group" className="flex gap-2 flex-wrap">
         <div className="w-1/4">
           <label className="me-6 cursor-pointer">
-            <Field type="checkbox" name="days" value="Mon" className="me-2" />
+            <Field type="checkbox" name="days" value=" Mon" className="me-2" />
             Mon
           </label>
         </div>
         <div className="w-1/4">
           <label className="me-6 cursor-pointer ">
-            <Field type="checkbox" name="days" value="Tue" className="me-2" />
+            <Field type="checkbox" name="days" value=" Tue" className="me-2" />
             Tue
           </label>
         </div>
         <div className="w-1/4">
           <label className="me-6 cursor-pointer ">
-            <Field type="checkbox" name="days" value="Wed" className="me-2" />
+            <Field type="checkbox" name="days" value=" Wed" className="me-2" />
             Wed
           </label>
         </div>
         <div className="w-1/4">
           <label className="me-6 cursor-pointer">
-            <Field type="checkbox" name="days" value="Thu" className="me-2" />
+            <Field type="checkbox" name="days" value=" Thu" className="me-2" />
             Thu
           </label>
         </div>
         <div className="w-1/4">
           <label className="me-6 cursor-pointer">
-            <Field type="checkbox" name="days" value="Fri" className="me-2" />
+            <Field type="checkbox" name="days" value=" Fri" className="me-2" />
             Fri
           </label>
         </div>
         <div className="w-1/4">
           <label className="me-6 cursor-pointer">
-            <Field type="checkbox" name="days" value="Sat" className="me-2" />
+            <Field type="checkbox" name="days" value=" Sat" className="me-2" />
             Sat
           </label>
         </div>
         <div className="w-1/4">
           <label className="me-6 cursor-pointer">
-            <Field type="checkbox" name="days" value="Sun" className="me-2" />
+            <Field type="checkbox" name="days" value=" Sun" className="me-2" />
             Sun
           </label>
         </div>

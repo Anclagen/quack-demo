@@ -1,8 +1,9 @@
-import FormikField from "../../../Formik/FormikField";
-import { Field } from "formik";
 import FormikYesNoDetails from "../../../Formik/FormikYesNoDetails";
+import { useFormikContext } from "formik";
 
 const AdditionalInformation = () => {
+  const { values, setFieldValue } = useFormikContext();
+
   return (
     <div className="flex flex-col">
       <h3 className="font-semibold mb-3">Medical Questionnaire</h3>
@@ -23,7 +24,8 @@ const AdditionalInformation = () => {
         <li> I have not been convicted of any criminal offence.</li>
       </ul>
       <label className="py-3 cursor-pointer">
-        I confirm that the above statements are true at the time of completing this form. <Field type="checkbox" name="no-convictions" className="ms-2" />
+        I confirm that the above statements are true at the time of completing this form.
+        <input type="checkbox" name="no-convictions" className="ms-2" checked={values["no-convictions"]} onChange={() => setFieldValue("no-convictions", !values["no-convictions"])} />
       </label>
     </div>
   );

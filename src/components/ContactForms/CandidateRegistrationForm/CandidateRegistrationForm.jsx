@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { AvailabilityAndKin, ContactInformation, PersonalDetails, BankDetails, ReferenceDetails, AdditionalInformation, DocumentUpload } from "./FormSections";
-import { personalSchema, allAddressSchema, availabilitySchema, bankDetailsSchema, referenceDetailsSchema, additionalInformationSchema, allDetailsSchema } from "./constactSchema";
+import { personalSchema, allAddressSchema, availabilitySchema, bankDetailsSchema, referenceDetailsSchema, additionalInformationSchema } from "./constactSchema";
 import { initialState, uploadInitialState } from "./contactData";
 import { Form, Formik, Field } from "formik";
 import ErrorBoundary from "../ErrorBoundary";
 import Stepper from "../../Formik/Stepper";
-import { de } from "date-fns/locale";
 
 const CandidateRegistrationForm = () => {
   const [activeSection, setActiveSection] = useState(0);
@@ -38,21 +37,30 @@ const CandidateRegistrationForm = () => {
     // Handle form submission
     try {
       const formData = new FormData();
-      const details = { ...values };
-      details.shifts = details.shifts.join(", ");
-      details.days = details.days.join(", ");
-      details["no-convictions"] = "Candidate confirms they have no convictions.";
-      details.agrees = "Candidate confirms they have provided truthful information and agrees to the terms and conditions.";
+      values["no-convictions"] = "Candidate confirms they have no convictions.";
+      values.agrees = "Candidate confirms they have provided truthful information and agrees to the terms and conditions.";
 
-      for (const key in details) {
+      for (const key in values) {
         formData.append(key, values[key]);
       }
 
-      for (const key in fileUploads) {
-        formData.append(key, fileUploads[key]);
+      formData.append("proof-of-address", fileUploads["proof-of-address"]);
+      formData.append("proof-passport", fileUploads["proof-passport"]);
+      formData.append("proof-birth-certificate", fileUploads["proof-birth-certificate"]);
+      formData.append("proof-visa", fileUploads["proof-visa"]);
+      formData.append("proof-ni-number", fileUploads["proof-ni-number"]);
+      formData.append("proof-share-code", fileUploads["proof-share-code"]);
+      formData.append("proof-student-term-time", fileUploads["proof-student-term-time"]);
+
+      // for (const key in fileUploads) {
+      //   formData.append(key, fileUploads[key]);
+      // }
+
+      for (let [key, value] of formData.entries()) {
+        console.log(key, value);
       }
 
-      const response = await fetch("https://content.quackspecialists.co.uk/wp-json/contact-form-7/v1/contact-forms/8/feedback", {
+      const response = await fetch("https://content.quackspecialists.co.uk/wp-json/contact-form-7/v1/contact-forms/11/feedback", {
         method: "POST",
         body: formData,
       });
@@ -61,7 +69,7 @@ const CandidateRegistrationForm = () => {
       const data = await response.json();
       console.log(data);
       if (data.status === "mail_sent") {
-        console.log(details);
+        console.log(values);
         setSubmitting(false);
         setSuccess(true);
         resetForm();
