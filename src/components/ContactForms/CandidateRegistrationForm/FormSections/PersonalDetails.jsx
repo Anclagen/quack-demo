@@ -79,7 +79,7 @@ const PersonalDetails = () => (
 
       {/* Share Code */}
       <div className="h-20 sm:w-1/2">
-        <FormikField label="Share Code*" type="text" id="share-code" placeholder="+1234567890" />
+        <FormikField label="Share Code*" type="text" id="share-code" placeholder="123456789" />
       </div>
     </div>
   </div>
