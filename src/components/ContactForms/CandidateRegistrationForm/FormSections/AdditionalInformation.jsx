@@ -1,5 +1,5 @@
 import FormikYesNoDetails from "../../../Formik/FormikYesNoDetails";
-import { useFormikContext } from "formik";
+import { useFormikContext, ErrorMessage } from "formik";
 
 const AdditionalInformation = () => {
   const { values, setFieldValue } = useFormikContext();
@@ -27,6 +27,7 @@ const AdditionalInformation = () => {
         I confirm that the above statements are true at the time of completing this form.
         <input type="checkbox" name="no-convictions" className="w-5 h-5 ms-2" checked={values["no-convictions"]} onChange={() => setFieldValue("no-convictions", !values["no-convictions"])} />
       </label>
+      <ErrorMessage name="no-convictions" component="div" className="text-red-600" />
     </div>
   );
 };
