@@ -70,6 +70,18 @@ const PersonalDetails = () => (
       {/* Email */}
       <FormikField label="Email*" type="email" id="email" />
     </div>
+
+    <div className="sm:flex sm:flex-row gap-6 w-full">
+      {/* NI number */}
+      <div className="h-20 sm:w-1/2">
+        <FormikField label="National Insurance*" type="text" id="ni-number" />
+      </div>
+
+      {/* Share Code */}
+      <div className="h-20 sm:w-1/2">
+        <FormikField label="Share Code*" type="text" id="share-code" />
+      </div>
+    </div>
   </div>
 );
 

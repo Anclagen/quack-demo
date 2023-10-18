@@ -26,7 +26,6 @@ const CandidateRegistrationForm = () => {
   }, [activeSection]);
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    console.log(values);
     // Check for honeypot
     if (values.botInput) {
       console.log("Bot detected");
@@ -52,22 +51,12 @@ const CandidateRegistrationForm = () => {
       formData.append("proof-share-code", fileUploads["proof-share-code"]);
       formData.append("proof-student-term-time", fileUploads["proof-student-term-time"]);
 
-      // for (const key in fileUploads) {
-      //   formData.append(key, fileUploads[key]);
-      // }
-
-      for (let [key, value] of formData.entries()) {
-        console.log(key, value);
-      }
-
       const response = await fetch("https://content.quackspecialists.co.uk/wp-json/contact-form-7/v1/contact-forms/11/feedback", {
         method: "POST",
         body: formData,
       });
-      console.log(response);
 
       const data = await response.json();
-      console.log(data);
       if (data.status === "mail_sent") {
         console.log(values);
         setSubmitting(false);
@@ -84,8 +73,8 @@ const CandidateRegistrationForm = () => {
   };
 
   const sectionFields = {
-    0: ["title", "first-name", "last-name", "date-of-birth", "phone-number", "gender", "email"],
-    1: ["address-1", "address-2", "address-3", "city", "postcode", "yearsAtAddress", "previous-address-1", "previous-address-2", "previous-address-3", "previous-city", "previous-postcode"],
+    0: ["title", "first-name", "last-name", "date-of-birth", "phone-number", "gender", "email", "ni-number", "share-code"],
+    1: ["address-1", "address-2", "address-3", "city", "postcode"],
     2: ["shifts", "days", "available-from", "emergency-name", "emergency-relationship", "emergency-phone-number"],
     3: ["sort-code", "account-number", "account-holder-name", "bank-branch"],
     4: ["ref-company-name", "ref-employed-from", "ref-employed-to", "ref-reason-leaving", "ref-name", "ref-phone-number", "ref-email"],
@@ -110,7 +99,7 @@ const CandidateRegistrationForm = () => {
   return (
     <ErrorBoundary>
       <Formik initialValues={initialState} validationSchema={Schema[activeSection]} onSubmit={handleSubmit}>
-        {({ isValid, validateForm, setTouched, values }) => (
+        {({ isValid, validateForm, setTouched, isSubmitting }) => (
           <Form className="p-5 bg-zinc-300 text-black w-full max-w-lg rounded-xl shadow-xl transition-all duration-300 shadow-violet-300">
             <div>
               <div className="">
@@ -172,8 +161,6 @@ const CandidateRegistrationForm = () => {
                         if (isValid || activeSection === 6) {
                           setActiveSection((prev) => Math.min(6, prev + 1));
                         }
-
-                        console.log(values);
                       }}
                       className={`${(activeSection === 6 && "hidden") || ""} ms-auto bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded `}
                     >
@@ -184,9 +171,9 @@ const CandidateRegistrationForm = () => {
                   {activeSection === 6 && (
                     <div className="text-center mt-10 flex flex-col gap-6">
                       <label>
-                        <input className="w-5 h-5" type="checkbox" checked={agree} onChange={() => setAgree(!agree)} /> I agree to the terms and conditions.*
+                        I herby confirm that the information I have provided is correct and I agree to the terms and conditions.*
+                        <input className="w-5 h-5 ms-3 mt-1" type="checkbox" checked={agree} onChange={() => setAgree(!agree)} />
                       </label>
-
                       {formErrors && <div className="error error-message">{formErrors}</div>}
                       <Field type="text" name="botInput" style={{ display: "none" }} autoComplete="off" />
                       <button
@@ -194,7 +181,21 @@ const CandidateRegistrationForm = () => {
                         disabled={uploadError || !agree}
                         type="submit"
                       >
-                        Submit
+                        {isSubmitting ? (
+                          <>
+                            <svg className="inline animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                              <path
+                                className="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                              ></path>
+                            </svg>
+                            Processing
+                          </>
+                        ) : (
+                          "Submit"
+                        )}
                       </button>
                     </div>
                   )}

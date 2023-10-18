@@ -7,6 +7,66 @@ export const initialState = {
   gender: "",
   email: "",
   "phone-number": "",
+  "ni-number": "",
+  "share-code": "",
+  //Address Details
+  "address-1": "",
+  "address-2": "",
+  "address-3": "",
+  city: "",
+  postcode: "",
+  // Availability Details
+  shifts: [],
+  days: [],
+  "available-from": "",
+  // Emergency Contact Details
+  "emergency-name": "",
+  "emergency-relationship": "",
+  "emergency-phone-number": "",
+  // Bank Details
+  "account-holder-name": "",
+  "account-number": "",
+  "sort-code": "",
+  "bank-branch": "",
+  // Reference Details
+  "ref-company-name": "",
+  "ref-employed-from": "",
+  "ref-employed-to": "",
+  "ref-reason-leaving": "",
+  "ref-name": "",
+  "ref-phone-number": "",
+  "ref-email": "",
+  // Other Details
+  "no-convictions": false,
+  disabilities: "no",
+  "disabilities-info": "",
+  medication: "no",
+  "medication-info": "",
+  "reasonable-adjustments": "no",
+  "reasonable-adjustments-info": "",
+  // Honey Pot
+  botInput: "",
+};
+
+export const uploadInitialState = {
+  "proof-of-address": null,
+  "proof-passport": null,
+  "proof-birth-certificate": null,
+  "proof-visa": null,
+  "proof-ni-number": null,
+  "proof-share-code": null,
+  "proof-student-term-time": null,
+};
+
+export const oldInitialState = {
+  // Personal Details
+  title: "",
+  "first-name": "",
+  "last-name": "",
+  "date-of-birth": "",
+  gender: "",
+  email: "",
+  "phone-number": "",
   //Address Details
   "address-1": "",
   "address-2": "",
@@ -49,16 +109,6 @@ export const initialState = {
   "reasonable-adjustments": "no",
   "reasonable-adjustments-info": "",
   botInput: "",
-};
-
-export const uploadInitialState = {
-  "proof-of-address": null,
-  "proof-passport": null,
-  "proof-birth-certificate": null,
-  "proof-visa": null,
-  "proof-ni-number": null,
-  "proof-share-code": null,
-  "proof-student-term-time": null,
 };
 
 export const fakeData = {
