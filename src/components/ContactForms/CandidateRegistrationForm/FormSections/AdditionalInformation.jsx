@@ -25,7 +25,7 @@ const AdditionalInformation = () => {
       </ul>
       <label className="py-3 cursor-pointer">
         I confirm that the above statements are true at the time of completing this form.
-        <input type="checkbox" name="no-convictions" className="ms-2" checked={values["no-convictions"]} onChange={() => setFieldValue("no-convictions", !values["no-convictions"])} />
+        <input type="checkbox" name="no-convictions" className="w-5 h-5 ms-2" checked={values["no-convictions"]} onChange={() => setFieldValue("no-convictions", !values["no-convictions"])} />
       </label>
     </div>
   );

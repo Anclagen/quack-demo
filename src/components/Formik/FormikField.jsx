@@ -1,6 +1,6 @@
 import { Field, ErrorMessage } from "formik";
 
-function FormikField({ label, type, id, width = "w-full", options = [] }) {
+function FormikField({ label, type, id, width = "w-full", options = [], placeholder = "" }) {
   return (
     <div className="w-full">
       <label htmlFor={id} className="block py-1">
@@ -14,7 +14,7 @@ function FormikField({ label, type, id, width = "w-full", options = [] }) {
             ))}
           </Field>
         ) : (
-          <Field type={type} id={id} name={id} className={`${width} p-1 rounded bg-white text-black`} />
+          <Field type={type} id={id} name={id} placeholder={placeholder} className={`${width} p-1 rounded bg-white text-black`} />
         )}
         <div>
           <ErrorMessage name={id} component="span" className="error-message w-full text-center text-sm" />

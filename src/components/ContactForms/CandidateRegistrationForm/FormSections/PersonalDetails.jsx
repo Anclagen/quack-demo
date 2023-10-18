@@ -5,12 +5,12 @@ const PersonalDetails = () => (
     <div className="sm:flex sm:flex-row gap-6 w-full">
       {/* First Name */}
       <div className="sm:w-1/2">
-        <FormikField label="First Name*" type="text" id="first-name" />
+        <FormikField label="First Name*" type="text" id="first-name" placeholder="John" />
       </div>
 
       {/* Last Name */}
       <div className="sm:w-1/2">
-        <FormikField label="Last Name*" type="text" id="last-name" />
+        <FormikField label="Last Name*" type="text" id="last-name" placeholder="Doe" />
       </div>
     </div>
 
@@ -62,24 +62,24 @@ const PersonalDetails = () => (
 
       {/* Phone Number */}
       <div className="h-20 sm:w-1/2">
-        <FormikField label="Phone Number*" type="tel" id="phone-number" />
+        <FormikField label="Phone Number*" type="tel" id="phone-number" placeholder="1234567890" />
       </div>
     </div>
 
     <div>
       {/* Email */}
-      <FormikField label="Email*" type="email" id="email" />
+      <FormikField label="Email*" type="email" id="email" placeholder="your-email@example.com" />
     </div>
 
     <div className="sm:flex sm:flex-row gap-6 w-full">
       {/* NI number */}
       <div className="h-20 sm:w-1/2">
-        <FormikField label="National Insurance*" type="text" id="ni-number" />
+        <FormikField label="National Insurance*" type="text" id="ni-number" placeholder="QQ123456C" />
       </div>
 
       {/* Share Code */}
       <div className="h-20 sm:w-1/2">
-        <FormikField label="Share Code*" type="text" id="share-code" />
+        <FormikField label="Share Code*" type="text" id="share-code" placeholder="+1234567890" />
       </div>
     </div>
   </div>

@@ -38,8 +38,8 @@ export const availabilitySchema = Yup.object().shape({
   shifts: Yup.array().required("Shifts are required").min(1, "Shifts are required"),
   days: Yup.array().required("Days are required").min(1, "Days are required"),
   "available-from": Yup.date().required("Available from date is required").min(new Date(), "Cannot be in the past"),
-  "emergency-name": Yup.string().required("Emergency contact name is required").max(150, "Emergency contact name cannot exceed 100 characters"),
-  "emergency-relationship": Yup.string().required("Emergency contact relationship is required").max(150, "Emergency contact relationship cannot exceed 100 characters"),
+  "emergency-name": Yup.string().required("Emergency contact name is required").max(300, "Emergency contact name cannot exceed 300 characters"),
+  "emergency-relationship": Yup.string().required("Emergency contact relationship is required").max(150, "Emergency contact relationship cannot exceed 150 characters"),
   "emergency-phone-number": Yup.string()
     .required("Emergency contact phone number is required")
     .matches(/^[\d\s()+-]{7,20}$/, "Invalid emergency contact phone number format"),
@@ -47,19 +47,19 @@ export const availabilitySchema = Yup.object().shape({
 
 // Bank Details
 export const bankDetailsSchema = Yup.object().shape({
-  "account-holder-name": Yup.string().required("Account holder name is required").max(200, "Account holder name cannot exceed 200 characters"),
+  "account-holder-name": Yup.string().required("Account holder name is required").max(300, "Account holder name cannot exceed 300 characters"),
   "account-number": Yup.string().required("Account number is required").max(12, "Account number cannot exceed 12 characters"),
-  "sort-code": Yup.string().required("Sort code is required").max(6, "Sort code cannot exceed 6 characters"),
+  "sort-code": Yup.string().required("Sort code is required").max(6, "Cannot exceed 6 characters"),
   "bank-branch": Yup.string().required("Bank branch is required").max(200, "Bank branch cannot exceed 200 characters"),
 });
 
 // Reference Details
 export const referenceDetailsSchema = Yup.object().shape({
-  "ref-company-name": Yup.string().required("Company name is required").max(100, "Company name cannot exceed 100 characters"),
-  "ref-employed-from": Yup.date().required("Employed from date is required").max(new Date(), "Cannot be in the future"),
-  "ref-employed-to": Yup.date().required("Employed to date is required").max(new Date(), "Cannot be in the future"),
-  "ref-reason-leaving": Yup.string().required("Reason for leaving is required").max(200, "Reason for leaving cannot exceed 200 characters"),
-  "ref-name": Yup.string().required("Name is required").max(150, "Name cannot exceed 150 characters"),
+  "ref-company-name": Yup.string().required("Company name is required").max(150, "Company name cannot exceed 150 characters"),
+  "ref-employed-from": Yup.date().required("Employed from date is required").max(Yup.ref("ref-employed-to"), "Cannot be after end date").max(new Date(), "Cannot be in the future"),
+  "ref-employed-to": Yup.date().required("Employed to date is required").min(Yup.ref("ref-employed-from"), "Cannot be before start date").max(new Date(), "Cannot be in the future"),
+  "ref-reason-leaving": Yup.string().required("Reason for leaving is required").max(300, "Cannot exceed 300 characters"),
+  "ref-name": Yup.string().required("Name is required").max(300, "Name cannot exceed 300 characters"),
   "ref-phone-number": Yup.string()
     .required("Phone number is required")
     .matches(/^[\d\s()+-]{7,20}$/, "Invalid phone number format"),
@@ -72,17 +72,17 @@ export const additionalInformationSchema = Yup.object().shape({
   disabilities: Yup.string().required("This field is required."),
   "disabilities-info": Yup.string().when("disabilities", {
     is: "yes",
-    then: () => Yup.string().required("disabilities info is required"),
+    then: () => Yup.string().required("disabilities info is required").max(400, "Cannot exceed 400 characters"),
   }),
   medication: Yup.string().required("This field is required."),
   "medication-info": Yup.string().when("medication", {
     is: "yes",
-    then: () => Yup.string().required("Medication info is required"),
+    then: () => Yup.string().required("Medication info is required").max(400, "Cannot exceed 400 characters"),
   }),
   "reasonable-adjustments": Yup.string().required("This field is required."),
   "reasonable-adjustments-info": Yup.string().when("reasonable-adjustments", {
     is: "yes",
-    then: () => Yup.string().required("Reasonable adjustments info is required"),
+    then: () => Yup.string().required("Reasonable adjustments info is required").max(400, "Cannot exceed 400 characters"),
   }),
 });
 
