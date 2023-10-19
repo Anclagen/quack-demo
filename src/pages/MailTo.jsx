@@ -7,7 +7,6 @@ const MailTo = () => {
           <a
             className="text-violet-950 hover:text-violet-600"
             href="mailto:sales@quackspecialist.co.uk?subject=Candidate%20Registration&amp;body=Please%20attach%20the%20following%20documents%20before%20sending%20your%20registration%20details:%0A
-            body=Please%20attach%20the%20following%20documents%20before%20sending%20your%20registration%20details:%0A
             - Proof%20of%20address%0A
             - Indefinite%20leave%0A
             - Passport%0A
