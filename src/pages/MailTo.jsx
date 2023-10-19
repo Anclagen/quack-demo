@@ -4,17 +4,18 @@ const MailTo = () => {
       <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
         <div className="max-w-md text-center">
           <h1 className="mb-8 font-extrabold text-2xl">Mail to Example</h1>
-          <a
-            className="text-violet-950 hover:text-violet-600"
-            href="mailto:sales@quackspecialist.co.uk?subject=Candidate%20Registration&amp;body=Please%20attach%20the%20following%20documents%20before%20sending%20your%20registration%20details:%0A
-            - Proof%20of%20address%0A
-            - Indefinite%20leave%0A
-            - Passport%0A
-            - Birth%20certificate%0A
-            - Visa%20(optional%20for%20foreign%20nationals%20and%20students)%0A
-            - National%20insurance%0A
-            - Sharecode%0A
-            - Student%20term%20time%20confirmation%20of%20attendance%20(optional%20for%20foreign%20nationals%20and%20students)%0A%0A    
+          <div className="mb-6">
+            <a
+              className="text-violet-950 font-semibold hover:text-violet-700"
+              href="mailto:sales@quackspecialist.co.uk?subject=Candidate%20Registration&amp;body=Please%20attach%20the%20following%20documents%20before%20sending%20your%20registration%20details:%0A
+        - Proof%20of%20address%0A
+        - Indefinite%20leave%0A
+        - Passport%0A
+        - Birth%20certificate%0A
+        - Visa%20(optional%20for%20foreign%20nationals%20and%20students)%0A
+        - National%20insurance%0A
+        - Sharecode%0A
+        - Student%20term%20time%20confirmation%20of%20attendance%20(optional%20for%20foreign%20nationals%20and%20students)%0A%0A
         Candidate%20Registration%0A%0A
         --Personal%20Details--%0A
         Title:%20%0A
@@ -52,12 +53,17 @@ const MailTo = () => {
         Reference%20Phone%20Number:%20%0A
         Reference%20Email:%20%0A%0A
         --%20Questionnaire%20--%0A
-        Convictions:%20%0A
-        Disabilities:%20%0A
-        Medical%20Conditions:%20%0A
-        Need%20Work%20Place%20Adjustments:%20%0A"
-          >
-            |Click Me To Send Candidate Registration Email
+        Do%20you%20have%20any%20convictions?%20(if%20yes%20provide%20details)%0A
+        Do%20you%20have%20any%20disabilities?%20(if%20yes%20provide%20details)%0A
+        Do%20you%20have%20any%20medical%20conditions?%20(if%20yes%20provide%20details)%0A
+        Do%20you%20need%20any%20reasonable%20work%20place%20adjustments?%20(if%20yes%20provide%20details)%0A"
+            >
+              |Click Me To Send Candidate Registration Email
+            </a>{" "}
+          </div>
+          Or download the template{" "}
+          <a className="text-violet-950 font-semibold hover:text-violet-700" href="/downloads/candidate-registration-form.pdf" download>
+            Candidate Registration Form, PDF
           </a>
         </div>
       </div>
