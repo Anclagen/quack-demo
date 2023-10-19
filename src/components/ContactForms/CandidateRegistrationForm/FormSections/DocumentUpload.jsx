@@ -47,6 +47,7 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
     "proof-ni-number": null,
     "proof-share-code": null,
     "proof-student-term-time": null,
+    "proof-indefinite-leave": null,
   });
 
   const [hasValue, setHasValue] = useState({
@@ -57,6 +58,7 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
     "proof-ni-number": false,
     "proof-share-code": false,
     "proof-student-term-time": false,
+    "proof-indefinite-leave": false,
   });
 
   const allowedFileTypes = ".pdf, .jpg, .jpeg, .png";
@@ -178,6 +180,16 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
         clearFileInput={clearFileInput}
         hasValue={hasValue["proof-share-code"]}
         errorMessage={errors["proof-share-code"]}
+      />
+
+      <FileInput
+        id="proof-indefinite-leave"
+        label="Proof Indefinite Leave*"
+        acceptTypes={allowedFileTypes}
+        handleFileChange={handleFileChange}
+        clearFileInput={clearFileInput}
+        hasValue={hasValue["proof-indefinite-leave"]}
+        errorMessage={errors["proof-indefinite-leave"]}
       />
 
       <FileInput

@@ -56,6 +56,7 @@ export const uploadInitialState = {
   "proof-ni-number": null,
   "proof-share-code": null,
   "proof-student-term-time": null,
+  "proof-indefinite-leave": null,
 };
 
 export const oldInitialState = {
