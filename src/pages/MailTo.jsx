@@ -5,17 +5,19 @@ const MailTo = () => {
         <div className="max-w-md text-center">
           <h1 className="mb-8 font-extrabold text-2xl">Mail to Example</h1>
           <div className="mb-6">
+            <p>Mail to link</p>
             <a
               className="text-violet-950 font-semibold hover:text-violet-700"
-              href="mailto:sales@quackspecialist.co.uk?subject=Candidate%20Registration&amp;body=Please%20attach%20the%20following%20documents%20before%20sending%20your%20registration%20details:%0A
-        - Proof%20of%20address%0A
-        - Indefinite%20leave%0A
-        - Passport%0A
-        - Birth%20certificate%0A
-        - Visa%20(optional%20for%20foreign%20nationals%20and%20students)%0A
-        - National%20insurance%0A
-        - Sharecode%0A
-        - Student%20term%20time%20confirmation%20of%20attendance%20(optional%20for%20foreign%20nationals%20and%20students)%0A%0A
+              href="mailto:sales@quackspecialists.co.uk?subject=Candidate%20Registration&amp;body=
+              Please%20attach%20the%20following%20documents%20before%20sending%20your%20registration%20details:%0A
+              - Proof%20of%20address%0A
+              - Indefinite%20leave%0A
+              - Passport%0A
+              - Birth%20certificate%0A
+              - Visa%20(optional%20for%20foreign%20nationals%20and%20students)%0A
+              - National%20insurance%0A
+              - Sharecode%0A
+              - Student%20term%20time%20confirmation%20of%20attendance%20(optional%20for%20foreign%20nationals%20and%20students)%0A%0A
         Candidate%20Registration%0A%0A
         --Personal%20Details--%0A
         Title:%20%0A
@@ -58,7 +60,7 @@ const MailTo = () => {
         Do%20you%20have%20any%20medical%20conditions?%20(if%20yes%20provide%20details)%0A
         Do%20you%20need%20any%20reasonable%20work%20place%20adjustments?%20(if%20yes%20provide%20details)%0A"
             >
-              |Click Me To Send Candidate Registration Email
+              sales@quackspecialists.co.uk
             </a>{" "}
           </div>
           Or download the template{" "}
