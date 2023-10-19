@@ -17,7 +17,7 @@ import Engineering from "./pages/Sectors/Engineering";
 import WarehouseAndLogistics from "./pages/Sectors/WarehouseAndLogistics";
 import OverseasSponsorships from "./pages/Sectors/OverseasSponsorships";
 import CandidateRegistration from "./pages/Contact/CandidateRegistration";
-import MailTo from "./pages/MailTo";
+import CandidateRegistrationFallback from "./pages/Contact/CandidateRegistrationFallback";
 
 function App() {
   return (
@@ -39,8 +39,7 @@ function App() {
             <Route path="sector/engineering" element={<Engineering />} />
             <Route path="sector/warehouse-and-logistics" element={<WarehouseAndLogistics />} />
             <Route path="sector/overseas-sponsorships" element={<OverseasSponsorships />} />
-            <Route path="mail-to-example" element={<MailTo />} />
-            {/* <Route path="sector/:name" element={<Sector />} /> */}
+            <Route path="candidate-registration-fallback" element={<CandidateRegistrationFallback />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>

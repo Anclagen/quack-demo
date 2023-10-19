@@ -76,10 +76,13 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
       ...prev,
       [inputName]: isValid ? file : null,
     }));
+
+    // Directly update the error state here
     setErrors((prev) => ({
       ...prev,
       [inputName]: isValid ? null : "Invalid file type or file size too large!",
     }));
+
     // Set hasValue to true if a file is selected
     setHasValue((prev) => ({
       ...prev,
@@ -106,17 +109,50 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
   const updateUploadErrorStatus = () => {
     let validFiles = true;
     setUploadError(true);
-
+    console.log("Validating files");
     Object.keys(fileUploads).forEach((key) => {
       const file = fileUploads[key];
       const fileType = allowedFileTypes;
-      if (!file || !validateFile(file, fileType)) validFiles = false;
+
+      // Check for required fields
+      if (!["proof-visa", "proof-student-term-time"].includes(key)) {
+        console.log("Required file found", key);
+        if (!file || (file && !validateFile(file, fileType))) {
+          validFiles = false;
+        }
+      } else if (file) {
+        console.log("Optional file found", key);
+        // Check for optional fields
+        if (!validateFile(file, fileType)) {
+          validFiles = false;
+          // Directly flag the invalid optional file with an error here
+          setErrors((prev) => ({
+            ...prev,
+            [key]: "Invalid file type or file size too large!",
+          }));
+        }
+      }
     });
 
     if (validFiles) {
       setUploadError(false);
     }
   };
+
+  // const updateUploadErrorStatus = () => {
+  //   let validFiles = true;
+  //   setUploadError(true);
+
+  //   Object.keys(fileUploads).forEach((key) => {
+  //     const file = fileUploads[key];
+  //     const fileType = allowedFileTypes;
+  //     if (!file || !validateFile(file, fileType)) validFiles = false;
+  //   });
+
+  //   if (validFiles) {
+  //     setUploadError(false);
+  //   }
+  // };
 
   //Formik not playing ball so it goes bye bye.
   return (
@@ -153,16 +189,6 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
       />
 
       <FileInput
-        id="proof-visa"
-        label="Proof of Visa*"
-        acceptTypes={allowedFileTypes}
-        handleFileChange={handleFileChange}
-        clearFileInput={clearFileInput}
-        hasValue={hasValue["proof-visa"]}
-        errorMessage={errors["proof-visa"]}
-      />
-
-      <FileInput
         id="proof-ni-number"
         label="Proof of NI Number*"
         acceptTypes={allowedFileTypes}
@@ -191,10 +217,20 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
         hasValue={hasValue["proof-indefinite-leave"]}
         errorMessage={errors["proof-indefinite-leave"]}
       />
-
+      <h3 className="font-semibold">Foreign Nationals</h3>
+      <FileInput
+        id="proof-visa"
+        label="If you are a foreign national in the UK on a visa please provide proof of your visa."
+        acceptTypes={allowedFileTypes}
+        handleFileChange={handleFileChange}
+        clearFileInput={clearFileInput}
+        hasValue={hasValue["proof-visa"]}
+        errorMessage={errors["proof-visa"]}
+      />
+      <h3 className="font-semibold mt-6">Students</h3>
       <FileInput
         id="proof-student-term-time"
-        label="Proof of Student Term Time/Confirmation of Attendance*"
+        label="If you are a student please provide confirmation of attendance"
         acceptTypes={allowedFileTypes}
         handleFileChange={handleFileChange}
         clearFileInput={clearFileInput}
