@@ -74,15 +74,12 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
 
     setFileUploads((prev) => ({
       ...prev,
-      [inputName]: isValid ? file : null,
+      [inputName]: file ? file : null,
     }));
-
-    // Directly update the error state here
     setErrors((prev) => ({
       ...prev,
       [inputName]: isValid ? null : "Invalid file type or file size too large!",
     }));
-
     // Set hasValue to true if a file is selected
     setHasValue((prev) => ({
       ...prev,
@@ -108,35 +105,22 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
 
   const updateUploadErrorStatus = () => {
     let validFiles = true;
-    setUploadError(true);
-    console.log("Validating files");
+
     Object.keys(fileUploads).forEach((key) => {
       const file = fileUploads[key];
-      const fileType = allowedFileTypes;
-
-      // Check for required fields
-      if (!["proof-visa", "proof-student-term-time"].includes(key)) {
-        console.log("Required file found", key);
-        if (!file || (file && !validateFile(file, fileType))) {
+      const isOptional = ["proof-visa", "proof-student-term-time"].includes(key);
+      if (file) {
+        // If a file is present
+        if (!validateFile(file, allowedFileTypes)) {
           validFiles = false;
         }
-      } else if (file) {
-        console.log("Optional file found", key);
-        // Check for optional fields
-        if (!validateFile(file, fileType)) {
-          validFiles = false;
-          // Directly flag the invalid optional file with an error here
-          setErrors((prev) => ({
-            ...prev,
-            [key]: "Invalid file type or file size too large!",
-          }));
-        }
+      } else if (!isOptional) {
+        // If no file and it's a required field
+        validFiles = false;
       }
     });
 
-    if (validFiles) {
-      setUploadError(false);
-    }
+    setUploadError(!validFiles);
   };
 
   // const updateUploadErrorStatus = () => {
