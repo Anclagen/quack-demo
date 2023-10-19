@@ -3,15 +3,17 @@ import propsTypes from "prop-types";
 
 const FileInput = ({ id, label, acceptTypes, handleFileChange, clearFileInput, hasValue, errorMessage }) => {
   return (
-    <div className="flex flex-col gap-1 mb-1 h-20">
+    <div className="flex flex-col gap-1 mb-1">
       <label htmlFor={id}>{label}</label>
-      <div className="flex">
-        <input className="pr-2" type="file" id={id} name={id} accept={acceptTypes} onChange={(event) => handleFileChange(event, acceptTypes)} />
-        <button className={`ml-2 max-w-fit ml-auto bg-red-950 px-1 pt-1 rounded text-white ${hasValue ? "" : "hidden"}`} type="button" onClick={() => clearFileInput(id)}>
-          <span className="material-symbols-outlined">delete</span>
-        </button>
+      <div className="h-14">
+        <div className="flex">
+          <input className="pr-2" type="file" id={id} name={id} accept={acceptTypes} onChange={(event) => handleFileChange(event, acceptTypes)} />
+          <button className={`ml-2 max-w-fit ml-auto bg-red-950 px-1 pt-1 rounded text-white ${hasValue ? "" : "hidden"}`} type="button" onClick={() => clearFileInput(id)}>
+            <span className="material-symbols-outlined">delete</span>
+          </button>
+        </div>
+        {errorMessage && <div className="error-message w-full text-sm">{errorMessage}</div>}
       </div>
-      {errorMessage && <div className="error-message w-full text-sm">{errorMessage}</div>}
     </div>
   );
 };
@@ -108,7 +110,7 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
 
     Object.keys(fileUploads).forEach((key) => {
       const file = fileUploads[key];
-      const isOptional = ["proof-visa", "proof-student-term-time"].includes(key);
+      const isOptional = ["proof-visa", "proof-student-term-time", "proof-share-code"].includes(key);
       if (file) {
         // If a file is present
         if (!validateFile(file, allowedFileTypes)) {
@@ -122,21 +124,6 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
 
     setUploadError(!validFiles);
   };
-
-  // const updateUploadErrorStatus = () => {
-  //   let validFiles = true;
-  //   setUploadError(true);
-
-  //   Object.keys(fileUploads).forEach((key) => {
-  //     const file = fileUploads[key];
-  //     const fileType = allowedFileTypes;
-  //     if (!file || !validateFile(file, fileType)) validFiles = false;
-  //   });
-
-  //   if (validFiles) {
-  //     setUploadError(false);
-  //   }
-  // };
 
   //Formik not playing ball so it goes bye bye.
   return (
@@ -183,16 +170,6 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
       />
 
       <FileInput
-        id="proof-share-code"
-        label="Proof of Share Code*"
-        acceptTypes={allowedFileTypes}
-        handleFileChange={handleFileChange}
-        clearFileInput={clearFileInput}
-        hasValue={hasValue["proof-share-code"]}
-        errorMessage={errors["proof-share-code"]}
-      />
-
-      <FileInput
         id="proof-indefinite-leave"
         label="Proof Indefinite Leave*"
         acceptTypes={allowedFileTypes}
@@ -211,6 +188,17 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
         hasValue={hasValue["proof-visa"]}
         errorMessage={errors["proof-visa"]}
       />
+
+      <FileInput
+        id="proof-share-code"
+        label="If you have a foreign passport / BRP / visa please provide proof of Share Code."
+        acceptTypes={allowedFileTypes}
+        handleFileChange={handleFileChange}
+        clearFileInput={clearFileInput}
+        hasValue={hasValue["proof-share-code"]}
+        errorMessage={errors["proof-share-code"]}
+      />
+
       <h3 className="font-semibold mt-6">Students</h3>
       <FileInput
         id="proof-student-term-time"

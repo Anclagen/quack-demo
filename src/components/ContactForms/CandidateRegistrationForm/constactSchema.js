@@ -18,8 +18,8 @@ export const personalSchema = Yup.object().shape({
   "phone-number": Yup.string()
     .required("Phone number is required")
     .matches(/^[\d\s()+-]{7,20}$/, "Invalid phone number format"),
-  "ni-number": Yup.string().max(9, "National Insurance number cannot exceed 9 characters").required("National Insurance number is required"),
-  "share-code": Yup.string().max(9, "Share code cannot exceed 9 characters").required("Share code is required"),
+  "ni-number": Yup.string().max(9, "National Insurance number cannot exceed 9 characters").required("NI number is required"),
+  "share-code": Yup.string().max(9, "Share code cannot exceed 9 characters"),
 });
 
 // Address Details

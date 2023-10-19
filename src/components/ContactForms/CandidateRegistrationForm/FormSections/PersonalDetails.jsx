@@ -71,16 +71,15 @@ const PersonalDetails = () => (
       <FormikField label="Email*" type="email" id="email" placeholder="your-email@example.com" />
     </div>
 
-    <div className="sm:flex sm:flex-row gap-6 w-full">
-      {/* NI number */}
-      <div className="h-20 sm:w-1/2">
-        <FormikField label="National Insurance*" type="text" id="ni-number" placeholder="QQ123456C" />
-      </div>
+    {/* NI number */}
+    <div className="h-20 sm:w-1/2">
+      <FormikField label="National Insurance*" type="text" id="ni-number" placeholder="QQ123456C" />
+    </div>
 
-      {/* Share Code */}
-      <div className="h-20 sm:w-1/2">
-        <FormikField label="Share Code*" type="text" id="share-code" placeholder="123456789" />
-      </div>
+    {/* Share Code */}
+    <p className="mt-2">If you have a foreign passport, BRP, visa. A sharecode is required.</p>
+    <div className="h-20 sm:w-1/2">
+      <FormikField label="Share Code" type="text" id="share-code" placeholder="123456789" />
     </div>
   </div>
 );
