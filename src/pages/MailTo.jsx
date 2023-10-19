@@ -62,7 +62,7 @@ const MailTo = () => {
             </a>{" "}
           </div>
           Or download the template{" "}
-          <a className="text-violet-950 font-semibold hover:text-violet-700" href="/downloads/candidate-registration-form.pdf" download>
+          <a className="text-violet-950 font-semibold hover:text-violet-700" href="/assets/downloads/candidate-registration-form.pdf" download>
             Candidate Registration Form, PDF
           </a>
         </div>
