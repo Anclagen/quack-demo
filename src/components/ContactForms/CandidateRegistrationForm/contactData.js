@@ -50,8 +50,7 @@ export const initialState = {
 
 export const uploadInitialState = {
   "proof-of-address": null,
-  "proof-passport": null,
-  "proof-birth-certificate": null,
+  "proof-id": null,
   "proof-visa": null,
   "proof-ni-number": null,
   "proof-share-code": null,

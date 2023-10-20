@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import propsTypes from "prop-types";
 
-const FileInput = ({ id, label, acceptTypes, handleFileChange, clearFileInput, hasValue, errorMessage }) => {
+const FileInput = ({ id, label, labelExample = "", acceptTypes, handleFileChange, clearFileInput, hasValue, errorMessage }) => {
   return (
     <div className="flex flex-col gap-1 mb-1">
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id}>
+        <b>{label}</b> {labelExample}
+      </label>
       <div className="h-14">
         <div className="flex">
           <input className="pr-2" type="file" id={id} name={id} accept={acceptTypes} onChange={(event) => handleFileChange(event, acceptTypes)} />
@@ -43,8 +45,7 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
   // Manage local errors for files
   const [errors, setErrors] = useState({
     "proof-of-address": null,
-    "proof-passport": null,
-    "proof-birth-certificate": null,
+    "proof-id": null,
     "proof-visa": null,
     "proof-ni-number": null,
     "proof-share-code": null,
@@ -54,8 +55,7 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
 
   const [hasValue, setHasValue] = useState({
     "proof-of-address": false,
-    "proof-passport": false,
-    "proof-birth-certificate": false,
+    "proof-id": false,
     "proof-visa": false,
     "proof-ni-number": false,
     "proof-share-code": false,
@@ -110,7 +110,7 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
 
     Object.keys(fileUploads).forEach((key) => {
       const file = fileUploads[key];
-      const isOptional = ["proof-visa", "proof-student-term-time", "proof-share-code"].includes(key);
+      const isOptional = ["proof-visa", "proof-student-term-time", "proof-share-code", "proof-indefinite-leave"].includes(key);
       if (file) {
         // If a file is present
         if (!validateFile(file, allowedFileTypes)) {
@@ -129,9 +129,12 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
   return (
     <div className="flex flex-col">
       <p className="my-3">Please upload the following documents. They should be in PDF, JPG, JPEG or PNG format and no larger than 1MB each.</p>
+
+      <h3 className="font-bold text-xl mb-2">All Candidates</h3>
       <FileInput
         id="proof-of-address"
         label="Proof of Address*"
+        labelExample="(eg. Utility Bill or Bank Statement from the last 3 month, Council Tax Bill for current year.))"
         acceptTypes={allowedFileTypes}
         handleFileChange={handleFileChange}
         clearFileInput={clearFileInput}
@@ -140,28 +143,20 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
       />
 
       <FileInput
-        id="proof-passport"
-        label="Proof of Passport*"
+        id="proof-id"
+        label="Proof of Identification*"
+        labelExample="(examples include but not limited to: passport, full birth certificate, and BRP cards)"
         acceptTypes={allowedFileTypes}
         handleFileChange={handleFileChange}
         clearFileInput={clearFileInput}
-        hasValue={hasValue["proof-passport"]}
-        errorMessage={errors["proof-passport"]}
-      />
-
-      <FileInput
-        id="proof-birth-certificate"
-        label="Proof of Birth Certificate*"
-        acceptTypes={allowedFileTypes}
-        handleFileChange={handleFileChange}
-        clearFileInput={clearFileInput}
-        hasValue={hasValue["proof-birth-certificate"]}
-        errorMessage={errors["proof-birth-certificate"]}
+        hasValue={hasValue["proof-id"]}
+        errorMessage={errors["proof-id"]}
       />
 
       <FileInput
         id="proof-ni-number"
         label="Proof of NI Number*"
+        labelExample="(eg. NI Card, P45, P60, HMRC Letter, Payslip with NI Number on)"
         acceptTypes={allowedFileTypes}
         handleFileChange={handleFileChange}
         clearFileInput={clearFileInput}
@@ -169,19 +164,15 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
         errorMessage={errors["proof-ni-number"]}
       />
 
-      <FileInput
-        id="proof-indefinite-leave"
-        label="Proof Indefinite Leave*"
-        acceptTypes={allowedFileTypes}
-        handleFileChange={handleFileChange}
-        clearFileInput={clearFileInput}
-        hasValue={hasValue["proof-indefinite-leave"]}
-        errorMessage={errors["proof-indefinite-leave"]}
-      />
-      <h3 className="font-semibold">Foreign Nationals</h3>
+      <h3 className="font-bold text-xl m-2">Foreign Nationals</h3>
+      <p className="my-3">
+        As a foreign national, please review and upload the necessary documents that correspond to your specific circumstances. We appreciate your understanding in helping us ensure all requirements
+        are met.
+      </p>
       <FileInput
         id="proof-visa"
-        label="If you are a foreign national in the UK on a visa please provide proof of your visa."
+        label="Proof of Visa,"
+        labelExample="if you have a work visa for the UK."
         acceptTypes={allowedFileTypes}
         handleFileChange={handleFileChange}
         clearFileInput={clearFileInput}
@@ -191,7 +182,8 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
 
       <FileInput
         id="proof-share-code"
-        label="If you have a foreign passport / BRP / visa please provide proof of Share Code."
+        label="Proof Share Code,"
+        labelExample="if you have a foreign passport, BRP, Visa."
         acceptTypes={allowedFileTypes}
         handleFileChange={handleFileChange}
         clearFileInput={clearFileInput}
@@ -199,10 +191,22 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
         errorMessage={errors["proof-share-code"]}
       />
 
+      <FileInput
+        id="proof-indefinite-leave"
+        label="Proof Indefinite Leave,"
+        labelExample="if you have Indefinite Leave to Remain. Acceptable forms: passport endorsement or BRP card."
+        acceptTypes={allowedFileTypes}
+        handleFileChange={handleFileChange}
+        clearFileInput={clearFileInput}
+        hasValue={hasValue["proof-indefinite-leave"]}
+        errorMessage={errors["proof-indefinite-leave"]}
+      />
+
       <h3 className="font-semibold mt-6">Students</h3>
       <FileInput
         id="proof-student-term-time"
-        label="If you are a student please provide confirmation of attendance"
+        label="Proof of student term time and attendance."
+        labelExample="(for international students."
         acceptTypes={allowedFileTypes}
         handleFileChange={handleFileChange}
         clearFileInput={clearFileInput}
