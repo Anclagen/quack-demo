@@ -47,10 +47,12 @@ const CandidateRegistrationForm = () => {
       formData.append("proof-of-address", fileUploads["proof-of-address"]);
       formData.append("proof-passport", fileUploads["proof-passport"]);
       formData.append("proof-birth-certificate", fileUploads["proof-birth-certificate"]);
-
       formData.append("proof-ni-number", fileUploads["proof-ni-number"]);
-      formData.append("proof-share-code", fileUploads["proof-share-code"]);
       formData.append("proof-indefinite-leave", fileUploads["proof-indefinite-leave"]);
+
+      if (fileUploads["proof-share-code"]) {
+        formData.append("proof-share-code", fileUploads["proof-share-code"]);
+      }
 
       if (fileUploads["proof-student-term-time"]) {
         formData.append("proof-student-term-time", fileUploads["proof-student-term-time"]);
