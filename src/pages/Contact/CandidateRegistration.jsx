@@ -5,7 +5,7 @@ import Head from "../../components/Head";
 const CandidateRegistration = () => {
   return (
     <>
-      <Head title="Register Your CV" description="Candidate Registration" />
+      <Head title="Register Your Details | Quack Specialists Recruitment" description="Candidate Registration form." />
       <main>
         <Section bgColor="bg-zinc-200">
           <div className="flex flex-col items-center">
