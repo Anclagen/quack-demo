@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const BannerHome = ({ title, slogan, imgSrc, imgAlt, links = [] }) => {
   return (
-    <div className="relative h-screen banner overflow-hidden">
+    <div className="relative h-screen max-h-1080 banner overflow-hidden">
       {/* Image */}
       <img src={imgSrc} alt={imgAlt} className="absolute top-0 left-0 w-full h-full object-cover" />
 

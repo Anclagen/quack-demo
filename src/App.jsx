@@ -16,6 +16,8 @@ import ConstructionsAndTrade from "./pages/Sectors/ConstructionsAndTrade";
 import Engineering from "./pages/Sectors/Engineering";
 import WarehouseAndLogistics from "./pages/Sectors/WarehouseAndLogistics";
 import OverseasSponsorships from "./pages/Sectors/OverseasSponsorships";
+import CandidateRegistration from "./pages/Contact/CandidateRegistration";
+import CandidateRegistrationFallback from "./pages/Contact/CandidateRegistrationFallback";
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
             <Route path="employers" element={<Employers />} />
             <Route path="about" element={<About />} />
             <Route path="register-candidate" element={<RegisterCandidate />} />
+            <Route path="candidate-registration" element={<CandidateRegistration />} />
             <Route path="register-employer" element={<RegisterEmployer />} />
             <Route path="contact" element={<Contact />} />
             <Route path="sector/meat-food-processing" element={<MeatAndFood />} />
@@ -36,7 +39,7 @@ function App() {
             <Route path="sector/engineering" element={<Engineering />} />
             <Route path="sector/warehouse-and-logistics" element={<WarehouseAndLogistics />} />
             <Route path="sector/overseas-sponsorships" element={<OverseasSponsorships />} />
-            {/* <Route path="sector/:name" element={<Sector />} /> */}
+            <Route path="candidate-registration-fallback" element={<CandidateRegistrationFallback />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
