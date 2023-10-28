@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 const Engineering = () => {
   return (
     <>
-      <Head title="Meat & Food Processing" description="TBD" />
-      <BannerHalf title="Meat & Food Processing" slogan="" imgSrc={ConstructionImage} imgAlt="Building Construction Site" links={[]} />
+      <Head title="Engineering" description="TBD" />
+      <BannerHalf title="Engineering" slogan="" imgSrc={ConstructionImage} imgAlt="Building Construction Site" links={[]} />
       <div className="max-w-screen-md mx-auto my-20">
         <p className="my-5">
           At QS Specialist Recruitment we have a diverse clients base in the Engineering sector looking for Mechanical, Electrical Engineers, Planning Co-ordinators, Laboratory Engineers, and
