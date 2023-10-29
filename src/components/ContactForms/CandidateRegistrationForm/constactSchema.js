@@ -7,6 +7,8 @@ const today = new Date();
 const oldestDateOfBirthAllowed = subYears(today, MAX_AGE);
 const youngestDateOfBirthAllowed = subYears(today, MIN_AGE);
 
+export const empty = Yup.object().shape({});
+
 // Personal & Contact Details
 export const personalSchema = Yup.object().shape({
   title: Yup.string().required("Title is required").oneOf(["Mr", "Mrs", "Miss", "Ms", "Mx", "Dr", "Other"], "Please select a valid gender option"),

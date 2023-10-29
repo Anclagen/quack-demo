@@ -5,3 +5,4 @@ export { default as PersonalDetails } from "./PersonalDetails";
 export { default as DocumentUpload } from "./DocumentUpload";
 export { default as ReferenceDetails } from "./ReferenceDetails";
 export { default as AdditionalInformation } from "./AdditionalInformation";
+export { default as Checklist } from "./CheckList";

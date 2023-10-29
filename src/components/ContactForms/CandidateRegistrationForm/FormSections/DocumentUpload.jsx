@@ -20,7 +20,7 @@ const FileInput = ({ id, label, labelExample = "", acceptTypes, handleFileChange
   );
 };
 
-const validateFile = (file, types, maxSizeInMB = 1.1) => {
+const validateFile = (file, types, maxSizeInMB = 3) => {
   if (!file) return false;
   // Convert simplified file extensions to full MIME types
   const extensionToMime = {
@@ -128,7 +128,7 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
   //Formik not playing ball so it goes bye bye.
   return (
     <div className="flex flex-col">
-      <p className="my-3">Please upload the following documents. They should be in PDF, JPG, JPEG or PNG format and no larger than 1MB each.</p>
+      <p className="my-3">Please upload the following documents. They should be in PDF, JPG, JPEG or PNG format and no larger than 3MB each.</p>
 
       <h3 className="font-bold text-xl mb-2">All Candidates</h3>
       <FileInput
@@ -206,7 +206,7 @@ const DocumentUpload = ({ fileUploads, setFileUploads, setUploadError }) => {
       <FileInput
         id="proof-student-term-time"
         label="Proof of student term time and attendance."
-        labelExample="(for international students."
+        labelExample="(for international students.)"
         acceptTypes={allowedFileTypes}
         handleFileChange={handleFileChange}
         clearFileInput={clearFileInput}

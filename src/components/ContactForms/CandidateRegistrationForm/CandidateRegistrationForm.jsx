@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { AvailabilityAndKin, ContactInformation, PersonalDetails, BankDetails, ReferenceDetails, AdditionalInformation, DocumentUpload } from "./FormSections";
-import { personalSchema, allAddressSchema, availabilitySchema, bankDetailsSchema, referenceDetailsSchema, additionalInformationSchema } from "./constactSchema";
+import { AvailabilityAndKin, ContactInformation, PersonalDetails, BankDetails, ReferenceDetails, AdditionalInformation, DocumentUpload, Checklist } from "./FormSections";
+import { personalSchema, allAddressSchema, availabilitySchema, bankDetailsSchema, referenceDetailsSchema, additionalInformationSchema, empty } from "./constactSchema";
 import { initialState, uploadInitialState } from "./contactData";
 import { Form, Formik, Field } from "formik";
 import ErrorBoundary from "../ErrorBoundary";
@@ -16,13 +16,15 @@ const CandidateRegistrationForm = () => {
   const [formErrors, setFormErrors] = useState(null);
   const [agree, setAgree] = useState(false);
   const [success, setSuccess] = useState(false);
-  const Schema = [personalSchema, allAddressSchema, availabilitySchema, bankDetailsSchema, referenceDetailsSchema, additionalInformationSchema];
+  const Schema = [empty, personalSchema, allAddressSchema, availabilitySchema, bankDetailsSchema, referenceDetailsSchema, additionalInformationSchema];
 
   useEffect(() => {
     const section = document.querySelector(`.section-${activeSection}`);
-    const input = section.querySelector("input, select");
-    if (input) {
-      input.focus();
+    if (section) {
+      const input = section.querySelector("input, select");
+      if (input) {
+        input.focus();
+      }
     }
   }, [activeSection]);
 
@@ -87,13 +89,14 @@ const CandidateRegistrationForm = () => {
   };
 
   const sectionFields = {
-    0: ["title", "first-name", "last-name", "date-of-birth", "phone-number", "gender", "email", "ni-number", "share-code"],
-    1: ["address-1", "address-2", "address-3", "city", "postcode"],
-    2: ["shifts", "days", "available-from", "emergency-name", "emergency-relationship", "emergency-phone-number"],
-    3: ["sort-code", "account-number", "account-holder-name", "bank-branch"],
-    4: ["ref-company-name", "ref-employed-from", "ref-employed-to", "ref-reason-leaving", "ref-name", "ref-phone-number", "ref-email"],
-    5: ["disabilities", "disabilities-info", "medication", "medication-info", "reasonable-adjustments", "reasonable-adjustments-info", "no-convictions"],
-    6: [],
+    0: [],
+    1: ["title", "first-name", "last-name", "date-of-birth", "phone-number", "gender", "email", "ni-number", "share-code"],
+    2: ["address-1", "address-2", "address-3", "city", "postcode"],
+    3: ["shifts", "days", "available-from", "emergency-name", "emergency-relationship", "emergency-phone-number"],
+    4: ["sort-code", "account-number", "account-holder-name", "bank-branch"],
+    5: ["ref-company-name", "ref-employed-from", "ref-employed-to", "ref-reason-leaving", "ref-name", "ref-phone-number", "ref-email"],
+    6: ["disabilities", "disabilities-info", "medication", "medication-info", "reasonable-adjustments", "reasonable-adjustments-info", "no-convictions"],
+    7: [],
   };
 
   if (success) {
@@ -119,36 +122,40 @@ const CandidateRegistrationForm = () => {
               <div className="">
                 <div className="">
                   <div className="section-0" style={{ display: activeSection === 0 ? "block" : "none" }}>
+                    <h2 className="text-xl text-center">Before Getting Started</h2>
+                    <Checklist />
+                  </div>
+                  <div className="section-1" style={{ display: activeSection === 1 ? "block" : "none" }}>
                     <h2 className="text-xl text-center">Personal & Contact Info</h2>
                     <Stepper activeSection={activeSection} steps={7} />
                     <PersonalDetails />
                   </div>
-                  <div className="section-1" style={{ display: activeSection === 1 ? "block" : "none" }}>
+                  <div className="section-2" style={{ display: activeSection === 2 ? "block" : "none" }}>
                     <h2 className="text-xl text-center">Contact Information</h2>
                     <Stepper activeSection={activeSection} steps={7} />
                     <ContactInformation />
                   </div>
-                  <div className="section-2" style={{ display: activeSection === 2 ? "block" : "none" }}>
+                  <div className="section-3" style={{ display: activeSection === 3 ? "block" : "none" }}>
                     <h2 className="text-xl text-center">Availability & Emergency Contact</h2>
                     <Stepper activeSection={activeSection} steps={7} />
                     <AvailabilityAndKin />
                   </div>
-                  <div className="section-3" style={{ display: activeSection === 3 ? "block" : "none" }}>
+                  <div className="section-4" style={{ display: activeSection === 4 ? "block" : "none" }}>
                     <h2 className="text-xl text-center">Bank Details</h2>
                     <Stepper activeSection={activeSection} steps={7} />
                     <BankDetails />
                   </div>
-                  <div className="section-4" style={{ display: activeSection === 4 ? "block" : "none" }}>
+                  <div className="section-5" style={{ display: activeSection === 5 ? "block" : "none" }}>
                     <h2 className="text-xl text-center">Reference Details</h2>
                     <Stepper activeSection={activeSection} steps={7} />
                     <ReferenceDetails />
                   </div>
-                  <div className="section-5" style={{ display: activeSection === 5 ? "block" : "none" }}>
+                  <div className="section-6" style={{ display: activeSection === 6 ? "block" : "none" }}>
                     <h2 className="text-xl text-center">Additional Information</h2>
                     <Stepper activeSection={activeSection} steps={7} />
                     <AdditionalInformation />
                   </div>
-                  <div className="section-6" style={{ display: activeSection === 6 ? "block" : "none" }}>
+                  <div className="section-7" style={{ display: activeSection === 7 ? "block" : "none" }}>
                     <h2 className="text-xl text-center">Document Upload</h2>
                     <Stepper activeSection={activeSection} steps={7} />
                     <DocumentUpload fileUploads={fileUploads} setFileUploads={setFileUploads} setUploadError={setUploadError} />
@@ -164,25 +171,31 @@ const CandidateRegistrationForm = () => {
                     <button
                       type="button"
                       onClick={async () => {
-                        const currentSectionFields = sectionFields[activeSection];
-                        const touchedFields = {};
-                        currentSectionFields.forEach((key) => {
-                          touchedFields[key] = true;
-                        });
-                        setTouched(touchedFields);
+                        console.log(activeSection);
+                        if (activeSection > 0) {
+                          const currentSectionFields = sectionFields[activeSection];
+                          const touchedFields = {};
 
-                        await validateForm();
-                        if (isValid || activeSection === 6) {
-                          setActiveSection((prev) => Math.min(6, prev + 1));
+                          currentSectionFields.forEach((key) => {
+                            touchedFields[key] = true;
+                          });
+                          setTouched(touchedFields);
+
+                          await validateForm();
+                          if (isValid || activeSection === 7) {
+                            setActiveSection((prev) => Math.min(7, prev + 1));
+                          }
+                        } else {
+                          setActiveSection((prev) => Math.min(7, prev + 1));
                         }
                       }}
-                      className={`${(activeSection === 6 && "hidden") || ""} ms-auto bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded `}
+                      className={`${(activeSection === 7 && "hidden") || ""} ms-auto bg-violet-900 hover:bg-violet-600 hover:text-white text-white py-2 px-4 rounded `}
                     >
                       Next
                     </button>
                   </div>
 
-                  {activeSection === 6 && (
+                  {activeSection === 7 && (
                     <div className="text-center mt-10 flex flex-col gap-6">
                       <label>
                         I herby confirm that the information I have provided is correct and I agree to the terms and conditions.*
