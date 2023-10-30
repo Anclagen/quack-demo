@@ -1,7 +1,7 @@
 const Checklist = () => (
   <div>
     <p className="my-2">{"Before diving in, let’s ensure you have all necessary documents and information at your fingertips. Here's a checklist of what you'll be providing:"}</p>
-    <h3>Essential Documents Checklist:</h3>
+    <h3 className="text-lg font-semibold">Essential Documents Checklist:</h3>
     <ul className="list-disc ms-4">
       <li>
         <b>Proof of Address: </b>
@@ -14,7 +14,7 @@ const Checklist = () => (
         <b>Proof of National Insurance Number,</b> such as a NI Card, P45, P60, HMRC Letter, Payslip with NI Number on
       </li>
     </ul>
-    <h3>Foreign Nationals</h3>
+    <h4 className="font-semibold">Foreign Nationals</h4>
     <ul className="list-disc ms-4">
       <li>
         <b>Sharecode (if applicable):</b> For non-UK nationals, a sharecode will be needed to verify your eligibility to work in the UK.
@@ -30,7 +30,7 @@ const Checklist = () => (
       </li>
     </ul>
     <p className="my-2">These should each be in a PDF, jpeg, jpg or png format and no larger than 3MB in size.</p>
-    <h3 className="my-2"> Additional Information:</h3>
+    <h3 className="my-2 text-lg font-semibold"> Additional Information:</h3>
     <ul className="list-disc ms-4">
       <li>
         <b>Personal Details:</b> Full name, date of birth, gender, contact and address details.
