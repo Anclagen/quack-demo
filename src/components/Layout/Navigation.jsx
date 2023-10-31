@@ -43,6 +43,7 @@ const Navigation = () => {
             { path: "/", label: "Home" },
             { path: "/jobs", label: "Jobs" },
             { path: "/employers", label: "Employers" },
+            { path: "/candidate-registration", label: "Register" },
             { path: "/about", label: "About" },
             { path: "/contact", label: "Contact" },
           ].map((route) => (
@@ -75,6 +76,7 @@ const Navigation = () => {
             { path: "/", label: "Home" },
             { path: "/jobs", label: "Jobs" },
             { path: "/employers", label: "Employers" },
+            { path: "/candidate-registration", label: "Register" },
             { path: "/about", label: "About" },
             { path: "/contact", label: "Contact" },
           ].map((route) => (
