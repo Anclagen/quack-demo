@@ -62,13 +62,13 @@ const About = () => {
           We have selected our team not only based on industry knowledge but based on passion for success and wanting to go that extra mile to develop themselves, our clients & candidates.
         </p>
         <CardSection>
-          <ProfileCard
+          {/* <ProfileCard
             userImage={LeeImage}
             userName="Lee Inskip"
             userPosition="Director"
             userDescription="Lee trained as a butcher in the '80s and worked in the hospitality trade before moving into recruitment. He has managed sites with up to 1200 workers across multiple locations, specializing in sectors like Industrial, Grounds Maintenance, Engineering, and Construction. Boasting a wealth of sector experience even before the recruitment industry gained its prominence, is deeply involved in the day-to-day operations of the business. With a background in operational roles at top global recruitment agencies, Lee effortlessly liaises with clients. His expertise ensures that our consultants are always aligned with client needs, facilitating successful placements."
             linkedin={"https://www.linkedin.com/in/lee-inskip-4b80bb59/"}
-          />
+          /> */}
           <ProfileCard
             userImage={JamieImage}
             userName="Jamie Croall"
